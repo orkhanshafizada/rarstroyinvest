@@ -10,34 +10,37 @@ class AboutSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
      * @return void
      */
     public function run()
     {
         $slug = Str::slug("Test", '-');
 
-        $article_data = [
-            'zh'    => [
-                'title' => "Test",
+        $about = About::create();
+
+        $translations = [
+            'zh' => [
+                'title'             => "Test",
                 'short_description' => "Test",
-                'long_description' => "Test",
-                'slug' => $slug
+                'long_description'  => "Test",
+                'slug'              => $slug
             ],
             'en' => [
-                'title' => "Test",
+                'title'             => "Test",
                 'short_description' => "Test",
-                'long_description' => "Test",
-                'slug' => $slug
+                'long_description'  => "Test",
+                'slug'              => $slug
             ],
             'ru' => [
-                'title' => "Test",
+                'title'             => "Test",
                 'short_description' => "Test",
-                'long_description' => "Test",
-                'slug' => $slug
+                'long_description'  => "Test",
+                'slug'              => $slug
             ]
         ];
 
-        About::create($article_data);
+        foreach ($translations as $locale => $data) {
+            $about->translateOrNew($locale)->fill($data)->save();
+        }
     }
 }
