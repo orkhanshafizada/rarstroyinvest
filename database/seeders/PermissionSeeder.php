@@ -16,6 +16,50 @@ class PermissionSeeder extends Seeder
     {
         $permissions = [
 
+            //Structure Controller
+            [
+                'name' => 'structure.show',
+                'group' => 'Structure',
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'structure.edit',
+                'group' => 'Structure',
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'structure.create',
+                'group' => 'Structure',
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'structure.delete',
+                'group' => 'Structure',
+                'guard_name' => 'admin'
+            ],
+
+            //Mortgage Controller
+            [
+                'name' => 'mortgage.show',
+                'group' => 'Mortgage',
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'mortgage.edit',
+                'group' => 'Mortgage',
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'mortgage.create',
+                'group' => 'Mortgage',
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'mortgage.delete',
+                'group' => 'Mortgage',
+                'guard_name' => 'admin'
+            ],
+
             //About Controller
             [
                 'name' => 'about.show',
@@ -59,6 +103,7 @@ class PermissionSeeder extends Seeder
                 'group' => 'Slider',
                 'guard_name' => 'admin'
             ],
+
             //Settings Controller
             [
                 'name' => 'settings.show',
@@ -80,6 +125,7 @@ class PermissionSeeder extends Seeder
                 'group' => 'Settings',
                 'guard_name' => 'admin'
             ],
+
             //Moderator Controller
             [
                 'name' => 'moderator.show',
@@ -102,7 +148,6 @@ class PermissionSeeder extends Seeder
                 'guard_name' => 'admin'
             ],
 
-
             //Languages Controller
             [
                 'name' => 'languages.show',
@@ -124,6 +169,7 @@ class PermissionSeeder extends Seeder
                 'group' => 'Languages',
                 'guard_name' => 'admin'
             ],
+
             //Faq Controller
             [
                 'name' => 'faqs.show',
@@ -211,6 +257,7 @@ class PermissionSeeder extends Seeder
                 'group' => 'Contact Us',
                 'guard_name' => 'admin'
             ],
+
             //Partners Controller
             [
                 'name' => 'partners.show',
@@ -232,6 +279,7 @@ class PermissionSeeder extends Seeder
                 'group' => 'Partners',
                 'guard_name' => 'admin'
             ],
+
             //Staff Controller
             [
                 'name' => 'staff.show',
@@ -253,6 +301,7 @@ class PermissionSeeder extends Seeder
                 'group' => 'Staff',
                 'guard_name' => 'admin'
             ],
+
             //Comments Controller
             [
                 'name' => 'comments.show',

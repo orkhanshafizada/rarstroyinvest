@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\CkEditorController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\Faq\FaqController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\House\Mortgage\MortgageController;
+use App\Http\Controllers\Admin\House\Structure\StructureController;
 use App\Http\Controllers\Admin\Moderator\ModeratorController;
 use App\Http\Controllers\Admin\Moderator\PermissionController;
 use App\Http\Controllers\Admin\Moderator\RoleController;
@@ -72,6 +74,17 @@ Route::prefix('jarvis')->name('admin.')->group(function()
 
         //Partner
         Route::resource('/partner', PartnerController::class);
+
+
+        /////////////////////HOUSE PARAMETERS/////////////////////
+        Route::resource('/mortgage', MortgageController::class);
+        Route::resource('/structure', StructureController::class);
+
+
+        /////////////////////HOUSE PARAMETERS END/////////////////////
+
+
+
 
         //CK Editor
         Route::post('/ckeditor', [CkEditorController::class, 'store'])->name('ckeditor.store');

@@ -34,7 +34,9 @@
                         <span>{{ __('Dashboard') }}</span>
                     </a>
                 </li>
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">{{ __('User Permissions') }}</div> <i class="icon-menu" title="{{ __('User Permissions') }}"></i></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">{{ __('User Permissions') }}</div>
+                    <i class="icon-menu" title="{{ __('User Permissions') }}"></i></li>
                 @can('moderator.show', 'admin')
                     <li class="nav-item nav-item-submenu">
                         <a href="#" class="nav-link"><i class="icon-user-lock"></i> <span>{{ __('Moderators') }}</span></a>
@@ -54,7 +56,36 @@
                         </ul>
                     </li>
                 @endcan
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">{{ __('Menus') }}</div> <i class="icon-menu" title="{{ __('Menus') }}"></i></li>
+
+
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">{{ __('House Parameters') }}</div>
+                    <i class="icon-menu" title="{{ __('House Parameters') }}"></i></li>
+
+                @can('mortgage.show', 'admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.mortgage.index') }}"
+                           class="nav-link {{ request()->routeIs('admin.mortgage.index') ? 'active' : '' }}"
+                           onclick="loader();">
+                            <i class="icon-credit-card"></i>
+                            <span>Mortgage</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('structure.show', 'admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.structure.index') }}"
+                           class="nav-link {{ request()->routeIs('admin.structure.index') ? 'active' : '' }}"
+                           onclick="loader();">
+                            <i class="icon-strategy"></i>
+                            <span>Structure</span>
+                        </a>
+                    </li>
+                @endcan
+
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">{{ __('Menus') }}</div>
+                    <i class="icon-menu" title="{{ __('Menus') }}"></i></li>
 
                 @can('about.show', 'admin')
                     <li class="nav-item">
@@ -137,7 +168,9 @@
                         </a>
                     </li>
                 @endcan
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">{{ __('Settings') }}</div> <i class="icon-menu" title="{{ __('Site Settings') }}"></i></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">{{ __('Settings') }}</div>
+                    <i class="icon-menu" title="{{ __('Site Settings') }}"></i></li>
                 @can('languages.show', 'admin')
                     <li class="nav-item">
                         <a href="{{ route('languages.index') }}"

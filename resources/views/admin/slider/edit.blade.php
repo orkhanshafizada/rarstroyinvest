@@ -46,9 +46,9 @@
                                                     <label for="title">{{ __('Status') }}</label>
                                                     <select name="active" class="form-control">
                                                         <option value="1"
-                                                                @if(@$slider->active == 1) selected @endif> {{ __('Active') }}</option>
+                                                                @if(@$slider && @$slider->active == 1) selected @endif> {{ __('Active') }}</option>
                                                         <option value="0"
-                                                                @if(@$slider->active == 0) selected @endif> {{ __('Deactive') }}</option>
+                                                                @if(@$slider && @$slider->active == 0) selected @endif> {{ __('Deactive') }}</option>
                                                     </select>
                                                     @error('active')
                                                     <div

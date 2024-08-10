@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,7 +171,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Spatie\Permission\PermissionServiceProvider::class,
+        Astrotomic\Translatable\TranslatableServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -180,7 +181,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -194,8 +194,7 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+    'aliases' => Facade::defaultAliases()->merge([// 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
 ];

@@ -61,6 +61,7 @@ class NewsController extends Controller
         $this->authorize('news.create');
 
         $article_data = $this->translate($request);
+
         News::create($article_data);
 
         return redirect()->route('admin.news.index')->with('message', __('Succesfully created.'))
