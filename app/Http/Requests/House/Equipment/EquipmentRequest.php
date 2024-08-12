@@ -31,7 +31,9 @@ class EquipmentRequest extends FormRequest
             'ru_content' => 'required|string',
             'ru_title'   => 'required|string|max:255',
 
-            'sort' => 'int',
+            'house_id'     => 'required|int',
+            'structure_id' => 'required|int',
+            'sort'         => 'required|int',
         ];
     }
 
@@ -59,7 +61,12 @@ class EquipmentRequest extends FormRequest
             'ru_title.string'     => __('Title (RU)') . ' ' . __('must be made of letters and numbers only!'),
             'ru_title.max'        => __('Title (RU)') . ' ' . __('must be a maximum of 255 characters!'),
 
-            'sort.int'     => __('Sort') . ' ' . __('must be made of numbers only!'),
+            'sort.required'         => __('Sort') . ' ' . __('cannot be empty!'),
+            'sort.int'              => __('Sort') . ' ' . __('must be made of numbers only!'),
+            'house_id.required'     => __('Sort') . ' ' . __('cannot be empty!'),
+            'house_id.int'          => __('Sort') . ' ' . __('must be made of numbers only!'),
+            'structure_id.required' => __('Sort') . ' ' . __('cannot be empty!'),
+            'structure_id.int'      => __('Sort') . ' ' . __('must be made of numbers only!'),
         ];
     }
 }

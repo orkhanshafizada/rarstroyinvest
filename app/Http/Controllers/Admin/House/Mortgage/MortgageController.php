@@ -58,10 +58,9 @@ class MortgageController extends Controller
         $this->authorize('mortgage.create');
         $article_data = $this->translate($request);
 
-        // Create the partner
         Mortgage::create($article_data);
 
-        return redirect()->route('admin.house.mortgage.index')->with('message', __('Successfully updated.'))->with('message-alert', 'success');
+        return redirect()->route('admin.mortgage.index')->with('message', __('Successfully updated.'))->with('message-alert', 'success');
     }
 
     /**
@@ -77,7 +76,7 @@ class MortgageController extends Controller
 
         $mortgage->update($article_data);
 
-        return redirect()->route('admin.house.mortgage.index')->with('message', __('Successfully updated.'))->with('message-alert', 'success');
+        return redirect()->route('admin.mortgage.index')->with('message', __('Successfully updated.'))->with('message-alert', 'success');
     }
 
     /**
@@ -93,7 +92,7 @@ class MortgageController extends Controller
 
         $mortgage->delete();
 
-        return redirect()->route('admin.house.mortgage.index')->with('message', 'Succesfully deleted.')->with('message-alert', 'success');
+        return redirect()->route('admin.mortgage.index')->with('message', 'Succesfully deleted.')->with('message-alert', 'success');
     }
 
     private function translate($request, $id = 0)
@@ -104,7 +103,7 @@ class MortgageController extends Controller
         ];
 
         $slug = $id ?: rand();
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Mortgage\Mortgage', 'mortgage') : '';
+        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\House\Mortgage\Mortgage', 'mortgage') : '';
 
         return $article_data;
     }

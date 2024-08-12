@@ -6,7 +6,7 @@
                 <div class="page-header-content header-elements-lg-inline">
                     <div class="page-title d-flex">
                         <h4><a href="{{ url()->previous() }}"><i class="icon-arrow-left52 mr-2"></i></a> <span
-                                class="font-weight-semibold">Slider </span> - @if (@$partner->id)
+                                class="font-weight-semibold">Mortgage </span> - @if (@$mortgage->id)
                                 {{ __('Update') }}
                             @else
                                 {{ __('Create') }}
@@ -32,10 +32,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form
-                                        action="{{ @$partner->id ? route('admin.partner.update', $partner ) : route('admin.partner.store') }}"
+                                        action="{{ @$mortgage->id ? route('admin.mortgage.update', $mortgage ) : route('admin.mortgage.store') }}"
                                         method="post" enctype="multipart/form-data">
                                         @csrf
-                                        @if(@$partner->id)
+                                        @if(@$mortgage->id)
                                             @method('PATCH')
                                         @endif
                                         <div class="row">
@@ -46,9 +46,9 @@
                                                     <label for="title">{{ __('Status') }}</label>
                                                     <select name="active" class="form-control">
                                                         <option value="1"
-                                                                @if(@$partner && @$partner->active == 1) selected @endif> {{ __('Active') }}</option>
+                                                                @if(@$mortgage && @$mortgage->active == 1) selected @endif> {{ __('Active') }}</option>
                                                         <option value="0"
-                                                                @if(@$partner && @$partner->active == 0) selected @endif> {{ __('Deactive') }}</option>
+                                                                @if(@$mortgage && @$mortgage->active == 0) selected @endif> {{ __('Deactive') }}</option>
                                                     </select>
                                                     @error('active')
                                                     <div
@@ -65,7 +65,7 @@
                                                     <input type="number" class="form-control"
                                                            placeholder="{{ __('Sort') }}"
                                                            name="sort"
-                                                           value="{{ @$partner ? @$partner->sort : old('sort') ?? 1 }}">
+                                                           value="{{ @$mortgage ? @$mortgage->sort : old('sort') ?? 1 }}">
                                                     @error('sort')
                                                     <div
                                                         class="alert-danger"> {{ $errors->first('sort') }}
@@ -86,20 +86,20 @@
                                                     style="margin-top: 15px;">
                                                     <label
                                                         for="title">{{ __('Image') }}</label>
-                                                    @if(@$partner->image != null)
+                                                    @if(@$mortgage->image != null)
                                                         <div class="col-lg-12">
                                                             <div class="card">
                                                                 <div
                                                                     class="card-img-actions m-1">
                                                                     <img
                                                                         class="card-img img-fluid"
-                                                                        src="/{{@$partner->image}}"
+                                                                        src="/{{@$mortgage->image}}"
                                                                         alt=""
                                                                         id="output"
                                                                         style="height:150px; object-fit:contain;">
                                                                     <div
                                                                         class="card-img-actions-overlay card-img">
-                                                                        <a href="/{{@$partner->image}}"
+                                                                        <a href="/{{@$mortgage->image}}"
                                                                            class="btn btn-outline-white border-2 btn-icon rounded-pill"
                                                                            data-popup="lightbox"
                                                                            data-gallery="gallery1">
@@ -134,7 +134,7 @@
                                                     data-loading-text="<i class='icon-spinner4 spinner mr-2'></i> Loading..."
                                                     class="btn btn-success btn-loading"><i
                                                     class="icon-spinner4 mr-2"></i>
-                                                @if (@$partner->id)
+                                                @if (@$mortgage->id)
                                                     {{ __('Update') }}
                                                 @else
                                                     {{ __('Create') }}

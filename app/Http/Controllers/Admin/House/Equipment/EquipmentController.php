@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\House\Equipment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\House\Equipment\EquipmentRequest;
 use App\Models\House\Equipment\Equipment;
+use App\Models\House\Structure\Structure;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -20,18 +21,22 @@ class EquipmentController extends Controller
         $this->authorize('equipment.show');
         $equipments = Equipment::where('house_id', $house_id)->get()->sortByDesc('sort');
 
-        return view('admin.equipment.index', compact('equipments'));
+        return view('admin.house.equipment.index', compact('equipments', 'house_id'));
     }
 
     /**
      * @return View
      * @throws AuthorizationException
      */
-    public function create(): View
+    public function create($house_id): View
     {
+
         $this->authorize('equipment.create');
 
-        return view('admin.equipment.edit');
+        return view('admin.house.equipment.edit', [
+            'structures' => Structure::active()->latest()->get(),
+            'house_id'   => $house_id
+        ]);
     }
 
     /**
@@ -43,7 +48,11 @@ class EquipmentController extends Controller
     {
         $this->authorize('equipment.edit');
 
-        return view('admin.equipment.edit', compact('equipment'));
+        return view('admin.house.equipment.edit', [
+            'structures' => Structure::active()->latest()->get(),
+            'equipment'  => $equipment,
+            'house_id'   => $equipment->house_id
+        ]);
     }
 
     /**
@@ -58,9 +67,9 @@ class EquipmentController extends Controller
         $article_data = $this->translate($request);
         Equipment::create($article_data);
 
-        return redirect()->route('admin.equipment.index')
-            ->with('message', __('Successfully created.'))
-            ->with('message-alert', 'success');
+        return redirect()->route('admin.equipment.index', $article_data['house_id'])
+                         ->with('message', __('Successfully created.'))
+                         ->with('message-alert', 'success');
     }
 
     /**
@@ -76,10 +85,9 @@ class EquipmentController extends Controller
         $article_data = $this->translate($request);
         $equipment->update($article_data);
 
-        return redirect()
-            ->route('admin.equipment.index')
-            ->with('message', __('Successfully updated.'))
-            ->with('message-alert', 'success');
+        return redirect()->route('admin.equipment.index', $equipment->house_id)
+                         ->with('message', __('Successfully updated.'))
+                         ->with('message-alert', 'success');
     }
 
     /**
@@ -92,26 +100,25 @@ class EquipmentController extends Controller
         $this->authorize('equipments.delete');
         $equipment->delete();
 
-        return redirect()
-            ->back()
-            ->with('message', __('Successfully deleted.'))
-            ->with('message-alert', 'success');
+        return redirect()->back()->with('message', __('Successfully deleted.'))->with('message-alert', 'success');
     }
 
     private function translate($request)
     {
         $article_data = [
-            'sort' => $request->input('sort') ?? 1,
-            'zh' => [
-                'title' => $request->input('zh_title'),
+            'sort'         => $request->input('sort') ?? 1,
+            'house_id'     => $request->input('house_id'),
+            'structure_id' => $request->input('structure_id'),
+            'zh'           => [
+                'title'   => $request->input('zh_title'),
                 'content' => $request->input('zh_content'),
             ],
-            'en' => [
-                'title' => $request->input('en_title'),
+            'en'           => [
+                'title'   => $request->input('en_title'),
                 'content' => $request->input('en_content'),
             ],
-            'ru' => [
-                'title' => $request->input('ru_title'),
+            'ru'           => [
+                'title'   => $request->input('ru_title'),
                 'content' => $request->input('ru_content'),
             ],
         ];
