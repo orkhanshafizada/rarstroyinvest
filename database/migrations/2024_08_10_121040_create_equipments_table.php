@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('house_id')->constrained()->onDelete('cascade');
             $table->foreignId('structure_id')->constrained()->onDelete('cascade');
+            $table->integer('sort')->default(1);
             $table->timestamps();
         });
 

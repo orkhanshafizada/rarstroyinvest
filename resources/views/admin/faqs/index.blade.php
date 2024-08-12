@@ -34,7 +34,7 @@
                 @foreach ($faqs as $faq)
                     <tr>
                         <td>{{ $faq->id }}</td>
-                        <td>{{ $faq->translate(app()->getLocale())->title }}</td>
+                        <td>{{ $faq->translate('ru')->title }}</td>
                         <td></td>
                         <td>{{ $faq->sort }}</td>
                         <td>{{ $faq->created_at }}</td>

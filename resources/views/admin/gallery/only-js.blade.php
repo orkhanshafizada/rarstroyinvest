@@ -22,7 +22,7 @@
 
     function load_images() {
         $.ajax({
-            url: "{{ route('admin.gallery.indexJson', [$category_id, $type]) }}",
+            url: "{{ route('admin.gallery.indexJson', [$category_id, $type, $image_type]) }}",
             success: function (data) {
                 $('.uploadedImages').html(data)
             }

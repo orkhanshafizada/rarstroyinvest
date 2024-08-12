@@ -22,9 +22,9 @@ class StructureRequest extends FormRequest
     public function rules()
     {
         return [
-            'ru_title' => 'required|string|max:255',
-            'en_title' => 'required|string|max:255',
-            'zh_title' => 'nullable|string|max:255',
+            'ru_name' => 'required|string|max:255',
+            'en_name' => 'required|string|max:255',
+            'zh_name' => 'nullable|string|max:255',
             'active'   => 'required|integer',
         ];
     }
@@ -32,17 +32,17 @@ class StructureRequest extends FormRequest
     public function messages()
     {
         return [
-            'zh_title.required' => __('Title (ZH)') . ' ' . __('cannot be empty!'),
-            'zh_title.string'   => __('Title (ZH)') . ' ' . __('must be made of letters and numbers only!'),
-            'zh_title.max'      => __('Title (ZH)') . ' ' . __('must be a maximum of 255 characters!'),
+            'zh_name.required' => __('Name (ZH)') . ' ' . __('cannot be empty!'),
+            'zh_name.string'   => __('Name (ZH)') . ' ' . __('must be made of letters and numbers only!'),
+            'zh_name.max'      => __('Name (ZH)') . ' ' . __('must be a maximum of 255 characters!'),
 
-            'en_title.required' => __('Title (EN)') . ' ' . __('cannot be empty!'),
-            'en_title.string'   => __('Title (EN)') . ' ' . __('must be made of letters and numbers only!'),
-            'en_title.max'      => __('Title (EN)') . ' ' . __('must be a maximum of 255 characters!'),
+            'en_name.required' => __('Name (EN)') . ' ' . __('cannot be empty!'),
+            'en_name.string'   => __('Name (EN)') . ' ' . __('must be made of letters and numbers only!'),
+            'en_name.max'      => __('Name (EN)') . ' ' . __('must be a maximum of 255 characters!'),
 
-            'ru_title.required' => __('Title (RU)') . ' ' . __('cannot be empty!'),
-            'ru_title.string'   => __('Title (RU)') . ' ' . __('must be made of letters and numbers only!'),
-            'ru_title.max'      => __('Title (RU)') . ' ' . __('must be a maximum of 255 characters!'),
+            'ru_name.required' => __('Name (RU)') . ' ' . __('cannot be empty!'),
+            'ru_name.string'   => __('Name (RU)') . ' ' . __('must be made of letters and numbers only!'),
+            'ru_name.max'      => __('Name (RU)') . ' ' . __('must be a maximum of 255 characters!'),
             'active.required'   => __('active') . ' ' . __('cannot be empty!'),
             'active.integer'    => __('active') . ' ' . __('must be made of number only!'),
         ];

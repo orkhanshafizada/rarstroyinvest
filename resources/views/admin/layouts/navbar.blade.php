@@ -82,6 +82,26 @@
                         </a>
                     </li>
                 @endcan
+                @can('filter.show', 'admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.filter.index') }}"
+                           class="nav-link {{ request()->routeIs('admin.filter.index') ? 'active' : '' }}"
+                           onclick="loader();">
+                            <i class="icon-filter3"></i>
+                            <span>Filter</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('house.show', 'admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.house.index') }}"
+                           class="nav-link {{ request()->routeIs('admin.house.index') ? 'active' : '' }}"
+                           onclick="loader();">
+                            <i class="icon-home"></i>
+                            <span>House</span>
+                        </a>
+                    </li>
+                @endcan
 
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">{{ __('Menus') }}</div>

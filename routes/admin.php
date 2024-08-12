@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\CkEditorController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\Faq\FaqController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\House\Equipment\EquipmentController;
+use App\Http\Controllers\Admin\House\Filter\FilterController;
+use App\Http\Controllers\Admin\House\House\HouseController;
 use App\Http\Controllers\Admin\House\Mortgage\MortgageController;
 use App\Http\Controllers\Admin\House\Structure\StructureController;
 use App\Http\Controllers\Admin\Moderator\ModeratorController;
@@ -55,9 +58,9 @@ Route::prefix('jarvis')->name('admin.')->group(function()
         Route::get('/contact/{contact}', [ContactController::class, 'show'])->name('contact.show');
 
         //Gallery
-        Route::get('/gallery/{category_id}/{type}', [GalleryController::class, 'index'])->name('gallery.index');
-        Route::get('/gallery/json/{category_id}/{type}', [GalleryController::class, 'indexJson'])->name('gallery.indexJson');
-        Route::post('/gallery/store/{category_id}/{type}', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::get('/gallery/{category_id}/{type}/{image_type}', [GalleryController::class, 'index'])->name('gallery.index');
+        Route::get('/gallery/json/{category_id}/{type}/{image_type}', [GalleryController::class, 'indexJson'])->name('gallery.indexJson');
+        Route::post('/gallery/store/{category_id}/{type}/{image_type}', [GalleryController::class, 'store'])->name('gallery.store');
         Route::post('/gallery/destroy', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
         //Faqs
@@ -79,6 +82,11 @@ Route::prefix('jarvis')->name('admin.')->group(function()
         /////////////////////HOUSE PARAMETERS/////////////////////
         Route::resource('/mortgage', MortgageController::class);
         Route::resource('/structure', StructureController::class);
+        Route::resource('/filter', FilterController::class);
+
+        //House settings
+        Route::resource('/house', HouseController::class);
+        Route::get('/equipments/{house_id}', [EquipmentController::class, 'index'])->name('equipment.index');
 
 
         /////////////////////HOUSE PARAMETERS END/////////////////////

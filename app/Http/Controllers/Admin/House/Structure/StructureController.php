@@ -8,7 +8,6 @@ use App\Models\House\Structure\Structure;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Astrotomic\Translatable\Translatable;
 
 class StructureController extends Controller
 {
@@ -98,13 +97,13 @@ class StructureController extends Controller
         $article_data = [
             'active' => $request->input('active'),
             'zh'     => [
-                'title' => $request->input('zh_title'),
+                'name' => $request->input('zh_name'),
             ],
             'en'     => [
-                'title' => $request->input('en_title'),
+                'name' => $request->input('en_name'),
             ],
             'ru'     => [
-                'title' => $request->input('ru_title'),
+                'name' => $request->input('ru_name'),
             ],
         ];
 

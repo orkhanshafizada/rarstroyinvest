@@ -93,6 +93,11 @@ function get_type_name(int $type)
     {
         return 'News';
     }
+    elseif($type == 3)
+    {
+        return 'House';
+    }
+
     return false;
 }
 
@@ -106,13 +111,17 @@ function getClassName(int $type)
     {
         return 'App\Models\News\News';
     }
+    elseif($type == 3)
+    {
+        return 'App\Models\House\House\House';
+    }
 
     return false;
 }
 
 function convertDateToReadableFormat($datetime, $locale)
 {
-    $locale = ($locale == 'en' ? 'en_US' : 'ru_RU');
+    $locale    = ($locale == 'en' ? 'en_US' : 'ru_RU');
     $date      = new DateTime($datetime);
     $formatter = new IntlDateFormatter($locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE, $date->getTimezone());
 

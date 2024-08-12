@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SettingSeeder::class,
             AboutSeeder::class,
+            StructureSeeder::class,
+            FilterSeeder::class,
         ]);
 
         News::factory()->count(300)->create();

@@ -29,11 +29,15 @@ class News extends Model implements TranslatableContract
     ];
 
     /**
+     * Get the images for the model, optionally filtered by type.
+     *
+     * @param string $image_type
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function image()
+    public function image($image_type = 'default')
     {
-        return $this->morphMany(Image::class,'imageable');
+        return $this->morphMany(Image::class, 'imageable')
+                    ->where('type', $image_type);
     }
 
     /**

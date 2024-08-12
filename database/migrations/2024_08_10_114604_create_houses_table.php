@@ -12,16 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         if(!Schema::hasTable('houses'))
+        {
             Schema::create('houses', function(Blueprint $table)
             {
                 $table->id();
 
+                $table->string('main_image');
                 $table->string('location')->nullable();
                 $table->integer('active')->default(1);
                 $table->timestamps();
             });
+        }
 
         if(!Schema::hasTable('house_translations'))
+        {
             Schema::create('house_translations', function(Blueprint $table)
             {
                 $table->id();
@@ -29,10 +33,12 @@ return new class extends Migration
                 $table->string('locale')->index();
                 $table->string('name')->nullable();
                 $table->string('video_url')->nullable();
+                $table->string('slug')->nullable();
                 $table->timestamps();
 
                 $table->unique(['house_id', 'locale']);
             });
+        }
     }
 
     /**

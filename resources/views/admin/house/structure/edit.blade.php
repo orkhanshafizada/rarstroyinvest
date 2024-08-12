@@ -79,14 +79,14 @@
                                                             <div class="col-lg-12 mb-3">
                                                                 <div
                                                                     class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="country">{{ __('Title') }}</label>
+                                                                    <label for="country">{{ __('Name') }}</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Title') }}"
-                                                                           name="en_title"
-                                                                           value="{{ @$structure ? @$structure->translate('en')->title : old('en_title') }}">
-                                                                    @error('en_title')
+                                                                           placeholder="{{ __('Name') }}"
+                                                                           name="en_name"
+                                                                           value="{{ @$structure ? @$structure->translate('en')->name : old('en_name') }}">
+                                                                    @error('en_name')
                                                                     <div
-                                                                        class="alert-danger"> {{ $errors->first('en_title') }}
+                                                                        class="alert-danger"> {{ $errors->first('en_name') }}
                                                                     </div>
                                                                     @enderror
                                                                 </div>
@@ -102,14 +102,14 @@
                                                             <div class="col-lg-12 mb-3">
                                                                 <div
                                                                     class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="country">{{ __('Title') }}</label>
+                                                                    <label for="country">{{ __('Name') }}</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Title') }}"
-                                                                           name="ru_title"
-                                                                           value="{{ @$structure ? @$structure->translate('ru')->title : old('ru_title') }}">
-                                                                    @error('ru_title')
+                                                                           placeholder="{{ __('Name') }}"
+                                                                           name="ru_name"
+                                                                           value="{{ @$structure ? @$structure->translate('ru')->name : old('ru_name') }}">
+                                                                    @error('ru_name')
                                                                     <div
-                                                                        class="alert-danger"> {{ $errors->first('ru_title') }}
+                                                                        class="alert-danger"> {{ $errors->first('ru_name') }}
                                                                     </div>
                                                                     @enderror
                                                                 </div>
@@ -125,14 +125,14 @@
                                                             <div class="col-lg-12 mb-3">
                                                                 <div
                                                                     class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="country">{{ __('Title') }}</label>
+                                                                    <label for="country">{{ __('Name') }}</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Title') }}"
-                                                                           name="zh_title"
-                                                                           value="{{ @$structure ? @$structure->translate('zh')->title : old('zh_title') }}">
-                                                                    @error('zh_title')
+                                                                           placeholder="{{ __('Name') }}"
+                                                                           name="zh_name"
+                                                                           value="{{ @$structure ? @$structure->translate('zh')->name : old('zh_name') }}">
+                                                                    @error('zh_name')
                                                                     <div
-                                                                        class="alert-danger"> {{ $errors->first('zh_title') }}
+                                                                        class="alert-danger"> {{ $errors->first('zh_name') }}
                                                                     </div>
                                                                     @enderror
                                                                 </div>

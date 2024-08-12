@@ -112,28 +112,29 @@ class NewsController extends Controller
 
     private function translate($request, $id = 0)
     {
+        $slug = Str::slug($request->input('en_title'), '-');
         $article_data = [
             'zh' => [
                 'title'         => $request->input('zh_title'),
                 'short_content' => $request->input('zh_short_content'),
                 'long_content'  => $request->input('zh_long_content'),
-                'slug'          => Str::slug($request->input('zh_title'), '-'),
+                'slug'          => $slug,
             ],
             'en' => [
                 'title'         => $request->input('en_title'),
                 'short_content' => $request->input('en_short_content'),
                 'long_content'  => $request->input('en_long_content'),
-                'slug'          => Str::slug($request->input('en_title'), '-'),
+                'slug'          => $slug,
             ],
             'ru' => [
                 'title'         => $request->input('ru_title'),
                 'short_content' => $request->input('ru_short_content'),
                 'long_content'  => $request->input('ru_long_content'),
-                'slug'          => Str::slug($request->input('ru_title'), '-'),
+                'slug'          => $slug,
             ],
         ];
 
-        $request->main_image ? $article_data['main_image'] = $this->save_file('images', $request->file('main_image'), $id, $article_data['en']['slug'], 'main_image', 'App\Models\News\News', 'news') : '';
+        $request->main_image ? $article_data['main_image'] = $this->save_file('images', $request->file('main_image'), $id, $slug, 'main_image', 'App\Models\News\News', 'news') : '';
 
         return $article_data;
     }

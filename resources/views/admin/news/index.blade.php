@@ -38,7 +38,7 @@
                         <td><img src="/{{ $news->main_image ?? ''}}" width="100%" height="100px" style="object-fit: contain;"></td>
                         <td>{{ $news->translate(app()->getLocale())->title }}</td>
                         <td>
-                            <a href="{{ route('admin.gallery.index', [$news->id, 2]) }}" class="btn btn-warning">
+                            <a href="{{ route('admin.gallery.index', [$news->id, 2, 'default']) }}" class="btn btn-warning">
                                 <i class="icon-paste2"></i> {{ __('Gallery') }}
                             </a>
                         </td>

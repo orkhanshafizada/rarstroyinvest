@@ -50,9 +50,9 @@
                                                     <label for="title">{{ __('Status') }}</label>
                                                     <select name="active" class="form-control">
                                                         <option value="1"
-                                                                @if(@$staff->active == 1) selected @endif> {{ __('Active') }}</option>
+                                                                @if(@$staff && @$staff->active == 1) selected @endif> {{ __('Active') }}</option>
                                                         <option value="0"
-                                                                @if(@$staff->active == 0) selected @endif> {{ __('Deactive') }}</option>
+                                                                @if(@$staff && @$staff->active == 0) selected @endif> {{ __('Deactive') }}</option>
                                                     </select>
                                                     @error('active')
                                                     <div
