@@ -43,7 +43,7 @@
                                                 id="collapse{{$faq->id}}">
                                                 <div class="accordion-body px-0">
                                                     <p class="faq__answer fw-normal text__grey5 lh-base mb-0">
-                                                        {{ $faq->translate(app()->getLocale())->content }}
+                                                        {!! $faq->translate(app()->getLocale())->content !!}
                                                     </p>
                                                 </div>
                                             </div>

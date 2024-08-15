@@ -7,7 +7,6 @@
             <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <form id="filterForm" class="offcanvas-body ps-lg-2 py-0" method="GET" action="{{ route('house.filter') }}">
-            <!-- Diğer filtreleme alanları burada olacak -->
             <div class="col-12">
                 <label class="form-label" for="structure_id">{{ __('Construction technology') }}</label>
                 <select class="form-select" id="structure_id" name="structure_id">
@@ -22,7 +21,6 @@
             </div>
 
             <div class="input-group flex-column my-4">
-                <!-- price-->
                 <p class="body__text2 fw-normal text__dark mb-3">{{ __('Price') }}</p>
                 <div>
                     <div class="row d-inline-flex justify-content-between align-items-center g-0"
@@ -67,18 +65,18 @@
                         </div>
                     </li>
                 @endforeach
-
             </ul>
-            <div class="col mt-4">
+            <!-- <div class="col mt-4">
                 <button class="btn btn-primary fw-bold flex-nowrap text-uppercase border-radius__50 w-100 px-3"
                         type="submit">
                     <span>Search</span>
                 </button>
-            </div>
+            </div> -->
             <div class="col mt-4">
                 <a class="btn body__text2 fw-normal text__grey5 d-inline-flex align-items-center flex-nowrap gap-2"
                    href="{{ route('house.index') }}">
-                    <i class="far fa-times-circle"></i><span>{{ __('Clear filters') }}</span>
+                    <i class="far fa-times-circle"></i>
+                    <span>{{ __('Clear filters') }}</span>
                 </a>
             </div>
         </form>

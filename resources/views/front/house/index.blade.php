@@ -62,7 +62,7 @@
                         <div class="mb-3 mb-lg-0 d-none d-md-block">
                             <p class="mb-0">
                                 <span class="text-dark">{{ __('Projects found') }}:</span>
-                                <span class="ms-1">{{ $totalHouses }}</span>
+                                <span id="totalHouses" class="ms-1">{{ $totalHouses }}</span>
                             </p>
                         </div>
                     </div>
@@ -140,6 +140,7 @@
                     success: function (response) {
                         $('#housesContainer').html(response.houses);
                         $('#pagination').html(response.pagination);
+                        $('#totalHouses').html(response.totalHouses);
                     },
                     error: function (xhr) {
                         console.log(xhr.responseText);

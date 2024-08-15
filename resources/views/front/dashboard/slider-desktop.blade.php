@@ -1,7 +1,7 @@
 <div class="slider slider__main stick-dots">
     @foreach($sliders as $slider)
     <div class="slide">
-        <div class="slide__img"><img class="img-fluid animated" src="{{ asset('front/'. $slider->image) }}" alt="{{ $slider->translate(app()->getLocale())->title }}" data-lazy="{{ asset('front/'. $slider->image) }}" data-animation-in="zoomInImage"/></div>
+        <div class="slide__img"><img class="img-fluid animated" src="{{ asset($slider->image ?? '') }}" alt="{{ $slider->translate(app()->getLocale())->title }}" data-lazy="{{ asset($slider->image ?? '') }}" data-animation-in="zoomInImage"/></div>
         <div class="container h-100 d-none d-lg-block p-0">
             <div class="slide__content d-flex">
                 <div class="slide__content--headings text-start justify-content-start border-radius__40 position-relative overflow-hidden">

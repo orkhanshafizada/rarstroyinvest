@@ -289,54 +289,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-6 mb-3">
-                                                <div
-                                                    class="form-group form-group-feedback form-group-feedback-left"
-                                                    style="margin-top: 15px;">
-                                                    <label
-                                                        for="title">{{ __('Logo thumbnail') }}</label>
-                                                    @if(@$slider->thumbnail != null)
-                                                        <div class="col-lg-12">
-                                                            <div class="card">
-                                                                <div
-                                                                    class="card-img-actions m-1">
-                                                                    <img
-                                                                        class="card-img img-fluid"
-                                                                        src="/{{@$slider->thumbnail}}"
-                                                                        alt=""
-                                                                        id="output"
-                                                                        style="height:250px; object-fit:contain;">
-                                                                    <div
-                                                                        class="card-img-actions-overlay card-img">
-                                                                        <a href="/{{@$slider->thumbnail}}"
-                                                                           class="btn btn-outline-white border-2 btn-icon rounded-pill"
-                                                                           data-popup="lightbox"
-                                                                           data-gallery="gallery1">
-                                                                            <i class="icon-plus3"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                    <div class="col-lg-12">
-                                                        <div
-                                                            class="form-group form-group-feedback form-group-feedback-left">
-                                                            <input type="file"
-                                                                   class="form-control h-auto"
-                                                                   name="thumbnail"
-                                                                   accept="image/*"
-                                                                   onchange="loadFile(event)">
-                                                            @error('thumbnail')
-                                                            <div
-                                                                class="alert-danger"> {{ $errors->first('thumbnail') }}
-                                                            </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 mb-3">
+                                            <div class="col-lg-12 mb-3">
                                                 <div
                                                     class="form-group form-group-feedback form-group-feedback-left"
                                                     style="margin-top: 15px;">

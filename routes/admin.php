@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Comment\CommentController;
 use App\Http\Controllers\Admin\Partner\PartnerController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\Slider\SliderController;
+use App\Http\Controllers\SyncController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('jarvis')->name('admin.')->group(function()
@@ -99,11 +100,9 @@ Route::prefix('jarvis')->name('admin.')->group(function()
         //CK Editor
         Route::post('/ckeditor', [CkEditorController::class, 'store'])->name('ckeditor.store');
 
-        Route::get('sync-letters', function()
-        {
-            \Artisan::call('translation:sync-missing-translation-keys');
-            return redirect()->back();
-        })->name('sync-letters');
+        // routes/web.php
+        Route::get('sync-letters', [SyncController::class, 'syncLetters'])
+             ->name('sync-letters');
     });
 });
 

@@ -85,10 +85,12 @@ class HouseController extends Controller
 
         $housesView = view('front.house.partials.houses', compact('houses'))->render();
         $paginationView = view('front.house.partials.pagination', compact('houses'))->render();
+        $totalHouses = $houses->total();
 
         return response()->json([
             'houses' => $housesView,
             'pagination' => $paginationView,
+            'totalHouses' => $totalHouses,
         ]);
     }
 
@@ -106,7 +108,7 @@ class HouseController extends Controller
         return view('front.house.detail', [
             'house'          => $house,
             'currentUrl'     => $currentUrl,
-            'similar_houses' => $similar_houses,
+            'houseSliders' => $similar_houses,
             'mortgages'      => $mortgages,
         ]);
     }

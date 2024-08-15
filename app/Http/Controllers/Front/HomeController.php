@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\About\About;
 use App\Models\Comment\Comment;
+use App\Models\House\House\House;
 use App\Models\Partner\Partner;
 use App\Models\Slider\Slider;
 use Illuminate\View\View;
@@ -16,12 +17,13 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        $sliders = Slider::active()->get()->sortBy('sort');
-        $partners = Partner::active()->get()->sortBy('sort');
-        $comments = Comment::active()->get()->sortBy('sort');
-        $aboutus = About::where('id', 1)->first();
-
-        return view('front.dashboard.index', compact('sliders', 'partners', 'comments', 'aboutus'));
+        return view('front.dashboard.index', [
+                'sliders'      => Slider::active()->get()->sortBy('sort'),
+                'partners'     => Partner::active()->get()->sortBy('sort'),
+                'comments'     => Comment::active()->get()->sortBy('sort'),
+                'aboutus'      => About::where('id', 1)->first(),
+                'houseSliders' => House::active()->orderBy('created_at', 'DESC')->paginate(12),
+            ]);
     }
 
     /**
@@ -30,8 +32,8 @@ class HomeController extends Controller
      */
     public function show($slug): View
     {
-        $slider = Slider::with('image')
-            ->whereHas('translations', function ($query) use ($slug) {
+        $slider = Slider::with('image')->whereHas('translations', function($query) use ($slug)
+            {
                 $query->where('locale', 'en');
                 $query->where('slug', $slug);
             })->first();

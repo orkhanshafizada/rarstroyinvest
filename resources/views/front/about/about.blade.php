@@ -37,7 +37,7 @@
                     <div class="col-12 col-md-8 mx-auto">
                         <h2 class="h2 fw-bold text__primary mb-4">{{ $aboutus->translate(app()->getLocale())->title }}</h2>
                         <p class="sub__title2 text__dark">
-                            {{ $aboutus->translate(app()->getLocale())->short_description }}
+                            {!! $aboutus->translate(app()->getLocale())->short_description !!}
                         </p>
                     </div>
                 </div>

@@ -221,7 +221,7 @@ class HouseController extends Controller
      */
     private function translate(Request $request, int $id = 0): array
     {
-        $slug = Str::slug($request->input('en_name'), '-');
+        $slug = Str::slug($request->input('ru_name'), '-');
 
         $articleData = [
             'active'   => $request->input('active'),

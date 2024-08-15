@@ -46,9 +46,9 @@
                                                     <label for="title">{{ __('Status') }}</label>
                                                     <select name="active" class="form-control">
                                                         <option value="1"
-                                                                @if(@$partner->active == 1) selected @endif> {{ __('Active') }}</option>
+                                                                @if(@$partner && @$partner->active == 1) selected @endif> {{ __('Active') }}</option>
                                                         <option value="0"
-                                                                @if(@$partner->active == 0) selected @endif> {{ __('Deactive') }}</option>
+                                                                @if(@$partner && @$partner->active == 0) selected @endif> {{ __('Deactive') }}</option>
                                                     </select>
                                                     @error('active')
                                                     <div

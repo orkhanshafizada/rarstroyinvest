@@ -26,10 +26,13 @@ class AboutUsController extends Controller
         $this->authorize('about.show');
         $this->authorize('about.edit');
 
-        $category_id = 1;
-        $type = 1;
 
-        return view('admin.about-us.edit', compact('about', 'category_id', 'type'));
+        return view('admin.about-us.edit', [
+            'about'       => $about,
+            'category_id' => 1,
+            'type'        => 1,
+            'image_type'  => 'default'
+        ]);
     }
 
     public function update(AboutUpdateRequest $request, About $about): RedirectResponse
@@ -39,34 +42,31 @@ class AboutUsController extends Controller
         $article_data = $this->translate($request, $about->id);
         $about->update($article_data);
 
-        return redirect()
-            ->back()
-            ->with('message', __('Succesfully updated.'))
-            ->with('message-alert', 'success');
+        return redirect()->back()->with('message', __('Succesfully updated.'))->with('message-alert', 'success');
     }
 
-    private function translate($request,$id)
+    private function translate($request, $id)
     {
         $slug = Str::slug($request->input('en_title'), '-');
 
         $article_data = [
             'zh' => [
-                'title' => $request->input('zh_title'),
+                'title'             => $request->input('zh_title'),
                 'short_description' => $request->input('zh_short_description'),
-                'long_description' => $request->input('zh_long_description'),
-                'slug' => Str::slug($request->input('zh_title'), '-'),
+                'long_description'  => $request->input('zh_long_description'),
+                'slug'              => Str::slug($request->input('zh_title'), '-'),
             ],
             'en' => [
-                'title' => $request->input('en_title'),
+                'title'             => $request->input('en_title'),
                 'short_description' => $request->input('en_short_description'),
-                'long_description' => $request->input('en_long_description'),
-                'slug' => Str::slug($request->input('en_title'), '-'),
+                'long_description'  => $request->input('en_long_description'),
+                'slug'              => Str::slug($request->input('en_title'), '-'),
             ],
             'ru' => [
-                'title' => $request->input('ru_title'),
+                'title'             => $request->input('ru_title'),
                 'short_description' => $request->input('ru_short_description'),
-                'long_description' => $request->input('ru_long_description'),
-                'slug' => Str::slug($request->input('ru_title'), '-'),
+                'long_description'  => $request->input('ru_long_description'),
+                'slug'              => Str::slug($request->input('ru_title'), '-'),
             ],
 
         ];
