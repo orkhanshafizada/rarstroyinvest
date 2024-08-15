@@ -11,6 +11,7 @@ use App\Models\House\Structure\Structure;
 use App\QueryFilters\Front\FilterFilter;
 use App\QueryFilters\Front\PriceFilter;
 use App\QueryFilters\Front\StructureFilter;
+use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\View\View;
 
@@ -30,7 +31,7 @@ class HouseController extends Controller
         $minPrice = HouseStructure::min('price');
         $maxPrice = HouseStructure::max('price');
 
-        $paginate = 9;
+        $paginate = 15;
         $prevPage = $current > 1 ? $current - 1 : '';
         $nextPage = '';
 
@@ -63,33 +64,27 @@ class HouseController extends Controller
         ]);
     }
 
+    // app/Http/Controllers/Front/HouseController.php
     public function filter(Request $request)
     {
-        $structures = Structure::active()->get()->sortByDesc('sort');
-        $filters = Filter::with([
-            'houses' => function($query) {
-                $query->select('houses.*', 'houses_filters.value')->distinct('houses_filters.value');
-            }
-        ])->active()->get()->sortByDesc('sort');
+        $paginate = 15;
+        $currentPage = $request->input('page', 1);
 
-        $minPrice = HouseStructure::min('price');
-        $maxPrice = HouseStructure::max('price');
-
-        $paginate = 9;
         $query = House::active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
-        $houses = app(Pipeline::class)->send($query)->through([
-            StructureFilter::class,
-            PriceFilter::class,
-            FilterFilter::class,
-        ])->thenReturn()->paginate($paginate)->withQueryString();
 
-        $housesView = view('front.house.partials.houses', [
-            'houses' => $houses,
-        ])->render();
+        $houses = app(Pipeline::class)
+            ->send($query)
+            ->through([
+                StructureFilter::class,
+                PriceFilter::class,
+                FilterFilter::class,
+            ])
+            ->thenReturn()
+            ->paginate($paginate, ['*'], 'page', $currentPage)
+            ->withQueryString();
 
-        $paginationView = view('front.house.partials.pagination', [
-            'houses' => $houses,
-        ])->render();
+        $housesView = view('front.house.partials.houses', compact('houses'))->render();
+        $paginationView = view('front.house.partials.pagination', compact('houses'))->render();
 
         return response()->json([
             'houses' => $housesView,
