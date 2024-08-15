@@ -6,7 +6,7 @@
                 <ul class="nav contact-info justify-content-center">
                     <li class="nav-item"><span class="nav-link text__grey5 p-0"><i class="far fa-clock-eight"></i>{{ setting('time') }}</span></li>
                     <li class="nav-item"><a class="nav-link text__grey5 p-0" href="mailto:{{ setting('email') }}"><i class="far fa-envelope"></i>{{ setting('email') }}</a></li>
-                    <li class="nav-item"><a class="nav-link text__grey5 p-0" href="https://maps.app.goo.gl/Qzs9dRBWz193Qoi47"> <i class="far fa-location-dot"></i>{{ setting('adress') }}</a></li>
+                    <li class="nav-item"><a class="nav-link text__grey5 p-0" href="https://maps.app.goo.gl/Qzs9dRBWz193Qoi47"> <i class="far fa-location-dot"></i>{{ setting('address') }}</a></li>
                 </ul>
             </div>
         </div>

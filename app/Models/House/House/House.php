@@ -2,6 +2,7 @@
 
 namespace App\Models\House\House;
 
+use App\Models\House\Equipment\Equipment;
 use App\Models\House\Filter\Filter;
 use App\Models\House\Structure\Structure;
 use App\Models\Image;
@@ -46,9 +47,9 @@ class House extends Model implements TranslatableContract
     {
         return $this->belongsToMany(Structure::class, 'houses_structures')
                     ->withPivot('price')
+                    ->with('equipment')
                     ->withTimestamps();
     }
-
     /**
      * The filters that belong to the house.
      */
@@ -57,6 +58,11 @@ class House extends Model implements TranslatableContract
         return $this->belongsToMany(Filter::class, 'houses_filters')
                     ->withPivot('value')
                     ->withTimestamps();
+    }
+
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
     }
 
     /**

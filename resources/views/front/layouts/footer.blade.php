@@ -12,8 +12,7 @@
                     <ul class="footer__menu list-group list-unstyled w-100 d-inline-flex me-auto">
                         <li class="d-inline-flex align-items-center"><a class="body__text1 fw-normal text-decoration-none" href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
                         <li class="d-inline-flex align-items-center"><a class="body__text1 fw-normal text-decoration-none" href="{{ route('about.index') }}">{{ __('About') }}</a></li>
-                        <li class="d-inline-flex align-items-center"><a class="body__text1 fw-normal text-decoration-none" href="#">{{ __('We build') }}</a></li>
-                        <li class="d-inline-flex align-items-center"><a class="body__text1 fw-normal text-decoration-none" href="#">{{ __('Catalogue') }}</a></li>
+                        <li class="d-inline-flex align-items-center"><a class="body__text1 fw-normal text-decoration-none" href="{{ route('house.index') }}">{{ __('Catalogue') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md-2">

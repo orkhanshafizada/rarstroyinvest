@@ -2,6 +2,7 @@
 
 namespace App\Models\House\Structure;
 
+use App\Models\House\Equipment\Equipment;
 use App\Models\House\House\House;
 use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -36,12 +37,13 @@ class Structure extends Model implements TranslatableContract
 
     /**
      * The equipments that belong to the structure.
+    */
 
-    public function equipments()
+    public function equipment()
     {
         return $this->hasMany(Equipment::class);
     }
-    */
+
 
 
     /**

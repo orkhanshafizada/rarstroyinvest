@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             StructureSeeder::class,
             FilterSeeder::class,
+            HouseSeeder::class,
         ]);
 
         News::factory()->count(300)->create();

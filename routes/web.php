@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Front\Media\NewsController;
-use App\Http\Controllers\Front\Social\FaqController;
+use App\Http\Controllers\Front\HouseController;
+use App\Http\Controllers\Front\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,9 @@ Route::post('/contacts', [ContactController::class, 'store'])->name('contact.sto
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/page/{current?}', [NewsController::class, 'index'])->name('news.index.page');
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
+
+//Houses
+Route::get('/houses', [HouseController::class, 'index'])->name('house.index');
+Route::get('/houses/page/{current?}', [HouseController::class, 'index'])->name('house.index.page');
+Route::get('/house/{slug}', [HouseController::class, 'show'])->name('house.show');
+Route::get('/houses/filter', [HouseController::class, 'filter'])->name('house.filter');

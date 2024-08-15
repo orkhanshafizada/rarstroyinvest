@@ -85,7 +85,7 @@ class EquipmentController extends Controller
         $article_data = $this->translate($request);
         $equipment->update($article_data);
 
-        return redirect()->route('admin.equipment.index', $equipment->house_id)
+        return redirect()->route('admin.equipment.index', $article_data['house_id'])
                          ->with('message', __('Successfully updated.'))
                          ->with('message-alert', 'success');
     }

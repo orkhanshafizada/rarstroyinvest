@@ -135,15 +135,24 @@ class HouseController extends Controller
     protected function syncHouseStructures(House $house, array $data): void
     {
         $structures = collect($data)
-            ->filter(fn($value, $key) => preg_match('/^st_price_(\d+)$/', $key, $matches))
-            ->map(fn($value, $key) => [
-                'house_id'     => $house->id,
-                'structure_id' => (int)preg_replace('/^st_price_(\d+)$/', '$1', $key),
-                'price'        => $value,
-            ])
+            ->filter(function($value, $key) {
+                return preg_match('/^st_price_(\d+)$/', $key, $matches) && !is_null($value) && trim($value) !== '';
+            })
+            ->map(function($value, $key) use ($house) {
+                return [
+                    'house_id'     => $house->id,
+                    'structure_id' => (int)preg_replace('/^st_price_(\d+)$/', '$1', $key),
+                    'price'        => $value,
+                ];
+            })
+            ->filter(function($structure) {
+                return !is_null($structure['price']) && trim($structure['price']) !== '';
+            })
             ->all();
 
-        $house->structures()->sync($structures);
+        if (!empty($structures)) {
+            $house->structures()->sync($structures);
+        }
     }
 
     /**
@@ -154,16 +163,26 @@ class HouseController extends Controller
     protected function syncHouseFilters(House $house, array $data): void
     {
         $filters = collect($data)
-            ->filter(fn($value, $key) => preg_match('/^filter_value_(\d+)$/', $key, $matches))
-            ->map(fn($value, $key) => [
-                'house_id'  => $house->id,
-                'filter_id' => (int)preg_replace('/^filter_value_(\d+)$/', '$1', $key),
-                'value'     => $value,
-            ])
+            ->filter(function($value, $key) {
+                return preg_match('/^filter_value_(\d+)$/', $key, $matches) && !is_null($value) && trim($value) !== '';
+            })
+            ->map(function($value, $key) use ($house) {
+                return [
+                    'house_id'  => $house->id,
+                    'filter_id' => (int)preg_replace('/^filter_value_(\d+)$/', '$1', $key),
+                    'value'     => $value,
+                ];
+            })
+            ->filter(function($filter) {
+                return !is_null($filter['value']) && trim($filter['value']) !== '';
+            })
             ->all();
 
-        $house->filters()->sync($filters);
+        if (!empty($filters)) {
+            $house->filters()->sync($filters);
+        }
     }
+
 
     /**
      * @param House $house

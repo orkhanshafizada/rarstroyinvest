@@ -87,13 +87,9 @@ Route::prefix('jarvis')->name('admin.')->group(function()
         //House settings
         Route::resource('/house', HouseController::class);
 
-        Route::get('/equipment/{house_id}', [EquipmentController::class, 'index'])->name('equipment.index');
+        Route::resource('/equipment', EquipmentController::class);
+        Route::get('/houses/equipment/{house_id}', [EquipmentController::class, 'index'])->name('equipment.index');
         Route::get('/equipment/create/{house_id}', [EquipmentController::class, 'create'])->name('equipment.create');
-        Route::post('/equipment', [EquipmentController::class, 'store'])->name('equipment.store');
-        Route::get('/equipment/{equipment}', [EquipmentController::class, 'show'])->name('equipment.show');
-        Route::get('/equipment/{equipment}/edit', [EquipmentController::class, 'edit'])->name('equipment.edit');
-        Route::put('/equipment/{equipment}', [EquipmentController::class, 'update'])->name('equipment.update');
-        Route::delete('/equipment/{equipment}', [EquipmentController::class, 'destroy'])->name('equipment.destroy');
 
         /////////////////////HOUSE PARAMETERS END/////////////////////
 

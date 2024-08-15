@@ -2,7 +2,7 @@
     <ul class="navbar-nav align-items-lg-center ms-0 ms-md-auto mb-0">
         <li class="nav-item active"><a class="nav-link" href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('about.index') }}">{{ __('About') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="catalogue.html">{{ __('Catalogue') }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('house.index') }}">{{ __('Catalogue') }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('news.index') }}">{{ __('Blog') }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}">{{ __('FAQ') }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('contact.index') }}">{{ __('Contacts') }}</a></li>
