@@ -1,5 +1,5 @@
 <?php
-namespace Database\Factories\news;
+namespace Database\Factories\News;
 
 use App\Models\News\News;
 use App\Models\News\NewsTranslation;
