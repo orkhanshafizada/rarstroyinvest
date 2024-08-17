@@ -101,7 +101,6 @@
 
     <script>
         $(document).ready(function () {
-            // Slider'ı başlat
             $("#priceRangeMain").slider({
                 range: true,
                 min: {{ $minPrice }},
@@ -128,8 +127,8 @@
                 $("#priceRangeMain").slider("values", [minValue, maxValue]);
             });
 
-            function filter_data() {
-                var formData = $('#filterForm').serialize();
+            function filter_data(page = 1) {
+                var formData = $('#filterForm').serialize() + '&page=' + page;
 
                 $('#loader').show();
 
@@ -155,7 +154,16 @@
                 filter_data();
             });
 
+            $(document).on('click', '.pagination__link', function (e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                if (page) {
+                    filter_data(page);
+                }
+            });
+
             filter_data();
         });
+
     </script>
 @endsection

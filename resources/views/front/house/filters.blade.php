@@ -79,6 +79,7 @@
                     <span>{{ __('Clear filters') }}</span>
                 </a>
             </div>
+
         </form>
     </div>
 </aside>

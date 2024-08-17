@@ -1,38 +1,55 @@
 <div class="row row-cols-lg-3 row-cols-1 row-cols-md-2 g-3 g-md-4 mt-2">
     @foreach($houses as $house)
         <div class="col">
-            <a class="text-decoration-none card card__catalogue grid-item border-radius__20 border-0 overflow-hidden h-100"
-               href="{{ route('house.show', $house->translate('ru')->slug ?? $house->translate('en')->slug) }}">
-                <img class="img-fluid border-radius__20" src="{{ asset($house->main_image ?? '')}}" alt=""/>
+            @php
+                $locale = app()->getLocale();
+                $slug = $house->translate($locale)->slug ?? $house->translate('en')->slug;
+                $mainImage = asset($house->main_image ?? '');
+                $houseName = $house->translate($locale)->name ?? '';
+
+                $structures = $house->structures;
+                $filters = $house->filters;
+
+                $requestStructureId = request()->structure_id;
+                $randomStructure = $requestStructureId ? $structures->firstWhere('id', $requestStructureId) : ($structures->count() ? $structures->random() : null);
+
+                $randomFilter = $filters->firstWhere('id', 5) ?? ($filters->count() ? $filters->random() : null);
+                $remainingFilters = $filters->where('id', '!=', $randomFilter->id ?? 0);
+                $randomFilterArea = $remainingFilters->count() ? $remainingFilters->firstWhere('id', 2) ?? $remainingFilters->random() : null;
+            @endphp
+
+            <a class="text-decoration-none card card__catalogue grid-item border-radius__20 border-0 overflow-hidden h-100" href="{{ route('house.show', $slug) }}">
+                <img class="img-fluid border-radius__20" src="{{ $mainImage }}" alt=""/>
                 <div class="card-footer bg-transparent border-0 h-100 d-flex flex-column">
                     <div class="d-flex flex-row justify-content-between">
-                        @php
-                            $request_structure_id = request()->structure_id;
-                            $randomStructure = $request_structure_id ? $house->structures->firstWhere('id', $request_structure_id) : $house->structures->random();
-                        @endphp
-                        <p class="catalogue-title mb-2">{{ $randomStructure->translate(app()->getLocale())->name }}</p>
-                        <p class="catalogue-price mb-2">{{ __('from') }} {{ $randomStructure->pivot->price }} ₽</p>
+                        @if($randomStructure)
+                            <p class="catalogue-title mb-2">{{ $randomStructure->translate($locale)->name }}</p>
+                            <p class="catalogue-price mb-2">{{ __('from') }} {{ $randomStructure->pivot->price }} ₽</p>
+                        @else
+                            <p class="catalogue-title mb-2">{{ __('No structure available') }}</p>
+                        @endif
                     </div>
-                    <p class="catalogue-location text-truncate mt-auto mb-0">{{ $house->translate(app()->getLocale())->name ?? "" }}</p>
+                    <p class="catalogue-location text-truncate mt-auto mb-0">{{ $houseName }}</p>
                     <ul class="list-group list-group-horizontal list-unstyled justify-content-between w-100 mt-3 mb-0">
                         <li class="catalogue-option">
-                            @php
-                                $randomFilter = $house->filters->firstWhere('id', 5) ?? $house->filters->random();
-                            @endphp
-                            <span>
-                                {{ $randomFilter->pivot->value }}
-                                {{ $randomFilter->translate(app()->getLocale())->name }}
-                            </span>
+                            @if($randomFilter)
+                                <span>
+                                    {{ $randomFilter->pivot->value }}
+                                    {{ $randomFilter->translate($locale)->name }}
+                                </span>
+                            @else
+                                <span>{{ __('No filter available') }}</span>
+                            @endif
                         </li>
                         <li class="catalogue-area">
-                            @php
-                                $remainingFilters = $house->filters->where('id', '!=', $randomFilter->id);
-                                $randomFilterArea = $remainingFilters->firstWhere('id', 2) ?? $remainingFilters->random();
-                            @endphp
-                            <span>
-                                {{ $randomFilterArea->translate(app()->getLocale())->name }}
-                                {{ $randomFilterArea->pivot->value }}
-                             </span>
+                            @if($randomFilterArea)
+                                <span>
+                                    {{ $randomFilterArea->translate($locale)->name }}
+                                    {{ $randomFilterArea->pivot->value }}
+                                </span>
+                            @else
+                                <span>{{ __('No area filter available') }}</span>
+                            @endif
                         </li>
                     </ul>
                 </div>

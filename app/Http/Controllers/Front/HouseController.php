@@ -31,7 +31,7 @@ class HouseController extends Controller
         $minPrice = HouseStructure::min('price');
         $maxPrice = HouseStructure::max('price');
 
-        $paginate = 15;
+        $paginate = 12;
         $prevPage = $current > 1 ? $current - 1 : '';
         $nextPage = '';
 
@@ -64,10 +64,9 @@ class HouseController extends Controller
         ]);
     }
 
-    // app/Http/Controllers/Front/HouseController.php
     public function filter(Request $request)
     {
-        $paginate = 15;
+        $paginate = 12;
         $currentPage = $request->input('page', 1);
 
         $query = House::active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');

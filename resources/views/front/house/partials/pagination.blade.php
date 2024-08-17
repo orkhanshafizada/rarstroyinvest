@@ -2,7 +2,7 @@
     <ul class="pagination m-0">
         @if($houses->previousPageUrl())
             <li class="page-item pagination__item previous">
-                <a class="page-link pagination__link" href="{{ $houses->previousPageUrl() }}">
+                <a class="page-link pagination__link" href="#" data-page="{{ $houses->currentPage() - 1 }}">
                     <i class="fa-regular fa-chevron-left"></i>
                 </a>
             </li>
@@ -17,18 +17,18 @@
         @for($i = 1; $i <= $houses->lastPage(); $i++)
             @if ($i == $houses->currentPage())
                 <li class="page-item pagination__item active">
-                    <a class="page-link pagination__link" href="#">{{ $i }}</a>
+                    <a class="page-link pagination__link" href="#" data-page="{{ $i }}">{{ $i }}</a>
                 </li>
             @else
                 <li class="page-item pagination__item">
-                    <a class="page-link pagination__link" href="{{ $houses->url($i) }}">{{ $i }}</a>
+                    <a class="page-link pagination__link" href="#" data-page="{{ $i }}">{{ $i }}</a>
                 </li>
             @endif
         @endfor
 
         @if($houses->nextPageUrl())
             <li class="page-item pagination__item next">
-                <a class="page-link pagination__link" href="{{ $houses->nextPageUrl() }}">
+                <a class="page-link pagination__link" href="#" data-page="{{ $houses->currentPage() + 1 }}">
                     <i class="fa-regular fa-chevron-right"></i>
                 </a>
             </li>
