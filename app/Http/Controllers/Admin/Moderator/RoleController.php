@@ -60,11 +60,12 @@ class RoleController extends Controller
 
         $data = $request->validated();
         $role->update($data);
-        $role->syncPermissions($request->permissions);
+        $permissions = $this->getValidPermissions($request->permissions);
+        $role->syncPermissions($permissions);
 
         return redirect()->route('admin.role.index')
-            ->with('message', __('Succesfully updated.'))
-            ->with('message-alert', 'success');
+                         ->with('message', __('Successfully updated.'))
+                         ->with('message-alert', 'success');
     }
 
     /**
@@ -79,11 +80,12 @@ class RoleController extends Controller
         $data = $request->validated();
         $data['guard_name'] = 'admin';
         $role = Role::create($data);
-        $role->syncPermissions($request->permissions);
+        $permissions = $this->getValidPermissions($request->permissions);
+        $role->syncPermissions($permissions);
 
         return redirect()
             ->route('admin.role.index')
-            ->with('message', __('Succesfully created.'))
+            ->with('message', __('Successfully created.'))
             ->with('message-alert', 'success');
     }
 
@@ -99,7 +101,20 @@ class RoleController extends Controller
 
         return redirect()
             ->route('admin.role.index')
-            ->with('message', __('Succesfully deleted.'))
+            ->with('message', __('Successfully deleted.'))
             ->with('message-alert', 'success');
+    }
+
+    /**
+     * Get valid permissions for the role.
+     *
+     * @param array $permissionIds
+     * @return \Illuminate\Support\Collection
+     */
+    protected function getValidPermissions(array $permissionIds)
+    {
+        return Permission::whereIn('id', $permissionIds)
+                         ->where('guard_name', 'admin')
+                         ->pluck('name');
     }
 }
