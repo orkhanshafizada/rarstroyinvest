@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('structure_id')->constrained()->onDelete('cascade');
             $table->integer('sort')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
 
         if(!Schema::hasTable('equipment_translations'))
@@ -29,6 +30,7 @@ return new class extends Migration
                 $table->string('title')->nullable();
                 $table->longText('content')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['equipment_id', 'locale']);
             });

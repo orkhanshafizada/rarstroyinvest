@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('structure_id')->constrained()->onDelete('cascade');
             $table->decimal('price', 15, 2)->default(0);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -18,6 +18,8 @@ return new class extends Migration
                 $table->integer('sort')->default(1);
                 $table->tinyInteger('active')->default(1);
                 $table->timestamps();
+                $table->softDeletes();
+
             });
     }
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
 
         if(!Schema::hasTable('structure_translations'))
@@ -26,6 +27,7 @@ return new class extends Migration
                 $table->string('locale')->index();
                 $table->string('name')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['structure_id', 'locale']);
             });

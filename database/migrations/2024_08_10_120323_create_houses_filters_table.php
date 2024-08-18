@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('filter_id')->constrained()->onDelete('cascade');
             $table->string('value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->integer('sort')->default(1);
                 $table->integer('active')->default(1);
                 $table->timestamps();
+                $table->softDeletes();
             });
 
         if(!Schema::hasTable('filter_translations'))
@@ -28,6 +29,7 @@ return new class extends Migration
                 $table->string('locale')->index();
                 $table->string('name')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['filter_id', 'locale']);
             });

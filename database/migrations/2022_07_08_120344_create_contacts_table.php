@@ -22,6 +22,7 @@ class CreateContactsTable extends Migration
                 $table->string('message');
                 $table->tinyInteger('read')->default(0);
                 $table->timestamps();
+                $table->softDeletes();
             });
 
     }

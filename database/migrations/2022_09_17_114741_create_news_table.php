@@ -22,6 +22,7 @@ class CreateNewsTable extends Migration
                 $table->integer('sort')->default(1);
 
                 $table->timestamps();
+                $table->softDeletes();
             });
         }
 
@@ -37,6 +38,7 @@ class CreateNewsTable extends Migration
                 $table->longText('short_content')->nullable();
                 $table->longText('long_content')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['news_id', 'locale']);
             });

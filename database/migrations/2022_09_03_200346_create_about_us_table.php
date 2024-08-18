@@ -17,6 +17,7 @@ class CreateAboutUsTable extends Migration
             Schema::create('abouts', function (Blueprint $table) {
                 $table->id();
                 $table->timestamps();
+                $table->softDeletes();
             });
 
 
@@ -30,6 +31,7 @@ class CreateAboutUsTable extends Migration
                 $table->longText('short_description')->nullable();
                 $table->longText('long_description')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['about_id', 'locale']);
             });

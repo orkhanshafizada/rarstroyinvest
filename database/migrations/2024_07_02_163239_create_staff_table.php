@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->integer('active')->default(1);
 
                 $table->timestamps();
+                $table->softDeletes();
             });
 
         if(!Schema::hasTable('staff_translations'))
@@ -32,6 +33,7 @@ return new class extends Migration
                 $table->string('position')->nullable();
                 $table->longText('description')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['staff_id', 'locale']);
             });

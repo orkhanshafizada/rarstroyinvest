@@ -13,13 +13,21 @@
                                      src="{{ asset($houseSlider->main_image ?? '')}}" alt=""/>
                                 <div class="card-footer bg-transparent border-0 h-100 d-flex flex-column">
                                     <div class="d-flex flex-row justify-content-between">
-                                        @php
-                                            $request_structure_id = request()->structure_id;
-                                            $randomStructure = $request_structure_id ? $houseSlider->structures->firstWhere('id', $request_structure_id) : $houseSlider->structures->random();
-                                        @endphp
-                                        <p class="catalogue-title mb-2">{{ $randomStructure->translate(app()->getLocale())->name }}</p>
-                                        <p class="catalogue-price mb-2">{{ __('from') }} {{ $randomStructure->pivot->price }}
-                                            ₽</p>
+                                        @if(count($houseSlider->structures))
+                                            @php
+                                                $randomStructure = $houseSlider->structures->random();
+                                            @endphp
+                                        <p class="catalogue-title mb-2">
+                                            {{ $randomStructure->translate(app()->getLocale())->name }}
+                                        </p>
+                                        <p class="catalogue-price mb-2">
+                                            {{ __('from') }} {{ $randomStructure->pivot->price }} ₽
+                                        </p>
+                                        @else
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <p class="catalogue-title mb-2">{{ __('No structure found') }}</p>
+                                            </div>
+                                        @endif
                                     </div>
                                     <p class="catalogue-location text-truncate mt-auto mb-0">
                                         {{ $houseSlider->translate(app()->getLocale())->name ?? "" }}

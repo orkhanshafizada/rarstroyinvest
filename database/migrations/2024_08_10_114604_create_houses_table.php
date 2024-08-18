@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->string('location')->nullable();
                 $table->integer('active')->default(1);
                 $table->timestamps();
+                $table->softDeletes();
             });
         }
 
@@ -35,6 +36,7 @@ return new class extends Migration
                 $table->string('video_url')->nullable();
                 $table->string('slug')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['house_id', 'locale']);
             });

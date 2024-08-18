@@ -21,6 +21,7 @@ class CreateSliderTable extends Migration
                 $table->integer('sort')->default(1);
                 $table->tinyInteger('active')->default(1);
                 $table->timestamps();
+                $table->softDeletes();
             });
 
         if (!Schema::hasTable('slider_translations'))
@@ -33,6 +34,7 @@ class CreateSliderTable extends Migration
                 $table->string('link')->nullable();
                 $table->longText('content')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['slider_id', 'locale']);
             });

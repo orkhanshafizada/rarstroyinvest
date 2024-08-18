@@ -18,6 +18,7 @@ class CreateFaqsTable extends Migration
                 $table->id();
                 $table->integer('sort')->default(1);
                 $table->timestamps();
+                $table->softDeletes();
             });
 
         if (!Schema::hasTable('faq_translations'))
@@ -28,6 +29,7 @@ class CreateFaqsTable extends Migration
                 $table->string('title')->nullable();
                 $table->longText('content')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['faq_id', 'locale']);
             });

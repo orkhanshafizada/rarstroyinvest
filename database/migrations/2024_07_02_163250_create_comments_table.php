@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->integer('active')->default(1);
 
                 $table->timestamps();
+                $table->softDeletes();
             });
 
         if(!Schema::hasTable('comment_translations'))
@@ -31,6 +32,7 @@ return new class extends Migration
                 $table->string('full_name')->nullable();
                 $table->longText('description')->nullable();
                 $table->timestamps();
+                $table->softDeletes();
 
                 $table->unique(['comment_id', 'locale']);
             });

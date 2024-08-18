@@ -19,6 +19,7 @@ class CreateSettingTable extends Migration
             $table->string('setting_key')->nullable()->default('NULL');
             $table->longText('setting_value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
