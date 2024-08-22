@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SettingSeeder::class,
             AboutSeeder::class,
-            StructureSeeder::class,
-            FilterSeeder::class,
-            HouseSeeder::class,
+           // StructureSeeder::class,
+           // FilterSeeder::class,
+           // HouseSeeder::class,
         ]);
 
-        News::factory()->count(300)->create();
+       // News::factory()->count(300)->create();
     }
 }
