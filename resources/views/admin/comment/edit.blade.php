@@ -82,12 +82,13 @@
                                             <div class="col-lg-12">
                                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-solid-custom bg-secondary nav-justified">
                                                     <li class="nav-item">
-                                                        <a href="#en" class="nav-link active" data-toggle="tab">
-                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
-                                                        </a></li>
-                                                    <li class="nav-item">
-                                                        <a href="#ru" class="nav-link" data-toggle="tab">
+                                                        <a href="#ru" class="nav-link active" data-toggle="tab">
                                                             <span class="flag-icon flag-icon-ru"></span> {{ __('Russian') }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#en" class="nav-link" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
@@ -99,47 +100,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-content">
-
-                                            <div class="tab-pane fade show active" id="en">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="country">{{ __('Fullname') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Fullname') }}"
-                                                                           name="en_full_name"
-                                                                           value="{{ @$comment ? @$comment->translate('en')->full_name : old('en_full_name') }}">
-                                                                    @error('en_full_name')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('en_full_name') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label
-                                                                        for="country">{{ __('Description') }}</label>
-                                                                    <textarea class="textarea" name="en_description"
-                                                                              id="editorNewsEN"
-                                                                              rows="4"
-                                                                              cols="4">{{ @$comment ? @$comment->translate('en')->description : old('en_description') }}</textarea>
-                                                                    @error('en_description')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('en_description') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="ru">
+                                            <div class="tab-pane fade show active" id="ru">
                                                 <div class="form-group row">
                                                     <div class="col-lg-12">
                                                         <div class="row">
@@ -170,6 +131,45 @@
                                                                     @error('ru_description')
                                                                     <div
                                                                         class="alert-danger"> {{ $errors->first('ru_description') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="en">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label for="country">{{ __('Fullname') }}</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="{{ __('Fullname') }}"
+                                                                           name="en_full_name"
+                                                                           value="{{ @$comment ? @$comment->translate('en')->full_name : old('en_full_name') }}">
+                                                                    @error('en_full_name')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('en_full_name') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label
+                                                                        for="country">{{ __('Description') }}</label>
+                                                                    <textarea class="textarea" name="en_description"
+                                                                              id="editorNewsEN"
+                                                                              rows="4"
+                                                                              cols="4">{{ @$comment ? @$comment->translate('en')->description : old('en_description') }}</textarea>
+                                                                    @error('en_description')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('en_description') }}
                                                                     </div>
                                                                     @enderror
                                                                 </div>

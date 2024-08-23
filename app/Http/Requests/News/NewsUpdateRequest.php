@@ -26,9 +26,9 @@ class NewsUpdateRequest extends FormRequest
             'zh_short_content' => 'nullable|string',
             'zh_long_content'  => 'nullable|string',
 
-            'en_title'         => 'required|string|max:255',
-            'en_short_content' => 'required|string',
-            'en_long_content'  => 'required|string',
+            'en_title'         => 'nullable|string|max:255',
+            'en_short_content' => 'nullable|string',
+            'en_long_content'  => 'nullable|string',
 
             'ru_title'         => 'required|string|max:255',
             'ru_short_content' => 'required|string',

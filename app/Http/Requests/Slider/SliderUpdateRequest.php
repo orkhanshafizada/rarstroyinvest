@@ -28,13 +28,13 @@ class SliderUpdateRequest extends FormRequest
             'zh_link'    => 'nullable|string|max:255',
             'zh_content' => 'nullable|string',
 
-            'en_title'   => 'required|string|max:255',
+            'en_title'   => 'nullable|string|max:255',
             'en_link'    => 'nullable|string|max:255',
-            'en_content' => 'required|string',
+            'en_content' => 'nullable|string',
 
             'ru_title'   => 'required|string|max:255',
             'ru_link'    => 'nullable|string|max:255',
-            'ru_content' => 'required|string',
+            'ru_content' => 'nullable|string',
 
             'image'     => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
            // 'thumbnail' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,webp',

@@ -25,8 +25,8 @@ class CommentRequest extends FormRequest
             'zh_full_name'   => 'nullable|string|max:255',
             'zh_description' => 'nullable|string',
 
-            'en_full_name'   => 'required|string|max:255',
-            'en_description' => 'required|string',
+            'en_full_name'   => 'nullable|string|max:255',
+            'en_description' => 'nullable|string',
 
             'ru_full_name'   => 'required|string|max:255',
             'ru_description' => 'required|string',

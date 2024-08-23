@@ -82,12 +82,13 @@
                                             <div class="col-lg-12">
                                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-solid-custom bg-secondary nav-justified">
                                                     <li class="nav-item">
-                                                        <a href="#en" class="nav-link active" data-toggle="tab">
-                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
-                                                        </a></li>
-                                                    <li class="nav-item">
-                                                        <a href="#ru" class="nav-link" data-toggle="tab">
+                                                        <a href="#ru" class="nav-link active" data-toggle="tab">
                                                             <span class="flag-icon flag-icon-ru"></span> {{ __('Russian') }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#en" class="nav-link" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
@@ -99,31 +100,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-content">
-
-                                            <div class="tab-pane fade show active" id="en">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="country">{{ __('Name') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Name') }}"
-                                                                           name="en_name"
-                                                                           value="{{ @$filter ? @$filter->translate('en')->name : old('en_name') }}">
-                                                                    @error('en_name')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('en_name') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="ru">
+                                            <div class="tab-pane fade show active" id="ru">
                                                 <div class="form-group row">
                                                     <div class="col-lg-12">
                                                         <div class="row">
@@ -138,6 +115,29 @@
                                                                     @error('ru_name')
                                                                     <div
                                                                         class="alert-danger"> {{ $errors->first('ru_name') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="en">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label for="country">{{ __('Name') }}</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="{{ __('Name') }}"
+                                                                           name="en_name"
+                                                                           value="{{ @$filter ? @$filter->translate('en')->name : old('en_name') }}">
+                                                                    @error('en_name')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('en_name') }}
                                                                     </div>
                                                                     @enderror
                                                                 </div>

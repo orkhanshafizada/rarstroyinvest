@@ -82,14 +82,14 @@
                                             <div class="col-lg-12">
                                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-solid-custom bg-secondary nav-justified">
                                                     <li class="nav-item">
-                                                        <a href="#en" class="nav-link active" data-toggle="tab">
-                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
-                                                        </a></li>
-                                                    <li class="nav-item">
-                                                        <a href="#ru" class="nav-link" data-toggle="tab">
+                                                        <a href="#ru" class="nav-link active" data-toggle="tab">
                                                             <span class="flag-icon flag-icon-ru"></span> {{ __('Russian') }}
                                                         </a>
                                                     </li>
+                                                    <li class="nav-item">
+                                                        <a href="#en" class="nav-link" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
+                                                        </a></li>
                                                     <li class="nav-item">
                                                         <a href="#zh" class="nav-link" data-toggle="tab">
                                                             <span class="flag-icon flag-icon-cn"></span> {{ __('Chinese') }}

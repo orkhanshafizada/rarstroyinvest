@@ -37,8 +37,8 @@
                     <tr>
                         <td>{{ $staff->id }}</td>
                         <td><img src="/{{ $staff->image ?? ''}}" width="100%" height="100px" style="object-fit: contain;"></td>
-                        <td>{{ $staff->translate(app()->getLocale())->full_name }}</td>
-                        <td>{{ $staff->translate(app()->getLocale())->position }}</td>
+                        <td>{{ $staff->translate('ru')->full_name }}</td>
+                        <td>{{ $staff->translate('ru')->position }}</td>
                         <td>{!! $staff->active ? "<p class='text-success'> Active </p>" : "<p class='text-danger'> Deactive </p>" !!}</td>
                         <td>{{ $staff->sort }}</td>
                         <td>{{ $staff->created_at }}</td>

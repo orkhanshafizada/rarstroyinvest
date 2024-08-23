@@ -25,13 +25,13 @@ class AboutRequest extends FormRequest
     {
         return [
             'zh_title'             => 'nullable|string|max:255',
-            'en_title'             => 'required|string|max:255',
+            'en_title'             => 'nullable|string|max:255',
             'ru_title'             => 'required|string|max:255',
             'zh_long_description'  => 'nullable|string',
-            'en_long_description'  => 'required|string',
+            'en_long_description'  => 'nullable|string',
             'ru_long_description'  => 'required|string',
             'zh_short_description' => 'nullable|string',
-            'en_short_description' => 'required|string',
+            'en_short_description' => 'nullable|string',
             'ru_short_description' => 'required|string',
            // 'image'                => 'required|mimes:jpeg,jpg,png',
         ];

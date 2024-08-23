@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{ $slider->id }}</td>
                         <td><img src="{{ asset($slider->image ?? '') }}" width="100%" height="100px"></td>
-                        <td>{{$slider->translate('en')->title}}</td>
+                        <td>{{$slider->translate('ru')->title}}</td>
                         <td>{!! $slider->active ? '<p class="text-success">Active</p>' : '<p class="text-danger">Deactive</p>' !!}</td>
                         <td>{{$slider->sort}}</td>
                         <td>{{ $slider->type == 1 ? __('Content') : __('Link') }}</td>

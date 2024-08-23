@@ -95,16 +95,18 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-solid-custom bg-secondary nav-justified">
+                                                    <li class="nav-item">
+                                                        <a href="#tab-ru" class="nav-link active" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-ru"></span>
+                                                            {{ __('Russian') }}
+                                                        </a>
+                                                    </li>
                                                     <li class="nav-item"><a href="#tab-en"
-                                                                            class="nav-link active"
+                                                                            class="nav-link"
                                                                             data-toggle="tab"><span
                                                                 class="flag-icon flag-icon-us"></span>
                                                             {{ __('English') }}</a></li>
-                                                    <li class="nav-item"><a href="#tab-ru"
-                                                                            class="nav-link"
-                                                                            data-toggle="tab"><span
-                                                                class="flag-icon flag-icon-ru"></span>
-                                                            {{ __('Russian') }}</a></li>
+
                                                     <li class="nav-item"><a href="#tab-zh"
                                                                             class="nav-link "
                                                                             data-toggle="tab"><span
@@ -115,63 +117,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="tab-en">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left"
-                                                                    style="margin-top: 15px;">
-                                                                    <label for="title">{{ __('Title') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Title') }}"
-                                                                           name="en_title"
-                                                                           value="{{ @$slider ? @$slider->translate('en')->title : old('en_title') }}">
-                                                                    @error('en_title')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('en_title') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12 link"
-                                                                 style="margin-top: 15px;">
-                                                                <div class="mb-3">
-                                                                    <label for="title">{{ __('Link') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Link') }}"
-                                                                           name="en_link"
-                                                                           value="{{ @$slider ? @$slider->translate('en')->link : old('en_link') }}">
-                                                                </div>
-                                                                @error('en_link')
-                                                                <div
-                                                                    class="alert-danger"> {{ $errors->first('en_link') }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="col-lg-12 content_slider"
-                                                                 style="margin-top: 15px;">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="title">{{ __('Content') }}</label>
-                                                                    <textarea class="textarea" name="en_content"
-                                                                              id="en_editor_slider"
-                                                                              rows="4"
-                                                                              cols="4">{{ @$slider ? @$slider->translate('en')->content : old('en_content') }}</textarea>
-                                                                </div>
-                                                                @error('en_content')
-                                                                <div
-                                                                    class="alert-danger"> {{ $errors->first('en_content') }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade show" id="tab-ru">
+                                            <div class="tab-pane fade show active" id="tab-ru">
                                                 <div class="form-group row">
                                                     <div class="col-lg-12">
                                                         <div class="row">
@@ -227,7 +173,63 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane fade show" id="tab-zh">
+                                            <div class="tab-pane fade" id="tab-en">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left"
+                                                                    style="margin-top: 15px;">
+                                                                    <label for="title">{{ __('Title') }}</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="{{ __('Title') }}"
+                                                                           name="en_title"
+                                                                           value="{{ @$slider ? @$slider->translate('en')->title : old('en_title') }}">
+                                                                    @error('en_title')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('en_title') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 link"
+                                                                 style="margin-top: 15px;">
+                                                                <div class="mb-3">
+                                                                    <label for="title">{{ __('Link') }}</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="{{ __('Link') }}"
+                                                                           name="en_link"
+                                                                           value="{{ @$slider ? @$slider->translate('en')->link : old('en_link') }}">
+                                                                </div>
+                                                                @error('en_link')
+                                                                <div
+                                                                    class="alert-danger"> {{ $errors->first('en_link') }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-lg-12 content_slider"
+                                                                 style="margin-top: 15px;">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="title">{{ __('Content') }}</label>
+                                                                    <textarea class="textarea" name="en_content"
+                                                                              id="en_editor_slider"
+                                                                              rows="4"
+                                                                              cols="4">{{ @$slider ? @$slider->translate('en')->content : old('en_content') }}</textarea>
+                                                                </div>
+                                                                @error('en_content')
+                                                                <div
+                                                                    class="alert-danger"> {{ $errors->first('en_content') }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab-zh">
                                                 <div class="form-group row">
                                                     <div class="col-lg-12">
                                                         <div class="row">

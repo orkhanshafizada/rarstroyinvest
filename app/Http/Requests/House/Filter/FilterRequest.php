@@ -23,7 +23,7 @@ class FilterRequest extends FormRequest
     {
         return [
             'zh_name'   => 'nullable|string|max:255',
-            'en_name'   => 'required|string|max:255',
+            'en_name'   => 'nullable|string|max:255',
             'ru_name'   => 'required|string|max:255',
 
             'active' => 'required|integer',

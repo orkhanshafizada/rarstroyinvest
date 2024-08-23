@@ -260,7 +260,7 @@ class HouseController extends Controller
         $rules = [
             'active'       => 'required|boolean',
             'location'     => 'required|string|max:255',
-            'en_name'      => 'required|string|max:255',
+            'en_name'      => 'nullable|string|max:255',
             'en_video_url' => 'nullable|string|max:255',
             'ru_name'      => 'required|string|max:255',
             'ru_video_url' => 'nullable|string|max:255',

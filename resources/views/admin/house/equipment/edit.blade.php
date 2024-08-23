@@ -64,12 +64,13 @@
                                             <div class="col-lg-12">
                                                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-solid-custom bg-secondary nav-justified">
                                                     <li class="nav-item">
-                                                        <a href="#en" class="nav-link active" data-toggle="tab">
-                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
-                                                        </a></li>
-                                                    <li class="nav-item">
-                                                        <a href="#ru" class="nav-link" data-toggle="tab">
+                                                        <a href="#ru" class="nav-link active" data-toggle="tab">
                                                             <span class="flag-icon flag-icon-ru"></span> {{ __('Russian') }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#en" class="nav-link" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
@@ -81,8 +82,46 @@
                                             </div>
                                         </div>
                                         <div class="tab-content">
-
-                                            <div class="tab-pane fade show active" id="en">
+                                            <div class="tab-pane fade show active" id="ru">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label for="country">{{ __('Title') }}</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="{{ __('Title') }}"
+                                                                           name="ru_title"
+                                                                           value="{{ @$equipment ? @$equipment->translate('ru')->title : old('ru_title') }}">
+                                                                    @error('ru_title')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('ru_title') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label
+                                                                        for="country">{{ __('Long Content') }}</label>
+                                                                    <textarea class="textarea" name="ru_content"
+                                                                              id="editorFaqRu"
+                                                                              rows="4"
+                                                                              cols="4">{{ @$equipment ? @$equipment->translate('ru')->content : old('ru_content') }}</textarea>
+                                                                    @error('ru_content')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('ru_content') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="en">
                                                 <div class="form-group row">
                                                     <div class="col-lg-12">
                                                         <div class="row">
@@ -118,45 +157,6 @@
                                                                 </div>
                                                             </div>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="ru">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="country">{{ __('Title') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Title') }}"
-                                                                           name="ru_title"
-                                                                           value="{{ @$equipment ? @$equipment->translate('ru')->title : old('ru_title') }}">
-                                                                    @error('ru_title')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('ru_title') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label
-                                                                        for="country">{{ __('Long Content') }}</label>
-                                                                    <textarea class="textarea" name="ru_content"
-                                                                              id="editorFaqRu"
-                                                                              rows="4"
-                                                                              cols="4">{{ @$equipment ? @$equipment->translate('ru')->content : old('ru_content') }}</textarea>
-                                                                    @error('ru_content')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('ru_content') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

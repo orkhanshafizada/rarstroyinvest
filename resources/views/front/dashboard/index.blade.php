@@ -22,7 +22,7 @@
                         <div class="col">
                             <div class="d-inline-flex align-items-center justify-content-between">
                                 <div class="section__title mb-2">
-                                    <h2 class="h2 fw-bold text__primary mb-0">Catalogue</h2>
+                                    <h2 class="h2 fw-bold text__primary mb-0">{{ __('Catalogue') }}</h2>
                                 </div>
                             </div>
                         </div>

@@ -45,15 +45,14 @@
                                         <div class="row">
                                             <div class="col-lg-10">
                                                 <ul class="nav nav-tabs nav-tabs-top nav-justified">
-
                                                     <li class="nav-item">
-                                                        <a href="#top-justified-tab2" class="nav-link active" data-toggle="tab">
-                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
+                                                        <a href="#top-justified-tab3" class="nav-link active" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-ru"></span> {{ __('Russian') }}
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="#top-justified-tab3" class="nav-link" data-toggle="tab">
-                                                            <span class="flag-icon flag-icon-ru"></span> {{ __('Russian') }}
+                                                        <a href="#top-justified-tab2" class="nav-link" data-toggle="tab">
+                                                            <span class="flag-icon flag-icon-us"></span> {{ __('English') }}
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
@@ -65,55 +64,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="top-justified-tab2">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="title">{{ __('Title') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="{{ __('Title') }}"
-                                                                           name="en_title"
-                                                                           value="{{ @$about ? @$about->translate('en')->title : old('en_title') }}">
-                                                                    @error('en_title')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('en_title') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12 mb-3">
-                                                                <div
-                                                                    class="form-group form-group-feedback form-group-feedback-left">
-                                                                    <label for="description">{{ __('Short Description') }}</label>
-                                                                    <textarea class="textarea" id="en_desc_editor" name="en_short_description" rows="4" cols="4">{{ @$about ? @$about->translate('en')->short_description : old('en_short_description') }}</textarea>
-                                                                    @error('en_short_description')
-                                                                    <div
-                                                                        class="alert-danger"> {{ $errors->first('en_short_description') }}
-                                                                    </div>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12 longContent" style="margin-top: 15px;">
-                                                                <div class="mb-3">
-                                                                    <label for="title">{{ __('Long Description') }}</label>
-                                                                    <textarea class="textarea" name="en_long_description" id="en_editor"
-                                                                              rows="4"
-                                                                              cols="4">{{ @$about ? @$about->translate('en')->long_description : old('en_long_description') }}</textarea>
-                                                                </div>
-                                                                @error('en_long_description')
-                                                                <div
-                                                                    class="alert-danger"> {{ $errors->first('en_long_description') }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="top-justified-tab3">
+                                            <div class="tab-pane fade show active" id="top-justified-tab3">
                                                 <div class="form-group row">
                                                     <div class="col-lg-12">
                                                         <div class="row">
@@ -154,6 +105,54 @@
                                                                 @error('ru_long_description')
                                                                 <div
                                                                     class="alert-danger"> {{ $errors->first('ru_long_description') }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="top-justified-tab2">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label for="title">{{ __('Title') }}</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="{{ __('Title') }}"
+                                                                           name="en_title"
+                                                                           value="{{ @$about ? @$about->translate('en')->title : old('en_title') }}">
+                                                                    @error('en_title')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('en_title') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div
+                                                                    class="form-group form-group-feedback form-group-feedback-left">
+                                                                    <label for="description">{{ __('Short Description') }}</label>
+                                                                    <textarea class="textarea" id="en_desc_editor" name="en_short_description" rows="4" cols="4">{{ @$about ? @$about->translate('en')->short_description : old('en_short_description') }}</textarea>
+                                                                    @error('en_short_description')
+                                                                    <div
+                                                                        class="alert-danger"> {{ $errors->first('en_short_description') }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 longContent" style="margin-top: 15px;">
+                                                                <div class="mb-3">
+                                                                    <label for="title">{{ __('Long Description') }}</label>
+                                                                    <textarea class="textarea" name="en_long_description" id="en_editor"
+                                                                              rows="4"
+                                                                              cols="4">{{ @$about ? @$about->translate('en')->long_description : old('en_long_description') }}</textarea>
+                                                                </div>
+                                                                @error('en_long_description')
+                                                                <div
+                                                                    class="alert-danger"> {{ $errors->first('en_long_description') }}
                                                                 </div>
                                                                 @enderror
                                                             </div>

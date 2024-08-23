@@ -23,7 +23,7 @@ class StructureRequest extends FormRequest
     {
         return [
             'ru_name' => 'required|string|max:255',
-            'en_name' => 'required|string|max:255',
+            'en_name' => 'nullable|string|max:255',
             'zh_name' => 'nullable|string|max:255',
             'active'   => 'required|integer',
             'sort'   => 'required|integer',

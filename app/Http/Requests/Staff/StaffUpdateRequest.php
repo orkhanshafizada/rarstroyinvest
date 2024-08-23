@@ -26,9 +26,9 @@ class StaffUpdateRequest extends FormRequest
             'zh_position'    => 'nullable|string',
             'zh_description' => 'nullable|string',
 
-            'en_full_name'   => 'required|string|max:255',
-            'en_position'    => 'required|string',
-            'en_description' => 'required|string',
+            'en_full_name'   => 'nullable|string|max:255',
+            'en_position'    => 'nullable|string',
+            'en_description' => 'nullable|string',
 
             'ru_full_name'   => 'required|string|max:255',
             'ru_position'    => 'required|string',

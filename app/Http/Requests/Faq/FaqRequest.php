@@ -25,8 +25,8 @@ class FaqRequest extends FormRequest
             'zh_content' => 'nullable|string',
             'zh_title'   => 'nullable|string|max:255',
 
-            'en_content' => 'required|string',
-            'en_title'   => 'required|string|max:255',
+            'en_content' => 'nullable|string',
+            'en_title'   => 'nullable|string|max:255',
 
             'ru_content' => 'required|string',
             'ru_title'   => 'required|string|max:255',

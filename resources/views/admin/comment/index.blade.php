@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{ $comment->id }}</td>
                         <td><img src="/{{ $comment->image ?? ''}}" width="100%" height="100px" style="object-fit: contain;"></td>
-                        <td>{{ $comment->translate(app()->getLocale())->full_name }}</td>
+                        <td>{{ $comment->translate('ru')->full_name }}</td>
                         <td>{!! $comment->active ? "<p class='text-success'> Active </p>" : "<p class='text-danger'> Deactive </p>" !!}</td>
                         <td>{{ $comment->sort }}</td>
                         <td>{{ $comment->created_at }}</td>
