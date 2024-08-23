@@ -20,13 +20,13 @@ class HouseController extends Controller
 
     public function index($current = 1)
     {
-        $structures = Structure::active()->get()->sortByDesc('sort');
+        $structures = Structure::active()->orderBy('sort')->get();
         $filters    = Filter::with([
             'houses' => function($query)
             {
                 $query->select('houses.*', 'houses_filters.value')->distinct('houses_filters.value');
             }
-        ])->active()->get()->sortByDesc('sort');
+        ])->active()->orderBy('sort')->get();
 
         $minPrice = HouseStructure::min('price');
         $maxPrice = HouseStructure::max('price');
@@ -37,10 +37,10 @@ class HouseController extends Controller
 
         $query  = House::active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
         $houses = app(Pipeline::class)->send($query)->through([
-                StructureFilter::class,
-                PriceFilter::class,
-                FilterFilter::class,
-            ])->thenReturn()->paginate($paginate, ['*'], 'page', $current)->withQueryString();
+            StructureFilter::class,
+            PriceFilter::class,
+            FilterFilter::class,
+        ])->thenReturn()->paginate($paginate, ['*'], 'page', $current)->withQueryString();
 
         if($houses->hasPages())
         {
@@ -66,49 +66,55 @@ class HouseController extends Controller
 
     public function filter(Request $request)
     {
-        $paginate = 12;
+        $paginate    = 12;
         $currentPage = $request->input('page', 1);
 
         $query = House::active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
 
-        $houses = app(Pipeline::class)
-            ->send($query)
-            ->through([
+        $houses = app(Pipeline::class)->send($query)->through([
                 StructureFilter::class,
                 PriceFilter::class,
                 FilterFilter::class,
-            ])
-            ->thenReturn()
-            ->paginate($paginate, ['*'], 'page', $currentPage)
-            ->withQueryString();
+            ])->thenReturn()->paginate($paginate, ['*'], 'page', $currentPage)->withQueryString();
 
-        $housesView = view('front.house.partials.houses', compact('houses'))->render();
+        $housesView     = view('front.house.partials.houses', compact('houses'))->render();
         $paginationView = view('front.house.partials.pagination', compact('houses'))->render();
-        $totalHouses = $houses->total();
+        $totalHouses    = $houses->total();
 
         return response()->json([
-            'houses' => $housesView,
-            'pagination' => $paginationView,
+            'houses'      => $housesView,
+            'pagination'  => $paginationView,
             'totalHouses' => $totalHouses,
         ]);
     }
 
     public function show(string $slug): View
     {
-        $house = House::whereHas('translations', function($query) use ($slug)
-        {
+        $house = House::whereHas('translations', function ($query) use ($slug) {
             $query->where('slug', $slug)->where('locale', 'ru');
-        })->firstOrFail();
+        })->with([
+            'structures' => function ($query) {
+                $query->orderBy('sort', 'asc');
+            },
+            'filters' => function ($query) {
+                $query->orderBy('sort', 'asc');
+            }
+        ])->firstOrFail();
 
-        $similar_houses = House::where('id', '!=', $house->id)->orderBy('created_at', 'DESC')->paginate(12);
-        $currentUrl     = url()->current();
-        $mortgages      = Mortgage::active()->get()->sortByDesc('sort');
+        $similarHouses = House::where('id', '!=', $house->id)
+                              ->orderBy('created_at', 'desc')
+                              ->paginate(12);
+
+        $currentUrl = url()->current();
+        $mortgages = Mortgage::active()->orderBy('sort', 'asc')->get();
 
         return view('front.house.detail', [
-            'house'          => $house,
-            'currentUrl'     => $currentUrl,
-            'houseSliders' => $similar_houses,
-            'mortgages'      => $mortgages,
+            'house'        => $house,
+            'currentUrl'   => $currentUrl,
+            'houseSliders' => $similarHouses,
+            'mortgages'    => $mortgages,
         ]);
     }
+
+
 }

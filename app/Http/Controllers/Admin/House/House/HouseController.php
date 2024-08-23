@@ -40,8 +40,8 @@ class HouseController extends Controller
         $this->authorize('house.create');
 
         return view('admin.house.house.edit', [
-            'structures' => Structure::active()->latest()->get(),
-            'filters'    => Filter::active()->latest()->get(),
+            'structures' => Structure::active()->orderBy('sort')->get(),
+            'filters'    => Filter::active()->orderBy('sort')->get(),
         ]);
     }
 
@@ -56,8 +56,8 @@ class HouseController extends Controller
 
         return view('admin.house.house.edit', [
             'house'      => $house,
-            'structures' => Structure::active()->latest()->get(),
-            'filters'    => Filter::active()->latest()->get(),
+            'structures' => Structure::active()->orderBy('sort')->get(),
+            'filters'    => Filter::active()->orderBy('sort')->get(),
         ]);
     }
 

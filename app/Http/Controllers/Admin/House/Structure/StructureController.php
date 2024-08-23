@@ -96,6 +96,7 @@ class StructureController extends Controller
     {
         $article_data = [
             'active' => $request->input('active'),
+            'sort'   => $request->input('sort'),
             'zh'     => [
                 'name' => $request->input('zh_name'),
             ],

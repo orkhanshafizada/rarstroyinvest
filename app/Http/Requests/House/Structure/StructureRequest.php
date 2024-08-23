@@ -26,6 +26,7 @@ class StructureRequest extends FormRequest
             'en_name' => 'required|string|max:255',
             'zh_name' => 'nullable|string|max:255',
             'active'   => 'required|integer',
+            'sort'   => 'required|integer',
         ];
     }
 
@@ -45,6 +46,8 @@ class StructureRequest extends FormRequest
             'ru_name.max'      => __('Name (RU)') . ' ' . __('must be a maximum of 255 characters!'),
             'active.required'   => __('active') . ' ' . __('cannot be empty!'),
             'active.integer'    => __('active') . ' ' . __('must be made of number only!'),
+            'sort.required'   => __('Sort') . ' ' . __('cannot be empty!'),
+            'sort.integer'    => __('Sort') . ' ' . __('must be made of number only!'),
         ];
     }
 }
