@@ -78,7 +78,7 @@
         </div>
     </main>
     <div id="loader" class="loader" style="display: none;">
-        <img src="{{ asset('front/assets/images/loader.gif') }}" alt="Loading..."/>
+        <img src="{{ asset('front/assets/loader.gif') }}" alt="Loading..."/>
     </div>
 @endsection
 
