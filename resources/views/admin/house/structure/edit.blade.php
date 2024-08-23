@@ -46,6 +46,23 @@
                                                     @enderror
                                                 </div>
                                             </div>
+
+                                            <div class="col-lg-6">
+                                                <div
+                                                    class="form-group form-group-feedback form-group-feedback-left"
+                                                    style="margin-top: 15px;">
+                                                    <label for="title">{{ __('Sort') }}</label>
+                                                    <input type="number" class="form-control"
+                                                           placeholder="{{ __('Sort') }}"
+                                                           name="sort"
+                                                           value="{{ @$structure ? @$structure->sort : old('sort') ?? 1 }}">
+                                                    @error('sort')
+                                                    <div
+                                                        class="alert-danger"> {{ $errors->first('sort') }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">

@@ -25,7 +25,8 @@
                     <th data-field="id.count" data-sortable="true">№</th>
                     <th>{{ __('Name') }}</th>
                     <th></th>
-                    <th>Status</th>
+                    <th>{{ __('Status') }}</th>
+                    <th width="20%">{{ __('Sort') }}</th>
                     <th>{{ __('Create date') }}</th>
                     <th></th>
                 </tr>
@@ -37,6 +38,7 @@
                         <td>{{ $structure->translate('ru')->name }}</td>
                         <td></td>
                         <td>{!! $structure->active ? '<p class="text-success">Active</p>' : '<p class="text-danger">Deactive</p>' !!}</td>
+                        <td>{{ $structure->sort }}</td>
                         <td>{{ $structure->created_at }}</td>
                         <td style="display: flex;">
                             @can('structure.edit', 'admin')

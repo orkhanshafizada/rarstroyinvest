@@ -7,12 +7,16 @@ use App\Http\Requests\SettingRequest;
 use App\Models\Setting;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class SettingController extends Controller
 {
     use GeneralTrait;
+
     /**
+     * Display a listing of the settings.
+     *
      * @return View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
@@ -25,61 +29,58 @@ class SettingController extends Controller
     }
 
     /**
-     * @param SettingRequest $request
+     * Update the settings.
+     *
      * @return RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(SettingRequest $request): RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
         $this->authorize('settings.edit');
 
-        $setting = array_map("htmlspecialchars", $request->validated());
+        $settings = $this->processSettings($request);
 
-        $setting['logo_white'] = $this->checklogo_white($request);
-        $setting['logo_colorful'] = $this->checklogo_colorful($request);
-        $setting['favicon'] = $this->checkLogoFavicon($request);
-        foreach ($setting as $key => $req) {
+        foreach ($settings as $key => $value) {
             Setting::where('setting_key', $key)
-                ->update([
-                    'setting_value' => $req
-                ]);
+                   ->update(['setting_value' => $value]);
         }
 
         return redirect()->route('admin.config')
-            ->with('message', __('Succesfully updated.'))
-            ->with('message-alert', 'success');
+                         ->with('message', __('Successfully updated.'))
+                         ->with('message-alert', 'success');
     }
 
-    private function checklogo_white($request)
+    /**
+     * Process and upload setting files.
+     *
+     * @return array
+     */
+    private function processSettings(Request $request): array
     {
-        $logo_white = setting('logo_white');
-        if ($request->logo_white) {
-            deleteDirectory(setting('logo_white'));
-            $logo_white = $this->upload_file($request->file('logo_white'), 'setting/logo_white', 'images');
-        }
+        $settings = array_map('htmlspecialchars', $request->all());
 
-        return $logo_white;
+        $settings['logo_white'] = $this->handleFileUpload($request, 'logo_white');
+        $settings['logo_colorful'] = $this->handleFileUpload($request, 'logo_colorful');
+        $settings['favicon'] = $this->handleFileUpload($request, 'favicon');
+
+        return $settings;
     }
 
-    private function checklogo_colorful($request)
+    /**
+     * Handle file upload and replace setting value.
+     *
+     * @param string $key
+     * @return string
+     */
+    private function handleFileUpload(Request $request, string $key): string
     {
-        $logo_colorful = setting('logo_colorful');
-        if ($request->logo_colorful) {
-            deleteDirectory(setting('logo_colorful'));
-            $logo_colorful = $this->upload_file($request->file('logo_colorful'), 'setting/logo_colorful', 'images');
+        $settingValue = setting($key);
+
+        if ($request->hasFile($key)) {
+            deleteDirectory($settingValue);
+            $settingValue = $this->upload_file($request->file($key), "setting/{$key}", 'images');
         }
 
-        return $logo_colorful;
-    }
-
-    private function checkLogoFavicon($request)
-    {
-        $favicon = setting('favicon');
-        if ($request->favicon) {
-            deleteDirectory(setting('favicon'));
-            $favicon = $this->upload_file($request->file('favicon'), 'setting/favicon', 'images');
-        }
-
-        return $favicon;
+        return $settingValue;
     }
 }
