@@ -45,6 +45,14 @@ class SettingSeeder extends Seeder
                 'setting_value' => 'colorful logo'
             ],
             [
+                'setting_key' => 'logo_white_mobile',
+                'setting_value' => 'white logo mobile'
+            ],
+            [
+                'setting_key' => 'logo_colorful_mobile',
+                'setting_value' => 'colorful logo mobile'
+            ],
+            [
                 'setting_key' => 'favicon',
                 'setting_value' => 'favicon'
             ],

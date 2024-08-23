@@ -61,6 +61,8 @@ class SettingController extends Controller
 
         $settings['logo_white'] = $this->handleFileUpload($request, 'logo_white');
         $settings['logo_colorful'] = $this->handleFileUpload($request, 'logo_colorful');
+        $settings['logo_white_mobile'] = $this->handleFileUpload($request, 'logo_white_mobile');
+        $settings['logo_colorful_mobile'] = $this->handleFileUpload($request, 'logo_colorful_mobile');
         $settings['favicon'] = $this->handleFileUpload($request, 'favicon');
 
         return $settings;

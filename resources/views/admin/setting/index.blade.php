@@ -213,6 +213,62 @@
                                                                                name="favicon">
                                                                     </div>
                                                                 </div>
+                                                                <!-- LOGO FOR MOBILE -->
+
+                                                                <div class="col-lg-4">
+                                                                    @if (setting('logo_white_mobile') != null)
+                                                                        <div class="card">
+                                                                            <div class="card-img-actions m-1">
+                                                                                <img class="card-img img-fluid"
+                                                                                     src="/{!! setting('logo_white_mobile') ?? ' ' !!}"
+                                                                                     style="height:150px; object-fit:contain;">
+                                                                                <div
+                                                                                    class="card-img-actions-overlay card-img">
+                                                                                    <a href="/{!! setting('logo_white_mobile') ?? ' ' !!}"
+                                                                                       class="btn btn-outline-white border-2 btn-icon rounded-pill"
+                                                                                       data-popup="lightbox"
+                                                                                       data-gallery="gallery1">
+                                                                                        <i class="icon-plus3"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                    <div
+                                                                        class="form-group form-group-feedback form-group-feedback-left">
+                                                                        <label
+                                                                            for="logo_white_mobile">{{ __('Logo White Mobile') }}</label>
+                                                                        <input type="file" class="form-control h-auto"
+                                                                               name="logo_white_mobile">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    @if (setting('logo_colorful_mobile') != null)
+                                                                        <div class="card">
+                                                                            <div class="card-img-actions m-1">
+                                                                                <img class="card-img img-fluid"
+                                                                                     src="/{!! setting('logo_colorful_mobile') ?? ' ' !!}"
+                                                                                     style="height:150px; object-fit:contain;">
+                                                                                <div
+                                                                                    class="card-img-actions-overlay card-img">
+                                                                                    <a href="/{!! setting('logo_colorful_mobile') ?? ' ' !!}"
+                                                                                       class="btn btn-outline-white border-2 btn-icon rounded-pill"
+                                                                                       data-popup="lightbox"
+                                                                                       data-gallery="gallery1">
+                                                                                        <i class="icon-plus3"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                    <div
+                                                                        class="form-group form-group-feedback form-group-feedback-left">
+                                                                        <label
+                                                                            for="logo_colorful_mobile">{{ __('Logo Colorful Mobile') }}</label>
+                                                                        <input type="file" class="form-control h-auto"
+                                                                               name="logo_colorful_mobile">
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
