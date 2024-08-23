@@ -64,7 +64,8 @@ class ModeratorController extends Controller
         unset($data['role']);
         $data['password'] = password_hash($request->password, PASSWORD_DEFAULT);
         $moderator->update($data);
-        $moderator->syncRoles($request->role);
+        $role = $this->getValidRole($request->role);
+        $moderator->syncRoles($role);
 
         return redirect()->route('admin.moderator.index')
             ->with('message', __('Succesfully updated.'))
@@ -84,7 +85,8 @@ class ModeratorController extends Controller
         unset($data['role']);
         $data['password'] = Hash::make($data['password']);
         $admin = User::create($data);
-        $admin->syncRoles($request->role);
+        $role = $this->getValidRole($request->role);
+        $admin->syncRoles($role);
 
         return redirect()->route('admin.moderator.index')
             ->with('message', __('Succesfully created.'))
@@ -104,5 +106,10 @@ class ModeratorController extends Controller
         return redirect()->route('admin.moderator.index')
             ->with('message', __('Succesfully deleted.'))
             ->with('message-alert', 'success');
+    }
+
+    protected function getValidRole($role_id)
+    {
+        return Role::where('id', $role_id)->pluck('name');
     }
 }

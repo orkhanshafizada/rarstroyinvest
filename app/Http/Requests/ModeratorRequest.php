@@ -25,7 +25,7 @@ class ModeratorRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|integer',
+            'id' => 'nullable|integer',
             'fullname' => 'required|string',
             'email' => [
                 'required',
