@@ -22,7 +22,7 @@ class HomeController extends Controller
                 'partners'     => Partner::active()->get()->sortBy('sort'),
                 'comments'     => Comment::active()->get()->sortBy('sort'),
                 'aboutus'      => About::where('id', 1)->first(),
-                'houseSliders' => House::active()->orderBy('created_at', 'DESC')->paginate(12),
+                'houses' => House::active()->orderBy('created_at', 'DESC')->paginate(12),
             ]);
     }
 
