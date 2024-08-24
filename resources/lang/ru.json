@@ -231,5 +231,15 @@
     "No structure found": "Структура не найдена",
     "No structure available": "Структура недоступна",
     "No filter available": "Фильтр недоступен",
-    "No area filter available": "Фильтр по области недоступен"
+    "No area filter available": "Фильтр по области недоступен",
+    "Logo White Mobile": "Белый логотип для мобильных устройств",
+    "Logo Colorful Mobile": "Цветной логотип для мобильных устройств",
+    "Mortgage available": "Доступна ипотека",
+    "View in map": "Посмотреть на карте",
+    "Sort by": "Сортировать по",
+    "Featured": "Избранное",
+    "Low to High": "От низкой к высокой",
+    "High to Low": "От высокой к низкой",
+    "Release Date": "Дата выпуска",
+    "Avg. Rating": "Средний рейтинг"
 }
