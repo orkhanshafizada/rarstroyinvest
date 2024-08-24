@@ -72,10 +72,10 @@ class HouseController extends Controller
         $query = House::active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
 
         $houses = app(Pipeline::class)->send($query)->through([
-                StructureFilter::class,
-                PriceFilter::class,
-                FilterFilter::class,
-            ])->thenReturn()->paginate($paginate, ['*'], 'page', $currentPage)->withQueryString();
+            StructureFilter::class,
+            PriceFilter::class,
+            FilterFilter::class,
+        ])->thenReturn()->paginate($paginate, ['*'], 'page', $currentPage)->withQueryString();
 
         $housesView     = view('front.house.partials.houses', compact('houses'))->render();
         $paginationView = view('front.house.partials.pagination', compact('houses'))->render();
@@ -90,29 +90,30 @@ class HouseController extends Controller
 
     public function show(string $slug): View
     {
-        $house = House::whereHas('translations', function ($query) use ($slug) {
+        $house = House::whereHas('translations', function($query) use ($slug)
+        {
             $query->where('slug', $slug)->where('locale', 'ru');
         })->with([
-            'structures' => function ($query) {
+            'structures' => function($query)
+            {
                 $query->orderBy('sort', 'asc');
             },
-            'filters' => function ($query) {
+            'filters'    => function($query)
+            {
                 $query->orderBy('sort', 'asc');
             }
         ])->firstOrFail();
 
-        $similarHouses = House::where('id', '!=', $house->id)
-                              ->orderBy('created_at', 'desc')
-                              ->paginate(12);
+        $similarHouses = House::where('id', '!=', $house->id)->orderBy('created_at', 'desc')->paginate(12);
 
         $currentUrl = url()->current();
-        $mortgages = Mortgage::active()->orderBy('sort', 'asc')->get();
+        $mortgages  = Mortgage::active()->orderBy('sort', 'asc')->get();
 
         return view('front.house.detail', [
-            'house'        => $house,
-            'currentUrl'   => $currentUrl,
-            'houseSliders' => $similarHouses,
-            'mortgages'    => $mortgages,
+            'house'      => $house,
+            'currentUrl' => $currentUrl,
+            'houses'     => $similarHouses,
+            'mortgages'  => $mortgages,
         ]);
     }
 
