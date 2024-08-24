@@ -4,11 +4,6 @@
             <div class="sidebar-user-material">
                 <div class="sidebar-section-body">
                     <div class="d-flex">
-                        <div class="flex-1">
-                        </div>
-                        <a href="#" class="flex-1 text-center"><img
-                                src="/admin/global_assets/images/placeholders/placeholder.jpg"
-                                class="img-fluid rounded-circle shadow-sm" width="80" height="80" alt=""></a>
                         <div class="flex-1 text-right">
                             <button type="button"
                                     class="btn btn-outline-light border-transparent btn-icon rounded-pill btn-sm sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
@@ -68,7 +63,7 @@
                            class="nav-link {{ request()->routeIs('admin.mortgage.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-credit-card"></i>
-                            <span>Mortgage</span>
+                            <span>{{ __('Mortgage') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -78,7 +73,7 @@
                            class="nav-link {{ request()->routeIs('admin.structure.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-strategy"></i>
-                            <span>Structure</span>
+                            <span>{{ __('Structure') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -88,7 +83,7 @@
                            class="nav-link {{ request()->routeIs('admin.filter.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-filter3"></i>
-                            <span>Filter</span>
+                            <span>{{ __('Filter') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -98,7 +93,7 @@
                            class="nav-link {{ request()->routeIs('admin.house.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-home"></i>
-                            <span>House</span>
+                            <span>{{ __('House') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -113,7 +108,7 @@
                            class="nav-link {{ request()->routeIs('admin.about.show') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-address-book"></i>
-                            <span>About Us</span>
+                            <span>{{ __('About Us') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -123,7 +118,7 @@
                            class="nav-link {{ request()->routeIs('admin.news.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-newspaper"></i>
-                            <span>News</span>
+                            <span>{{ __('Blog') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -133,7 +128,7 @@
                            class="nav-link {{ request()->routeIs('admin.faq.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-question3"></i>
-                            <span>Faq</span>
+                            <span>{{ __('Faq') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -144,7 +139,7 @@
                            class="nav-link {{ request()->routeIs('admin.contact.index') ? 'active' : '' }}"
                            onclick="loader();">
                             <i class="icon-envelope"></i>
-                            <span>Contact Us</span>
+                            <span>{{ __('Contact Us') }}</span>
                         </a>
                     </li>
                 @endcan
