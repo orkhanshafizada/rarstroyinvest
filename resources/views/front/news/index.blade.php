@@ -14,19 +14,19 @@
                         </nav>
                     </div>
                     <div class="col-12 col-md-12">
-                        <h2 class="h2 text__primary fw-bold lh-base mb-0 mb-md-4">{{ __('Blog') }}</h2>
+                        <h1 class="h2 text__primary fw-bold lh-base mb-0 mb-md-4">{{ __('Blog') }}</h1>
                     </div>
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 g-4 mt-5 mb-4">
                     @foreach($news as $new)
-                        <div class="col">
+                        <article class="col">
                             <a class="text-decoration-none card card__blog border-0 overflow-hidden h-100"
                                href="{{ route('news.show', $new->translate('ru')->slug ?? $new->translate('en')->slug) }}">
                                 <img class="img-fluid" src="{{asset($new->main_image)}}" alt="{{ $new->translate(app()->getLocale())->title ?? '' }}"/>
                                 <div class="card-footer bg-transparent border-0 h-100 d-flex flex-column">
-                                    <h4 class="h4 text__dark fw-bold mb-3">
+                                    <h2 class="h4 text__dark fw-bold mb-3">
                                         {{ $new->translate(app()->getLocale())->title ?? ''}}
-                                    </h4>
+                                    </h2>
                                     <p class="text__grey5 fw-normal blog-description text__overflow mt-auto mb-0">
                                         {!! $new->translate(app()->getLocale())->short_content ?? '' !!}
                                     </p>
@@ -47,7 +47,7 @@
                                     </ul>
                                 </div>
                             </a>
-                        </div>
+                        </article>
                     @endforeach
                 </div>
                 <div class="row mb-5">

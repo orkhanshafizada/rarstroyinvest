@@ -13,7 +13,7 @@
     </div>
 </div>
 <header class="header d-flex align-items-center sticky-top" id="header">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
         <!-- ul class="list-unstyled lang__switch align-items-lg-center d-block d-md-none">
             <li class="nav-item dropdown dropdown-animate" data-bs-toggle="collapse"><a class="nav-link dropdown-toggle submenu__link" href="{{ url('locale/'.app()->getLocale()) }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fi fi-{{ app()->getLocale() == 'en' ? "gb" : app()->getLocale() }} fis border-radius__circle flag__icon"></span>{{ strtoupper(app()->getLocale()) }}</a>
@@ -35,7 +35,7 @@
         <div class="menu-btn d-xl-none">
             <div class="menu-btn_burger"></div>
         </div>
-        <ul class="list-unstyled navbar-main lang__switch align-items-lg-center d-none d-md-block">
+        <!-- <ul class="list-unstyled navbar-main lang__switch align-items-lg-center d-none d-md-block">
             <li class="nav-item dropdown dropdown-animate" data-bs-toggle="hover">
                 <a class="nav-link dropdown-toggle submenu__link" href="{{ url('locale/'.app()->getLocale()) }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fi fi-{{ app()->getLocale() == 'en' ? "gb" : app()->getLocale() }} fis border-radius__circle flag__icon"></span>
@@ -48,7 +48,7 @@
                     </ul>
                 </div>
             </li>
-        </ul>
-        <div class="d-none d-md-grid"><a class="btn btn-md btn-primary border-radius__30 d-none d-lg-inline-flex px-5" href="{{ setting('mobile') }}"><i class="far fa-phone"></i><span class="text-uppercase body__text1 fw-bold">{{ __('Call us') }}</span></a></div>
+        </ul> -->
+        <div class="d-none d-md-grid"><a class="btn btn-md btn-primary border-radius__30 d-none d-lg-inline-flex px-5" href="tel:{{ setting('mobile') }}"><i class="far fa-phone"></i><span class="text-uppercase body__text1 fw-bold">{{ __('Call us') }}</span></a></div>
     </div>
 </header>
