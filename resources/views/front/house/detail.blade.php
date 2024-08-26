@@ -51,7 +51,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card card__product border-0 h-100">
                             <div class="card-header bg-transparent border-0 p-0">
-                                <h4 class="h4 fw-bold text__dark mb-4">{{ $house->translate(app()->getLocale())->name ?? '' }}</h4>
+                                <h1 class="h4 fw-bold text__dark mb-4">{{ $house->translate(app()->getLocale())->name ?? '' }}</h1>
                             </div>
                             <div class="card-body p-0">
                                 <div class="row row-cols-auto g-3">
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h2 class="h2 product--price fw-bold text__primary mt-4 mb-2">
+                                        <h2 class="h2 product--price fw-bold text__primary mt-4 mb-2 w-100">
                                             {{ __('from') }}
                                             @php($i = 1)
                                             @foreach($house->structures as $structure)
@@ -77,7 +77,7 @@
                                                 @php($i++)
                                             @endforeach
                                         </h2>
-                                        <p class="body__text2 product--title fw-normal text__grey5 mb-4">
+                                        <p class="body__text2 product--title fw-normal text__grey5 mb-4 w-100">
                                             {{ __('Cost of a house in the') }}
                                             @php($i = 1)
                                             @foreach($house->structures as $structure)

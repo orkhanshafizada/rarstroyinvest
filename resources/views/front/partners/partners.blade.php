@@ -12,10 +12,16 @@
         <div class="row g-0">
             <div class="col">
                 <div class="tricker-container bg__white">
-                    <div class="tricker-track">
-                        @foreach($partners as $partner)
-                        <div class="tricker-slide"><img src="{{ asset($partner->image) }}" alt=""/></div>
-                        @endforeach
+                    <div class="swiper-container">
+                        <div class="partners-slider swiper swiper__slider" id="partners-slider" data-slides="6" data-xs-slides="1.5" data-sm-slides="2.5" data-md-slides="3.5" data-lg-slides="6" data-dotes="1" data-scrollbar="1" data-spaceBetween="50" data-delay="5">
+                            <div class="swiper-wrapper">
+                                @foreach($partners as $partner)
+                                <div class="swiper-slide d-flex justify-content-center align-items-center h-auto w-auto">
+                                    <img class="img-fluid" src="{{ asset($partner->image) }}" alt=""/>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

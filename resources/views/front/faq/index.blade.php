@@ -17,7 +17,7 @@
                     <div class="col-12 col-md-8 mx-auto mb-5">
                         <div class="card card__faq bg__white border-0">
                             <div class="card-header bg-transparent border-0 text-center p-0">
-                                <h2 class="h2 text__primary fw-bold lh-base mb-0 mb-md-4">{{ __('FAQ') }}</h2>
+                                <h1 class="h2 text__primary fw-bold lh-base mb-0 mb-md-4">{{ __('FAQ') }}</h1>
                             </div>
                             <div class="card-body p-0">
                                 <div class="accordion accordion__faq bg-transparent" id="accordionFaq">

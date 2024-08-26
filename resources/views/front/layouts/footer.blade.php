@@ -31,7 +31,7 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-auto ms-0 ms-md-auto">
-                    <a class="btn btn-md btn-white border-radius__30 d-inline-flex py-3 w-100 mb-4" href="{{ setting('mobile') }}">
+                    <a class="btn btn-md btn-white border-radius__30 d-inline-flex py-3 w-100 mb-4" href="tel:{{ setting('mobile') }}">
                         <i class="far fa-phone"></i>
                         <span class="text-uppercase body__text1 fw-bold">{{ __('Call us') }}</span>
                     </a>

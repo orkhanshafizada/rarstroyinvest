@@ -27,7 +27,7 @@
                 <p class="catalogue-title mb-2">{{ __('No structure available') }}</p>
             @endif
         </div>
-        <p class="catalogue-location text-truncate mt-auto mb-0">{{ $houseName }}</p>
+        <h2 class="catalogue-location text-truncate mt-auto mb-0">{{ $houseName }}</h2>
         <ul class="list-group list-group-horizontal list-unstyled justify-content-between w-100 mt-3 mb-0">
             <li class="catalogue-option">
                 @if($randomFilter)
