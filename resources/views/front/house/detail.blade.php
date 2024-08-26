@@ -92,7 +92,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card position-relative overflow-hidden border-radius__20 p-3">
-                                            <p class="body__text2 fw-bold text__grey5">Mortgage available</p>
+                                            <p class="body__text2 fw-bold text__grey5">{{ __('Mortgage available') }}</p>
                                             <div class="swiper swiper__mortgage">
                                                 <div class="swiper-wrapper">
                                                     @foreach ($mortgages as $mortgage)
@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="col"><a
                                             class="btn btn-grey__outline fw-bold text-uppercase border-radius__30 w-100 px-3"
-                                            href="#viewMap"> <i class="far fa-map"></i><span>View in map</span></a>
+                                            href="#viewMap"> <i class="far fa-map"></i><span>{{ __('View in map') }}</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -296,15 +296,18 @@
             <div class="container-fluid p-0">
                 <div class="row" data-bs-spy="scroll" data-bs-target="#goMap" data-bs-smooth-scroll="true"
                      data-bs-root-margin="100px 0px -100%" tabindex="0">
+                    @php($youtube_id = get_youtube_id($house->translate(app()->getLocale())->video_url))
+                    @if($youtube_id)
                     <div class="col-12 col-md-6">
-                        <iframe src="https://www.youtube.com/embed/{{ get_youtube_id($house->translate(app()->getLocale())->video_url) }}"
+                        <iframe src="https://www.youtube.com/embed/{{ $youtube_id }}"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 
                         </iframe>
                     </div>
-                    <div class="col-12 col-md-6">
+                    @endif
+                    <div class="col-12 col-md-@if($youtube_id) 6 @else 12 @endif">
                         <iframe id="viewMap"
                                 src="https://maps.google.com/maps?hl=en&amp;q=1%20{{ $house->location }}hl=en&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                                 frameborder="0"></iframe>

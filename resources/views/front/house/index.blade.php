@@ -23,7 +23,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row">
                     @include('front.house.filters')
@@ -37,7 +36,7 @@
                                         <a class="btn h6 text__primary fw-bold px-0 mb-0"
                                         data-bs-toggle="offcanvas" href="#offcanvasCategory"
                                         role="button" aria-controls="offcanvasCategory">
-                                            <span class="me-2">Filters</span><i class="far fa-sliders-up"></i>
+                                              <span class="me-2">{{ __('Filters') }}</span><i class="far fa-sliders-up"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -55,11 +54,11 @@
                                     <div class="d-block d-md-none">
                                         <!-- select option-->
                                         <select class="form-select">
-                                            <option selected="">Sort by: Featured</option>
-                                            <option value="Low to High">Price: Low to High</option>
-                                            <option value="High to Low">Price: High to Low</option>
-                                            <option value="Release Date">Release Date</option>
-                                            <option value="Avg. Rating">Avg. Rating</option>
+                                             <option selected="">{{ __('Sort by') }}: {{ __('Featured') }}</option>
+                                        <option value="Low to High">{{ __('Price') }}: {{ __('Low to High') }}</option>
+                                        <option value="High to Low">{{ __('Price') }}: {{ __('High to Low') }}</option>
+                                        <option value="Release Date">{{ __('Release Date') }}</option>
+                                        <option value="Avg. Rating">{{ __('Avg. Rating') }}</option>
                                         </select>
                                     </div>
                                 </div>

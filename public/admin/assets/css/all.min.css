@@ -9410,6 +9410,10 @@ a.bg-teal-100:focus, a.bg-teal-100:hover, button.bg-teal-100:focus, button.bg-te
     background-color: #5c6bc0 !important
 }
 
+.bg-custom {
+    background-color: #0d6efd !important
+}
+
 a.bg-indigo, button.bg-indigo {
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }

@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-lg navbar-dark bg-indigo navbar-static">
+<div class="navbar navbar-expand-lg navbar-dark bg-custom navbar-static">
     <div class="d-flex flex-1 d-lg-none">
         <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
             <i class="icon-paragraph-justify3"></i>
