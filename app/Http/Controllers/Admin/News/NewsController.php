@@ -112,7 +112,7 @@ class NewsController extends Controller
 
     private function translate($request, $id = 0)
     {
-        $slug = Str::slug($request->input('en_title'), '-');
+        $slug = Str::slug($request->input('ru_title'), '-');
         $article_data = [
             'zh' => [
                 'title'         => $request->input('zh_title'),
