@@ -37,7 +37,7 @@
                         </ul>
                         <h1 class="h1 fw-bold lh-sm mb-4">{{ $news->translate(app()->getLocale())->title ?? '' }}</h1>
                         <div class="section__content">
-                            {{ $news->translate(app()->getLocale())->long_content ?? '' }}
+                            {!! $news->translate(app()->getLocale())->long_content ?? '' !!}
                         </div>
                         <div class="d-inline-flex justify-content-center justify-content-md-center align-items-start flex-column w-100 pt-4 pt-md-3">
                             <h6 class="h6 fw-semibold text__dark text-end mb-3">{{ __('Share:') }}</h6>
