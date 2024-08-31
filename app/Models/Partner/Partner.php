@@ -16,6 +16,17 @@ class Partner extends Model
     protected $guarded = [];
 
     /**
+     * Get the URL of the image attribute.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getImageAttribute($value)
+    {
+        return 'storage/' . $value;
+    }
+
+    /**
      * Scope a query to only include active sliders.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
