@@ -2,11 +2,11 @@
 @section('meta-tags')
     <meta property='og:title' content='{{ $news->translate(app()->getLocale())->title ?? '' }}'/>
     <meta property='og:description' content='{{ $news->translate(app()->getLocale())->short_content ?? '' }}'/>
-    <meta property='og:image' content='{{ asset($news->main_image) }}'/>
+    <meta property='og:image' content='{{ asset('storage/'.$news->main_image) }}'/>
     <meta property='og:url' content='{{ url()->current() }}'/>
     <meta property='twitter:title' content='{{ $news->translate(app()->getLocale())->title ?? '' }}'/>
     <meta property='twitter:description' content='{{ $news->translate(app()->getLocale())->short_content ?? '' }}'/>
-    <meta property='twitter:image' content='{{ asset($news->main_image) }}'/>
+    <meta property='twitter:image' content='{{ asset('storage/'.$news->main_image) }}'/>
     <meta property='twitter:url' content='{{ url()->current() }}'/>
 @endsection
 @section('content')
@@ -26,7 +26,7 @@
                 </div>
                 <div class="row g-0 g-md-4 mt-0 mt-md-3 mb-4">
                     <div class="col-12">
-                        <div class="img__wrapper"><img class="img-fluid w-100" src="{{asset($news->main_image)}}" alt="{{ $news->translate(app()->getLocale())->title ?? '' }}"/></div>
+                        <div class="img__wrapper"><img class="img-fluid w-100" src="{{asset('storage/'.$news->main_image)}}" alt="{{ $news->translate(app()->getLocale())->title ?? '' }}"/></div>
                     </div>
                     <div class="col-12 col-md-8 mx-md-auto">
                         <ul class="list-group list-group-horizontal list-unstyled justify-content-between w-100 mt-4 mt-md-4 mb-4">

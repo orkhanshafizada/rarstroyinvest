@@ -22,24 +22,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/fontawesome/css/all.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/fontawesome/css/all.min.css') }}"/>
     <!-- Flag Icons -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/flag-icons/flag-icons.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/flag-icons/flag-icons.min.css') }}"/>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/bootstrap/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/bootstrap/css/bootstrap.min.css') }}"/>
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/swiper/swiper.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/swiper/swiper.min.css') }}"/>
     <!-- Slick CSS -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/slickcarousel/slick.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/slickcarousel/slick.min.css') }}"/>
     <!-- Slider range CSS -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/nouislider/nouislider.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/nouislider/nouislider.min.css') }}"/>
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/animate/animate.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/aos/aos.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/animate/animate.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/aos/aos.css') }}"/>
     <!-- Fancybox -->
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/fancybox/fancybox.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/fancybox/fancybox.min.css') }}"/>
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ asset('front/assets/css/style.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/css/style.min.css') }}"/>
 
     @yield('css')
     @routes
@@ -49,19 +49,19 @@
 @yield('content')
 @include('front.layouts.footer')
 <!-- JS assets -->
-<script src="{{ asset('front/assets/plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/bootstrap/js/popper.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/swiper/swiper.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/swiper/swiper-settings.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/slickcarousel/slick.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/slickcarousel/slick.settings.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/slickcarousel/slick-animation.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/aos/aos.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/wNumb/wNumb.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/nouislider/nouislider.min.js') }}"></script>
-<script src="{{ asset('front/assets/plugins/fancybox/fancybox.min.js') }}"></script>
-<script src="{{ asset('front/assets/js/main.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/bootstrap/js/popper.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/swiper/swiper.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/swiper/swiper-settings.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/slickcarousel/slick.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/slickcarousel/slick.settings.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/slickcarousel/slick-animation.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/aos/aos.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/wNumb/wNumb.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/nouislider/nouislider.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/plugins/fancybox/fancybox.min.js') }}"></script>
+<script src="{{ asset('storage/'.'front/assets/js/main.js') }}"></script>
 @yield('javascripts')
 </body>
 </html>

@@ -2,11 +2,11 @@
 @section('meta-tags')
     <meta property='og:title' content='{{ $house->translate(app()->getLocale())->name ?? '' }}'/>
     <meta property='og:description' content='{{ $house->translate(app()->getLocale())->name ?? '' }}'/>
-    <meta property='og:image' content='{{ asset($house->main_image) }}'/>
+    <meta property='og:image' content='{{ asset('storage/'.$house->main_image) }}'/>
     <meta property='og:url' content='{{ url()->current() }}'/>
     <meta property='twitter:title' content='{{ $house->translate(app()->getLocale())->name ?? '' }}'/>
     <meta property='twitter:description' content='{{ $house->translate(app()->getLocale())->name ?? '' }}'/>
-    <meta property='twitter:image' content='{{ asset($house->main_image) }}'/>
+    <meta property='twitter:image' content='{{ asset('storage/'.$house->main_image) }}'/>
     <meta property='twitter:url' content='{{ url()->current() }}'/>
 @endsection
 @section('content')
@@ -29,21 +29,21 @@
                     <div class="col-12 col-md-6">
                         <div class="card bg-transparent border-0 p-0 h-100">
                             <div class="main-slide">
-                                <div class="img-slide"><a href="{{asset($house->main_image)}}"
+                                <div class="img-slide"><a href="{{asset('storage/'.$house->main_image)}}"
                                                           data-fancybox="gallery"><img
-                                            src="{{asset($house->main_image)}}"/></a></div>
+                                            src="{{asset('storage/'.$house->main_image)}}"/></a></div>
                                 @foreach($house->image()->get() as $gallery)
                                     <div class="img-slide">
-                                        <a href="{{asset($gallery->name)}}" data-fancybox="gallery">
-                                            <img src="{{asset($gallery->name)}}"/>
+                                        <a href="{{asset('storage/'.$gallery->name)}}" data-fancybox="gallery">
+                                            <img src="{{asset('storage/'.$gallery->name)}}"/>
                                         </a>
                                     </div>
                                 @endforeach
                             </div>
                             <div class="slider-nav d-none d-md-inline-flex">
-                                <div class="img-slide"><img src="{{asset($house->main_image)}}"/></div>
+                                <div class="img-slide"><img src="{{asset('storage/'.$house->main_image)}}"/></div>
                                 @foreach($house->image()->get() as $gallery)
-                                    <div class="img-slide"><img src="{{asset($gallery->name)}}"/></div>
+                                    <div class="img-slide"><img src="{{asset('storage/'.$gallery->name)}}"/></div>
                                 @endforeach
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                                                             <div
                                                                 class="card-body d-flex justify-content-center align-items-center p-0">
                                                                 <img class="img-fluid m-auto"
-                                                                     src="{{ asset($mortgage->image ?? '')}}" alt="{{ $mortgage->image ?? '' }}"/>
+                                                                     src="{{ asset('storage/'.$mortgage->image ?? '')}}" alt="{{ $mortgage->image ?? '' }}"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,8 +181,8 @@
                                         <div class="swiper-wrapper">
                                             @foreach($house->image('facade')->get() as $gallery)
                                                 <div class="swiper-slide h-auto">
-                                                    <a href="{{asset($gallery->name)}}" data-fancybox="gallery2">
-                                                        <img src="{{asset($gallery->name)}}"/>
+                                                    <a href="{{asset('storage/'.$gallery->name)}}" data-fancybox="gallery2">
+                                                        <img src="{{asset('storage/'.$gallery->name)}}"/>
                                                     </a>
                                                 </div>
                                             @endforeach
@@ -205,8 +205,8 @@
                                         <div class="swiper-wrapper">
                                             @foreach($house->image('layout')->get() as $gallery)
                                                 <div class="swiper-slide h-auto">
-                                                    <a href="{{asset($gallery->name)}}" data-fancybox="gallery2">
-                                                        <img src="{{asset($gallery->name)}}"/>
+                                                    <a href="{{asset('storage/'.$gallery->name)}}" data-fancybox="gallery2">
+                                                        <img src="{{asset('storage/'.$gallery->name)}}"/>
                                                     </a>
                                                 </div>
                                             @endforeach

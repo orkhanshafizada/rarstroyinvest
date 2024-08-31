@@ -44,7 +44,7 @@
                                     <div class="d-none d-md-flex">
                                         <p class="mb-0 me-3">Sort by:</p>
                                         <span class="mb-0 me-3 sort sort-asc" id="sortBtn">
-                                            Price 
+                                            Price
                                             <i class="far fa-arrow-down-short-wide ms-1 iconAsc"></i>
                                             <i class="far fa-arrow-down-wide-short ms-1 iconDesc"></i>
                                             <input type="hidden" name="sortType" class="sortInput" id="sortInput" value='sort-asc'>
@@ -73,7 +73,7 @@
                         <div id="housesContainer" class="position-relative h-100">
                             @include('front.house.partials.houses')
                             <div id="loader" class="loader" style="display: none;">
-                                <img src="{{ asset('front/assets/loader.gif') }}" alt="Loading..."/>
+                                <img src="{{ asset('storage/'.'front/assets/loader.gif') }}" alt="Loading..."/>
                             </div>
                         </div>
                         <div id="pagination" class="mb-4 mb-md-5 pb-4">
@@ -100,8 +100,8 @@
 @endsection
 @section('javascripts')
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    <script src="{{ asset('front/assets/plugins/jquery/jquery-ui.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('front/assets/plugins/jquery/jquery-ui.css') }}">
+    <script src="{{ asset('storage/'.'front/assets/plugins/jquery/jquery-ui.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('storage/'.'front/assets/plugins/jquery/jquery-ui.css') }}">
 
     <script>
         $(document).ready(function () {

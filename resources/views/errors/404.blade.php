@@ -11,7 +11,7 @@
                                     <div class="col-12">
                                         <div
                                             class="block__info justify-content-center align-items-center d-flex flex-column">
-                                            <img class="img-fluid block__info-img" src="{{ asset('front/assets/images/404-error.png') }}"
+                                            <img class="img-fluid block__info-img" src="{{ asset('storage/'.'front/assets/images/404-error.png') }}"
                                                  alt="404 Error">
                                             <span class="block__info-txt error-txt4 text-center">
             									{{ __('Seems like you are lost...') }}
