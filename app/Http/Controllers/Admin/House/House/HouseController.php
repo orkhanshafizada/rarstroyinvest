@@ -244,7 +244,7 @@ class HouseController extends Controller
         ];
 
         if ($request->hasFile('main_image')) {
-            $articleData['main_image'] = $this->save_file('images', $request->file('main_image'), $id, $slug, 'main_image', 'App\Models\House\House\House', 'house');
+            $articleData['main_image'] = $this->saveFile('images', $request->file('main_image'), $id, $slug, 'main_image', 'App\Models\House\House\House', 'house');
         }
 
         return $articleData;

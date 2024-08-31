@@ -134,7 +134,7 @@ class NewsController extends Controller
             ],
         ];
 
-        $request->main_image ? $article_data['main_image'] = $this->save_file('images', $request->file('main_image'), $id, $slug, 'main_image', 'App\Models\News\News', 'news') : '';
+        $request->main_image ? $article_data['main_image'] = $this->saveFile('images', $request->file('main_image'), $id, $slug, 'main_image', 'App\Models\News\News', 'news') : '';
 
         return $article_data;
     }

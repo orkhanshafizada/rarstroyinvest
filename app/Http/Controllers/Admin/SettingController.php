@@ -80,7 +80,7 @@ class SettingController extends Controller
 
         if ($request->hasFile($key)) {
             deleteDirectory($settingValue);
-            $settingValue = $this->upload_file($request->file($key), "setting/{$key}", 'images');
+            $settingValue = $this->uploadFile($request->file($key), "setting/{$key}", 'images');
         }
 
         return $settingValue;

@@ -92,7 +92,7 @@ class GalleryController extends Controller
             return response()->json(['error' => 'Data not found.'], 404); // Handle the case where $data is not found
         }
 
-        $imageable = $this->upload_file($request->file('file'), 'gallery/' . $module, 'images');
+        $imageable = $this->uploadFile($request->file('file'), 'gallery/' . $module, 'images');
         $data->image($image_type)->create(['name' => $imageable, 'type' => $image_type]);
 
         return response()->json(['success' => $imageable]);

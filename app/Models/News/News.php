@@ -48,15 +48,4 @@ class News extends Model implements TranslatableContract
     {
         return $this->morphMany(File::class,'fileable');
     }
-
-    /**
-     * Get the URL of the image attribute.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getImageAttribute($value)
-    {
-        return 'storage/' . $value;
-    }
 }

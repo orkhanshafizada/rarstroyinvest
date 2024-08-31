@@ -165,7 +165,7 @@ class SliderController extends Controller
         ];
 
         $slug_thumbnail = 'slider_'.$slug;
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug_thumbnail, 'image', 'App\Models\Slider\Slider', 'slider') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug_thumbnail, 'image', 'App\Models\Slider\Slider', 'slider') : '';
 
         return $article_data;
     }

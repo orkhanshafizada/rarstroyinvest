@@ -123,7 +123,7 @@ class CommentController extends Controller
 
         $random = $id ?: rand();
         $slug = Str::slug($request->input('en_full_name').$random, '-');
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Comment\Comment', 'comment') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Comment\Comment', 'comment') : '';
 
         return $article_data;
     }

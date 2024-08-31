@@ -3,76 +3,84 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\File;
+use Exception;
 
 trait GeneralTrait
 {
     /**
-     * @param $type
-     * @param $file
-     * @param $id
-     * @param $slug
-     * @param $column
-     * @param $class
-     * @param $module
-     * @return mixed
+     * Save the given file, replacing any existing file associated with the given model.
+     *
+     * @param string $type
+     * @param \Illuminate\Http\UploadedFile $file
+     * @param int $id
+     * @param string $slug
+     * @param string $column
+     * @param string $class
+     * @param string $module
+     * @return string The path to the uploaded file.
      */
-    protected function save_file($type, $file, $id, $slug, $column, $class, $module)
+    protected function saveFile($type, $file, $id, $slug, $column, $class, $module)
     {
-        $old_file = $class::find($id);
-        if ($old_file) {
-            // Remove old file if exists
-            $old_file_path = public_path($old_file->$column);
-            if (File::exists($old_file_path)) {
-                File::delete($old_file_path);
+        $model = $class::find($id);
+
+        if ($model && $model->$column) {
+            $oldFilePath = public_path($model->$column);
+
+            if (File::exists($oldFilePath)) {
+                File::delete($oldFilePath);
             }
         }
 
-        return $this->upload_file($file, $module . '/' . $type . '/' . $slug, $type);
+        return $this->uploadFile($file, "{$module}/{$type}/{$slug}", $type);
     }
 
     /**
-     * @param $file
-     * @param $module
-     * @param $type
-     * @return bool
-     */
-    protected function upload_file($file, $module, $type)
-    {
-        $folder = 'front/assets/' . $type . '/' . $module;
-        $file_name = $this->convert_and_save_webp($file, $folder);
-
-        return $file_name;
-    }
-
-    /**
-     * Convert image to WebP format and save it.
+     * Upload the given file to the specified module and type folder.
      *
-     * @param $file
-     * @param $folder
-     * @return string
+     * @param \Illuminate\Http\UploadedFile $file
+     * @param string $module
+     * @param string $type
+     * @return string The path to the uploaded file.
      */
-    protected function convert_and_save_webp($file, $folder)
+    protected function uploadFile($file, $module, $type)
+    {
+        $folder = "front/assets/{$type}/{$module}";
+        $fileName = $this->convertAndSaveWebp($file, $folder);
+
+        return $fileName;
+    }
+
+    /**
+     * Convert the image file to WebP format and save it.
+     *
+     * @param \Illuminate\Http\UploadedFile $file
+     * @param string $folder
+     * @return string The path to the saved WebP file.
+     * @throws \Exception If image conversion or saving fails.
+     */
+    protected function convertAndSaveWebp($file, $folder)
     {
         $image = imagecreatefromstring(file_get_contents($file));
+
         if (!$image) {
-            throw new \Exception('Could not create image from file');
+            throw new Exception('Could not create image from file');
         }
 
-        $file_name = uniqid() . '.webp';
-        $file_path = $folder . '/' . $file_name;
-        $full_path = public_path($file_path);
+        $fileName = uniqid() . '.webp';
+        $filePath = "{$folder}/{$fileName}";
+        $fullPath = public_path($filePath);
 
-        $dir = dirname($full_path);
+        $dir = dirname($fullPath);
         if (!file_exists($dir)) {
             mkdir($dir, 0755, true);
         }
 
-        if (imagewebp($image, $full_path)) {
+        if (imagewebp($image, $fullPath)) {
             imagedestroy($image);
-            return $file_path;
+            return $filePath;
         }
 
         imagedestroy($image);
-        throw new \Exception('Failed to save WebP image');
+        throw new Exception('Failed to save WebP image');
     }
 }

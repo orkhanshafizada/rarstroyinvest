@@ -71,7 +71,7 @@ class AboutUsController extends Controller
 
         ];
 
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\About\About', 'about') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug, 'image', 'App\Models\About\About', 'about') : '';
 
         return $article_data;
     }

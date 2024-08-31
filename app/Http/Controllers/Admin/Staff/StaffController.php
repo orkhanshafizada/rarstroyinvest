@@ -126,7 +126,7 @@ class StaffController extends Controller
 
         $random = $id ?: rand();
         $slug = Str::slug($request->input('en_full_name').$random, '-');
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Staff\Staff', 'staff') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Staff\Staff', 'staff') : '';
 
         return $article_data;
     }

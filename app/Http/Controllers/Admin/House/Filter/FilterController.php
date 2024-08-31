@@ -114,7 +114,7 @@ class FilterController extends Controller
 
         $random = $id ?: rand();
         $slug   = Str::slug($request->input('ru_name') . $random, '-');
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Filter\Filter', 'filter') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Filter\Filter', 'filter') : '';
 
         return $article_data;
     }

@@ -103,7 +103,7 @@ class MortgageController extends Controller
         ];
 
         $slug = $id ?: rand();
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\House\Mortgage\Mortgage', 'mortgage') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug, 'image', 'App\Models\House\Mortgage\Mortgage', 'mortgage') : '';
 
         return $article_data;
     }

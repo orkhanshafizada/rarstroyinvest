@@ -104,7 +104,7 @@ class PartnerController extends Controller
         ];
 
         $slug = $id ?: rand();
-        $request->image ? $article_data['image'] = $this->save_file('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Partner\Partner', 'partner') : '';
+        $request->image ? $article_data['image'] = $this->saveFile('images', $request->file('image'), $id, $slug, 'image', 'App\Models\Partner\Partner', 'partner') : '';
 
         return $article_data;
     }
