@@ -17,7 +17,7 @@ return array (
   'namespace_label' => '',
   'namespace_placeholder' => '',
   'save' => '',
-  'search' => '',
+  'search' => 'search',
   'translations' => '',
   'value_label' => '',
   'value_placeholder' => '',
