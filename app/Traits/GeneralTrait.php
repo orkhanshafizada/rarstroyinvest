@@ -36,8 +36,41 @@ trait GeneralTrait
     protected function upload_file($file, $module, $type)
     {
         $folder = 'front/assets/'.$type.'/' . $module;
-        $file_name = Storage::disk('public')->put($folder, $file);
+        $file_name = $this->convert_and_save_webp($file, $folder);
 
         return $file_name;
     }
+
+    /**
+     * Convert image to WebP format and save it.
+     *
+     * @param $file
+     * @param $folder
+     * @return string
+     */
+    protected function convert_and_save_webp($file, $folder)
+    {
+        $image = imagecreatefromstring(file_get_contents($file));
+        if (!$image) {
+            throw new \Exception('Could not create image from file');
+        }
+
+        $file_name = uniqid() . '.webp';
+        $file_path = $folder . '/' . $file_name;
+        $full_path = storage_path('app/public/' . $file_path);
+
+        $dir = dirname($full_path);
+        if (!file_exists($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        if (imagewebp($image, $full_path)) {
+            imagedestroy($image);
+            return $file_path;
+        }
+
+        imagedestroy($image);
+        throw new \Exception('Failed to save WebP image');
+    }
+
 }
