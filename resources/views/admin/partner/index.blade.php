@@ -33,7 +33,7 @@
                 @foreach ($partners as $partner)
                     <tr>
                         <td>{{ $partner->id }}</td>
-                        <td><img src="{{ asset($partner->image ?? '') }}" width="100%" height="100px" style="object-fit: contain"></td>
+                        <td><img src="{{ storage_path($partner->image ?? '') }}" width="100%" height="100px" style="object-fit: contain"></td>
                         <td>{!! $partner->active ? '<p style="color:green;">Active</p>' : '<p style="color:red;">Dective</p>' !!}</td>
                         <td>{{$partner->sort}}</td>
                         <td class="d-flex justify-content-center">
