@@ -13,7 +13,7 @@
                 </div>
             </div-->
 
-            <img src="{{ get_file_url('admin/assets/dashboard.gif') }}">
+            <img src="{{ asset('admin/assets/dashboard.gif') }}">
         </div>
     </div>
 @endsection

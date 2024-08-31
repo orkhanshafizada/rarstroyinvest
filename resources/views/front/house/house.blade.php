@@ -1,7 +1,7 @@
 @php
     $locale = app()->getLocale();
     $slug = $house->translate($locale)->slug ?? $house->translate('en')->slug;
-    $mainImage = get_file_url($house->main_image ?? '');
+    $mainImage = asset($house->main_image ?? '');
     $houseName = $house->translate($locale)->name ?? '';
 
     $structures = $house->structures;

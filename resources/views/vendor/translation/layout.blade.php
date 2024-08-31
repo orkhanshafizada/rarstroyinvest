@@ -2,7 +2,7 @@
 @section('content')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ get_file_url('/vendor/translation/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('/vendor/translation/css/main.css') }}">
     <style>
         .rounded-pill{
             height: 0 !important;
@@ -18,6 +18,6 @@
 
     </div>
 
-    <script src="{{ get_file_url('/vendor/translation/js/app.js') }}"></script>
+    <script src="{{ asset('/vendor/translation/js/app.js') }}"></script>
 
 @endsection

@@ -26,10 +26,10 @@
             </li>
         </ul -->
         <a class="navbar-brand d-flex d-md-none justify-content-center mx-auto" href="{{ route('home.index') }}">
-            <img class="img-fluid navbar-brand-img" alt="{{ setting('title') }}" src="{{ get_file_url(setting('logo_white')) }}"/>
+            <img class="img-fluid navbar-brand-img" alt="{{ setting('title') }}" src="{{ asset(setting('logo_white')) }}"/>
         </a>
         <a class="navbar-brand d-none d-md-flex" href="{{ route('home.index') }}">
-            <img class="img-fluid navbar-brand-img" alt="{{ setting('title') }}" src="{{ get_file_url(setting('logo_colorful')) }}"/>
+            <img class="img-fluid navbar-brand-img" alt="{{ setting('title') }}" src="{{ asset(setting('logo_colorful')) }}"/>
         </a>
         @include('front.layouts.navbar')
         <div class="menu-btn d-xl-none">

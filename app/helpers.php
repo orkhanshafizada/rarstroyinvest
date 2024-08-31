@@ -128,25 +128,5 @@ function convertDateToReadableFormat($datetime, $locale)
     return $formatter->format($date);
 }
 
-// app/helpers.php
-
-if (!function_exists('get_file_url')) {
-    /**
-     * Get the URL of a file, first checking the storage directory, then the assets directory.
-     *
-     * @param  string  $path
-     * @return string
-     */
-    function get_file_url($path)
-    {
-        // Check if the file exists in the storage directory
-        if (file_exists(storage_path('app/public/' . $path))) {
-            return get_file_url('storage/' . $path);
-        }
-
-        // If not found in storage, check in the assets directory
-        return get_file_url('assets/' . $path);
-    }
-}
 ?>
 

@@ -7,11 +7,11 @@
     <title>Login | {{ setting('title') }}</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
           type="text/css">
-    <link href="{{ get_file_url('admin/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ get_file_url('admin/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <script src="{{ get_file_url('admin/global_assets/js/main/jquery.min.js') }}"></script>
-    <script src="{{ get_file_url('admin/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ get_file_url('admin/assets/js/app.js') }}"></script>
+    <link href="{{ asset('admin/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ asset('admin/global_assets/js/main/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/app.js') }}"></script>
     <style>
         .icon-login {
             top: 26px !important;

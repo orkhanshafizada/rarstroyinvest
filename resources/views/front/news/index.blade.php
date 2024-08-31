@@ -22,7 +22,7 @@
                         <article class="col">
                             <a class="text-decoration-none card card__blog border-0 overflow-hidden h-100"
                                href="{{ route('news.show', $new->translate('ru')->slug ?? $new->translate('en')->slug) }}">
-                                <img class="img-fluid" src="{{get_file_url('storage/'.$new->main_image)}}" alt="{{ $new->translate(app()->getLocale())->title ?? '' }}"/>
+                                <img class="img-fluid" src="{{asset('storage/'.$new->main_image)}}" alt="{{ $new->translate(app()->getLocale())->title ?? '' }}"/>
                                 <div class="card-footer bg-transparent border-0 h-100 d-flex flex-column">
                                     <h2 class="h4 text__dark fw-bold mb-3">
                                         {{ $new->translate(app()->getLocale())->title ?? ''}}

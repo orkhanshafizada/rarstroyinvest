@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 trait GeneralTrait
 {
@@ -19,12 +19,15 @@ trait GeneralTrait
     protected function save_file($type, $file, $id, $slug, $column, $class, $module)
     {
         $old_file = $class::find($id);
-        if($old_file)
-        {
-            deleteDirectory($old_file->$column);
+        if ($old_file) {
+            // Remove old file if exists
+            $old_file_path = public_path($old_file->$column);
+            if (File::exists($old_file_path)) {
+                File::delete($old_file_path);
+            }
         }
 
-        return $this->upload_file($file, $module.'/' . $type . '/' . $slug, $type);
+        return $this->upload_file($file, $module . '/' . $type . '/' . $slug, $type);
     }
 
     /**
@@ -35,7 +38,7 @@ trait GeneralTrait
      */
     protected function upload_file($file, $module, $type)
     {
-        $folder = 'front/assets/'.$type.'/' . $module;
+        $folder = 'front/assets/' . $type . '/' . $module;
         $file_name = $this->convert_and_save_webp($file, $folder);
 
         return $file_name;
@@ -57,7 +60,7 @@ trait GeneralTrait
 
         $file_name = uniqid() . '.webp';
         $file_path = $folder . '/' . $file_name;
-        $full_path = storage_path('app/public/' . $file_path);
+        $full_path = public_path($file_path);
 
         $dir = dirname($full_path);
         if (!file_exists($dir)) {
@@ -72,5 +75,4 @@ trait GeneralTrait
         imagedestroy($image);
         throw new \Exception('Failed to save WebP image');
     }
-
 }
