@@ -12,7 +12,7 @@
                                         <div
                                             class="block__info justify-content-center align-items-center d-flex flex-column">
                                             <img class="img-fluid block__info-img"
-                                                 src="{{ asset('front/assets/images/500-error.png') }}" alt="500 Error">
+                                                 src="{{ get_file_url('front/assets/images/500-error.png') }}" alt="500 Error">
                                             <span class="block__info-txt error-txt5 text-center">
             									{{ __("It's not you, it's us") }}! <br> <br>
             									{{ __('We are trying to fix things here! We won’t take that long!') }}

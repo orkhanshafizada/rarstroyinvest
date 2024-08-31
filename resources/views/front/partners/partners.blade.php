@@ -17,7 +17,7 @@
                             <div class="swiper-wrapper">
                                 @foreach($partners as $partner)
                                 <div class="swiper-slide d-flex justify-content-center align-items-center h-auto w-auto">
-                                    <img class="img-fluid" src="{{ asset($partner->image) }}" alt=""/>
+                                    <img class="img-fluid" src="{{ get_file_url($partner->image) }}" alt=""/>
                                 </div>
                                 @endforeach
                             </div>

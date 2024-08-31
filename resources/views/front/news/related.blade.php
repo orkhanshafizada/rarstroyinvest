@@ -29,7 +29,7 @@
                                     <div class="swiper-slide h-auto">
                                         <a class="text-decoration-none card card__blog-slide border-0 overflow-hidden h-100"
                                            href="{{ route('news.show', $rn->translate('en')->slug ?? '') }}">
-                                            <img class="img-fluid" src="{{asset($rn->main_image)}}" alt="{{ $rn->translate(app()->getLocale())->title ?? '' }}"/>
+                                            <img class="img-fluid" src="{{get_file_url($rn->main_image)}}" alt="{{ $rn->translate(app()->getLocale())->title ?? '' }}"/>
                                             <div class="card-footer bg-transparent border-0 h-100 d-flex flex-column">
                                                 <h6 class="h6 text__dark fw-bold mb-3"> {{ $rn->translate(app()->getLocale())->title ?? ''}}</h6>
                                                 <p class="text__grey5 fw-normal blog-description text__overflow mt-auto mb-0">

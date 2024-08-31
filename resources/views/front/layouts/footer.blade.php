@@ -5,7 +5,7 @@
             <div class="row footer__body gx-0 gy-5 gx-md-0 gy-md-0">
                 <div class="col-12 col-md-3">
                     <a class="navbar-brand d-flex justify-content-center justify-content-md-start mt-0 mx-auto me-md-auto" href="{{ route('home.index') }}">
-                        <img class="img-fluid company__logo" alt="{{ setting('title') }}" src="{{ asset(setting('logo_white'))}}"/>
+                        <img class="img-fluid company__logo" alt="{{ setting('title') }}" src="{{ get_file_url(setting('logo_white'))}}"/>
                     </a>
                 </div>
                 <div class="col-6 col-md-2">

@@ -25,7 +25,7 @@
                                 <div class="swiper-slide h-auto">
                                     <div class="card card__staff border-0 border-radius__40 bg__grey1 overflow-hidden h-100">
                                         <div class="card-header bg-transparent border-0 d-inline-flex align-items-center px-0 pt-0 pb-3">
-                                            <div class="img-wrapper"><img class="img-fluid" src="{{ asset($staff->image) }}" alt="{{ $comment->translate(app()->getLocale())->full_name }}"/></div>
+                                            <div class="img-wrapper"><img class="img-fluid" src="{{ get_file_url($staff->image) }}" alt="{{ $comment->translate(app()->getLocale())->full_name }}"/></div>
                                             <div class="d-flex flex-column ms-4">
                                                 <h6 class="h6 fw-bold lh-base text__black mb-0">{{ $comment->translate(app()->getLocale())->full_name }}</h6>
                                                 <p class="body__text2 fw-bold lh-base text__grey5 mb-0">{{ $comment->translate(app()->getLocale())->position }}</p>
