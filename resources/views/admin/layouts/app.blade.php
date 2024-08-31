@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ setting('title') }}</title>
-    <link href="{{ asset('storage/'.'admin/assets/plugins/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/assets/plugins/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
           type="text/css">
-    <link href="{{ asset('storage/'.'admin/assets/css/style.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('storage/'.'admin/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet"
+    <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet"
           type="text/css">
-    <link href="{{ asset('storage/'.'admin/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
-    <link rel="stylesheet" href="{{ asset('storage/'.'admin/assets/plugins/material-design/material-components.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('storage/'.'admin/assets/css/material-select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/material-design/material-components.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/material-select2.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css"/>
     <style>
         .content {
@@ -62,26 +62,26 @@
     @include('admin.layouts.navbar')
     @yield('content')
 </div>
-<script src="{{ asset('storage/'.'admin/global_assets/js/main/jquery.min.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/assets/js/app.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/demo_pages/dashboard.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/demo_pages/datatables_basic.js') }}/"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/demo_pages/datatables_sorting.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/assets/js/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/demo_pages/gallery.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/demo_pages/gallery_library.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/plugins/media/glightbox.min.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/global_assets/js/demo_pages/components_buttons.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/main/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/app.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/demo_pages/dashboard.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/demo_pages/datatables_basic.js') }}/"></script>
+<script src="{{ asset('admin/global_assets/js/demo_pages/datatables_sorting.js') }}"></script>
+<script src="{{ asset('admin/assets/js/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/demo_pages/gallery.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/demo_pages/gallery_library.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/plugins/media/glightbox.min.js') }}"></script>
+<script src="{{ asset('admin/global_assets/js/demo_pages/components_buttons.js') }}"></script>
 <!-- Material io design -->
-<script src="{{ asset('storage/'.'admin/assets/plugins/material-design/material-components.min.js') }}"></script>
+<script src="{{ asset('admin/assets/plugins/material-design/material-components.min.js') }}"></script>
 <!-- Select2 material design -->
-<script src="{{ asset('storage/'.'admin/assets/js/select2.min.js') }}"></script>
-<script src="{{ asset('storage/'.'admin/assets/js/material-select2.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/material-select2.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
 <div class="ajax-loader">
-    <img src="{{ asset('storage/'.'/admin/assets/image/loader.gif') }}" class="img-responsive"/>
+    <img src="{{ asset('/admin/assets/image/loader.gif') }}" class="img-responsive"/>
 </div>
 <script>
     $.ajaxSetup({

@@ -7,7 +7,7 @@
                         <div class="swiper-wrapper">
                             @foreach($aboutus->image as $aboutusImage)
                             <div class="swiper-slide h-auto">
-                                <img class="img-fluid object-fit-cover h-100" src="{{ asset('storage/'.$aboutusImage->name) }}" alt="{{ $aboutus->translate(app()->getLocale())->title }}"/>
+                                <img class="img-fluid object-fit-cover h-100" src="{{ asset($aboutusImage->name) }}" alt="{{ $aboutus->translate(app()->getLocale())->title }}"/>
                             </div>
                             @endforeach
                         </div>

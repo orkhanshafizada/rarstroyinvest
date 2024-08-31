@@ -36,7 +36,7 @@
                 @foreach ($houses as $house)
                     <tr>
                         <td>{{ $house->id }}</td>
-                        <td><img src="{{ asset('storage/'.$house->main_image) }}" width="100%" height="100px"
+                        <td><img src="{{ asset($house->main_image) }}" width="100%" height="100px"
                                  style="object-fit: contain;"></td>
                         <td>{{ $house->translate('ru')->name }}</td>
                         <td>
