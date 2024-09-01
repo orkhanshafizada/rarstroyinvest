@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\HouseController;
 use App\Http\Controllers\Front\NewsController;
+use App\Http\Controllers\Front\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +39,9 @@ Route::get('/doma', [HouseController::class, 'index'])->name('house.index');
 Route::get('/doma/stranitsa/{current?}', [HouseController::class, 'index'])->name('house.index.page');
 Route::get('/dom/{slug}', [HouseController::class, 'show'])->name('house.show');
 Route::get('/doma/filtr', [HouseController::class, 'filter'])->name('house.filter');
+
+// Houses
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::get('/portfolio/stranitsa/{current?}', [PortfolioController::class, 'index'])->name('portfolio.index.page');
+Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
+Route::get('/portfolio/filtr', [PortfolioController::class, 'filter'])->name('portfolio.filter');

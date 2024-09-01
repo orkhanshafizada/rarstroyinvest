@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\View\View;
 
-class HouseController extends Controller
+class PortfolioController extends Controller
 {
 
     public function index($current = 1)
@@ -35,7 +35,7 @@ class HouseController extends Controller
         $prevPage = $current > 1 ? $current - 1 : '';
         $nextPage = '';
 
-        $query  = House::catalogue()->active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
+        $query  = House::portfolio()->active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
         $houses = app(Pipeline::class)->send($query)->through([
             StructureFilter::class,
             PriceFilter::class,
@@ -50,7 +50,7 @@ class HouseController extends Controller
         $allPage     = $houses->lastPage();
         $totalHouses = $houses->total();
 
-        return view('front.house.index', [
+        return view('front.portfolio.index', [
             'houses'      => $houses,
             'structures'  => $structures,
             'filters'     => $filters,
@@ -69,7 +69,7 @@ class HouseController extends Controller
         $paginate    = 12;
         $currentPage = $request->input('page', 1);
 
-        $query = House::catalogue()->active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
+        $query = House::portfolio()->active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
 
         $houses = app(Pipeline::class)->send($query)->through([
             StructureFilter::class,
@@ -90,7 +90,7 @@ class HouseController extends Controller
 
     public function show(string $slug): View
     {
-        $house = House::catalogue()->whereHas('translations', function($query) use ($slug)
+        $house = House::portfolio()->whereHas('translations', function($query) use ($slug)
         {
             $query->where('slug', $slug)->where('locale', 'ru');
         })->with([
@@ -104,7 +104,7 @@ class HouseController extends Controller
             }
         ])->firstOrFail();
 
-        $similarHouses = House::catalogue()->where('id', '!=', $house->id)->orderBy('created_at', 'desc')->paginate(12);
+        $similarHouses = House::portfolio()->where('id', '!=', $house->id)->orderBy('created_at', 'desc')->paginate(12);
 
         $currentUrl = url()->current();
         $mortgages  = Mortgage::active()->orderBy('sort', 'asc')->get();

@@ -1,3 +1,4 @@
+@if($sliders->count())
 <div class="slider-content card card__slider border-0 d-block d-lg-none">
     @foreach($sliders as $slider)
     <div class="img-slide">
@@ -8,3 +9,4 @@
     </div>
     @endforeach
 </div>
+@endif

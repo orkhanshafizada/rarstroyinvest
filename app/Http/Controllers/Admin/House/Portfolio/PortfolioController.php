@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\House\House;
+namespace App\Http\Controllers\Admin\House\Portfolio;
 
 use App\Http\Controllers\Controller;
 use App\Models\House\Filter\Filter;
@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 
-class HouseController extends Controller
+class PortfolioController extends Controller
 {
     use GeneralTrait;
 
@@ -25,10 +25,10 @@ class HouseController extends Controller
      */
     public function index(): View
     {
-        $this->authorize('house.show');
-        $houses = House::catalogue()->latest()->get();
+        $this->authorize('portfolio.show');
+        $houses = House::portfolio()->latest()->get();
 
-        return view('admin.house.house.index', ['houses' => $houses]);
+        return view('admin.house.portfolio.index', ['houses' => $houses]);
     }
 
     /**
@@ -37,9 +37,9 @@ class HouseController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('house.create');
+        $this->authorize('portfolio.create');
 
-        return view('admin.house.house.edit', [
+        return view('admin.house.portfolio.edit', [
             'structures' => Structure::active()->orderBy('sort')->get(),
             'filters'    => Filter::active()->orderBy('sort')->get(),
         ]);
@@ -52,9 +52,9 @@ class HouseController extends Controller
      */
     public function show(House $house): View
     {
-        $this->authorize('house.edit');
+        $this->authorize('portfolio.edit');
 
-        return view('admin.house.house.edit', [
+        return view('admin.house.portfolio.edit', [
             'house'      => $house,
             'structures' => Structure::active()->orderBy('sort')->get(),
             'filters'    => Filter::active()->orderBy('sort')->get(),
@@ -102,7 +102,7 @@ class HouseController extends Controller
 
         $message = $house->wasRecentlyCreated ? 'Successfully created.' : 'Successfully updated.';
 
-        return redirect()->route('admin.house.index')
+        return redirect()->route('admin.portfolio.index')
                          ->with('message', __($message))
                          ->with('message-alert', 'success');
     }
@@ -191,7 +191,7 @@ class HouseController extends Controller
      */
     public function destroy(House $house): RedirectResponse
     {
-        $this->authorize('house.delete');
+        $this->authorize('portfolio.delete');
 
         $house->structures()->detach();
         $house->filters()->detach();
@@ -224,7 +224,7 @@ class HouseController extends Controller
         $slug = Str::slug($request->input('ru_name'), '-');
 
         $articleData = [
-            'type'      => "catalogue",
+            'type'      => "portfolio",
             'active'    => $request->input('active'),
             'location' => $request->input('location'),
             'zh'       => [

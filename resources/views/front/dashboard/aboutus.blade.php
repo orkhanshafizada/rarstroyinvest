@@ -1,3 +1,4 @@
+@if($aboutus->image->count())
 <section class="about__main mb-5 pt-4">
     <div class="container">
         <div class="row align-items-center g-4 g-md-5">
@@ -32,3 +33,4 @@
         </div>
     </div>
 </section>
+@endif

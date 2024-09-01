@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\House\Equipment\EquipmentController;
 use App\Http\Controllers\Admin\House\Filter\FilterController;
 use App\Http\Controllers\Admin\House\House\HouseController;
 use App\Http\Controllers\Admin\House\Mortgage\MortgageController;
+use App\Http\Controllers\Admin\House\Portfolio\PortfolioController;
 use App\Http\Controllers\Admin\House\Structure\StructureController;
 use App\Http\Controllers\Admin\Moderator\ModeratorController;
 use App\Http\Controllers\Admin\Moderator\PermissionController;
@@ -87,6 +88,7 @@ Route::prefix('jarvis')->name('admin.')->group(function()
 
         //House settings
         Route::resource('/house', HouseController::class);
+        Route::resource('/portfolio', PortfolioController::class);
 
         Route::resource('/equipment', EquipmentController::class);
         Route::get('/houses/equipment/{house_id}', [EquipmentController::class, 'index'])->name('equipment.index');

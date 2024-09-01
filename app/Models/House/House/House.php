@@ -87,4 +87,26 @@ class House extends Model implements TranslatableContract
     {
         $query->where('active', 1);
     }
+
+    /**
+     * Scope a query to only include houses with type 'catalogue'.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCatalogue($query)
+    {
+        return $query->where('type', 'catalogue');
+    }
+
+    /**
+     * Scope a query to only include houses with type 'catalogue'.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePortfolio($query)
+    {
+        return $query->where('type', 'portfolio');
+    }
 }

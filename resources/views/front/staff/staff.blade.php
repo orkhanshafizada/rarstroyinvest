@@ -1,3 +1,4 @@
+@if($staffs->count())
 <section class="staff__slider mb-5 pt-5 pb-5">
     <div class="container">
         <div class="card__staff-slider">
@@ -55,3 +56,4 @@
         </div>
     </div>
 </section>
+@endif

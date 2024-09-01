@@ -1,3 +1,4 @@
+@if($sliders->count())
 <div class="slider slider__main stick-dots">
     @foreach($sliders as $slider)
     <div class="slide">
@@ -16,3 +17,4 @@
     </div>
     @endforeach
 </div>
+@endif

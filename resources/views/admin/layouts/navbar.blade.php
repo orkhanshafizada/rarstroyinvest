@@ -97,6 +97,16 @@
                         </a>
                     </li>
                 @endcan
+                @can('portfolio.show', 'admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.portfolio.index') }}"
+                           class="nav-link {{ request()->routeIs('admin.portfolio.index') ? 'active' : '' }}"
+                           onclick="loader();">
+                            <i class="icon-portfolio"></i>
+                            <span>{{ __('Portfolio') }}</span>
+                        </a>
+                    </li>
+                @endcan
 
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">{{ __('Menus') }}</div>

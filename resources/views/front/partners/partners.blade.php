@@ -1,4 +1,5 @@
-    <div class="container">
+@if($partners->count())
+<div class="container">
         <div class="row">
             <div class="col">
                 <div class="section__title mb-2">
@@ -27,3 +28,4 @@
             </div>
         </div>
     </div>
+@endif
