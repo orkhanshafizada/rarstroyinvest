@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{{ asset('front/assets/plugins/fancybox/fancybox.min.css') }}"/>
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/style.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('front/assets/css/portfolio.css') }}"/>
 
     @yield('css')
     @routes

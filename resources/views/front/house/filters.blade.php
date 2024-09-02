@@ -8,7 +8,7 @@
         </div>
         <form id="filterForm" class="offcanvas-body ps-lg-2 py-0" method="GET" action="{{ route('house.filter') }}">
             <div class="input-group flex-column mb-8">
-                <h6 class="h6 fw-bold text__primary d-none d-lg-block mb-3">Seach filter</h6>
+                <h6 class="h6 fw-bold text__primary d-none d-lg-block mb-3">{{ __('Search filter') }}</h6>
                 <div class="col-12">
                     <label class="form-label" for="structure_id">{{ __('Construction technology') }}</label>
                     <select class="form-select" id="structure_id" name="structure_id">
@@ -52,13 +52,14 @@
                             <div class="multi-collapse collapse show" id="categoryFlush{{$filter->id}}">
                                 <div class="mt-2">
                                     @foreach($filter->houses->unique('pivot.value') as $house)
+                                        @php($rand = rand())
                                         <div class="form-check mb-2">
-                                            <input class="form-check-input" id="filter_{{ $house->id }}" type="checkbox"
-                                                name="filters[{{ $filter->id }}][]"
-                                                value="{{ $house->pivot->value }}"
+                                            <input class="form-check-input" id="filter_{{ $house->pivot->filter_id.$rand }}" type="checkbox"
+                                                   name="filters[{{ $filter->id }}][]"
+                                                   value="{{ $house->pivot->value }}"
                                                 {{ is_array(request('filters.' . $filter->id)) && in_array($house->pivot->value, request('filters.' . $filter->id)) ? 'checked' : '' }} />
                                             <label class="form-check-label"
-                                                for="filter_{{ $house->id }}">{{ $house->pivot->value }}</label>
+                                                   for="filter_{{ $house->pivot->filter_id.$rand }}">{{ $house->pivot->value }}</label>
                                         </div>
                                     @endforeach
                                 </div>

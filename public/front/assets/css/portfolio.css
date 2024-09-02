@@ -1,0 +1,60 @@
+.card__gallery figure,
+.card__gallery img,
+.card__staff .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center
+}
+
+.card__gallery figure,
+.card__gallery img,
+.card__portfolio figure,
+.card__portfolio img {
+    max-width: 100%;
+    vertical-align: middle;
+    aspect-ratio: 3/2;
+    max-height: 220px
+}
+
+.card__portfolio figure,
+.card__portfolio img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center
+}
+
+.card__portfolio .portfolio-option {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 20px;
+    background: var(--grey1);
+    padding: 4px 20px
+}
+
+.card__portfolio .portfolio-option span {
+    color: var(--grey5);
+    font-size: 12px;
+    font-weight: 400;
+    margin: auto 0
+}
+
+.card__portfolio .card-footer span {
+    white-space: break-spaces
+}
+
+
+.btn__play {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}

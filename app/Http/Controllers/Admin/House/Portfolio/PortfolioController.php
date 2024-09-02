@@ -40,23 +40,21 @@ class PortfolioController extends Controller
         $this->authorize('portfolio.create');
 
         return view('admin.house.portfolio.edit', [
-            'structures' => Structure::active()->orderBy('sort')->get(),
             'filters'    => Filter::active()->orderBy('sort')->get(),
         ]);
     }
 
     /**
-     * @param House $house
+     * @param House $portfolio
      * @return View
      * @throws AuthorizationException
      */
-    public function show(House $house): View
+    public function show(House $portfolio): View
     {
         $this->authorize('portfolio.edit');
 
         return view('admin.house.portfolio.edit', [
-            'house'      => $house,
-            'structures' => Structure::active()->orderBy('sort')->get(),
+            'house'      => $portfolio,
             'filters'    => Filter::active()->orderBy('sort')->get(),
         ]);
     }
@@ -72,35 +70,35 @@ class PortfolioController extends Controller
 
     /**
      * @param Request $request
-     * @param House $house
+     * @param House $portfolio
      * @return RedirectResponse
      */
-    public function update(Request $request, House $house): RedirectResponse
+    public function update(Request $request, House $portfolio): RedirectResponse
     {
-        return $this->saveHouse($request, $house);
+        return $this->saveHouse($request, $portfolio);
     }
 
     /**
      * @param Request $request
-     * @param House|null $house
+     * @param House|null $portfolio
      * @return RedirectResponse
      * @throws AuthorizationException
      */
-    protected function saveHouse(Request $request, House $house = null): RedirectResponse
+    protected function saveHouse(Request $request, House $portfolio = null): RedirectResponse
     {
-        $this->authorize($house ? 'house.edit' : 'house.create');
+        $this->authorize($portfolio ? 'house.edit' : 'house.create');
 
-        $validator = $this->validateData($request, $house !== null);
+        $validator = $this->validateData($request, $portfolio !== null);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $house = $house ? $this->updateHouse($house, $request) : $this->createHouse($request);
-        $this->syncHouseStructures($house, $request->all());
-        $this->syncHouseFilters($house, $request->all());
+        $portfolio = $portfolio ? $this->updateHouse($portfolio, $request) : $this->createHouse($request);
+        $this->syncHouseStructures($portfolio, $request->all());
+        $this->syncHouseFilters($portfolio, $request->all());
 
-        $message = $house->wasRecentlyCreated ? 'Successfully created.' : 'Successfully updated.';
+        $message = $portfolio->wasRecentlyCreated ? 'Successfully created.' : 'Successfully updated.';
 
         return redirect()->route('admin.portfolio.index')
                          ->with('message', __($message))
@@ -117,30 +115,30 @@ class PortfolioController extends Controller
     }
 
     /**
-     * @param House $house
+     * @param House $portfolio
      * @param Request $request
      * @return House
      */
-    protected function updateHouse(House $house, Request $request): House
+    protected function updateHouse(House $portfolio, Request $request): House
     {
-        $house->update($this->translate($request));
-        return $house;
+        $portfolio->update($this->translate($request));
+        return $portfolio;
     }
 
     /**
-     * @param House $house
+     * @param House $portfolio
      * @param array $data
      * @return void
      */
-    protected function syncHouseStructures(House $house, array $data): void
+    protected function syncHouseStructures(House $portfolio, array $data): void
     {
         $structures = collect($data)
             ->filter(function($value, $key) {
                 return preg_match('/^st_price_(\d+)$/', $key, $matches) && !is_null($value) && trim($value) !== '';
             })
-            ->map(function($value, $key) use ($house) {
+            ->map(function($value, $key) use ($portfolio) {
                 return [
-                    'house_id'     => $house->id,
+                    'house_id'     => $portfolio->id,
                     'structure_id' => (int)preg_replace('/^st_price_(\d+)$/', '$1', $key),
                     'price'        => $value,
                 ];
@@ -151,24 +149,24 @@ class PortfolioController extends Controller
             ->all();
 
         if (!empty($structures)) {
-            $house->structures()->sync($structures);
+            $portfolio->structures()->sync($structures);
         }
     }
 
     /**
-     * @param House $house
+     * @param House $portfolio
      * @param array $data
      * @return void
      */
-    protected function syncHouseFilters(House $house, array $data): void
+    protected function syncHouseFilters(House $portfolio, array $data): void
     {
         $filters = collect($data)
             ->filter(function($value, $key) {
                 return preg_match('/^filter_value_(\d+)$/', $key, $matches) && !is_null($value) && trim($value) !== '';
             })
-            ->map(function($value, $key) use ($house) {
+            ->map(function($value, $key) use ($portfolio) {
                 return [
-                    'house_id'  => $house->id,
+                    'house_id'  => $portfolio->id,
                     'filter_id' => (int)preg_replace('/^filter_value_(\d+)$/', '$1', $key),
                     'value'     => $value,
                 ];
@@ -179,24 +177,24 @@ class PortfolioController extends Controller
             ->all();
 
         if (!empty($filters)) {
-            $house->filters()->sync($filters);
+            $portfolio->filters()->sync($filters);
         }
     }
 
 
     /**
-     * @param House $house
+     * @param House $portfolio
      * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function destroy(House $house): RedirectResponse
+    public function destroy(House $portfolio): RedirectResponse
     {
         $this->authorize('portfolio.delete');
 
-        $house->structures()->detach();
-        $house->filters()->detach();
+        $portfolio->structures()->detach();
+        $portfolio->filters()->detach();
 
-        $images = Image::where('imageable_id', $house->id)->where('imageable_type', "App\Models\House\House\House")->get();
+        $images = Image::where('imageable_id', $portfolio->id)->where('imageable_type', "App\Models\House\House\House")->get();
         foreach($images as $image)
         {
             if($image && file_exists($image->name))
@@ -206,8 +204,8 @@ class PortfolioController extends Controller
             }
         }
 
-        $house->image()->delete();
-        $house->delete();
+        $portfolio->image()->delete();
+        $portfolio->delete();
 
         return redirect()->back()
                          ->with('message', __('Successfully deleted.'))

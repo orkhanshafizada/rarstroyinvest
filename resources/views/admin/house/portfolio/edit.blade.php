@@ -253,30 +253,7 @@
                                             </div>
                                         </div>
                                         <div class="row" style="border-top: 1px solid;">
-                                            <div class="col-lg-6 pt-3" style="border-right: 1px solid;">
-                                                <div class="row">
-                                                    @foreach($structures as $structure)
-                                                        <div class="col-lg-4 mb-3">
-                                                            {{ $structure->translate('ru')->name }} :
-                                                        </div>
-                                                        <div class="col-lg-8 mb-3">
-                                                            <div
-                                                                class="form-group form-group-feedback form-group-feedback-left">
-                                                                <input type="text" class="form-control"
-                                                                       placeholder="{{ __('Price') }}"
-                                                                       name="st_price_{{$structure->id}}"
-                                                                       value="{{ old('st_price_'.$structure->id,
-                                                                         isset($house) ? $house->structures->firstWhere('id', $structure->id)?->pivot->price : '') }}">
-                                                                @error('st_price_'.$structure->id)
-                                                                <div
-                                                                    class="alert-danger"> {{ $errors->first('st_price_'.$structure->id) }}</div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 pt-3" style="border-left: 1px solid;">
+                                            <div class="col-lg-12 pt-3" style="border-left: 1px solid;">
                                                 <div class="row">
                                                     @foreach($filters as $filter)
                                                         <div class="col-lg-4 mb-3">
