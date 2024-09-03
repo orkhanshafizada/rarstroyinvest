@@ -116,15 +116,11 @@
                                 <div class="row row-cols-auto g-3 g-md-4 mb-4 mb-md-5">
                                     @foreach($house->filters as $filter)
                                     <div class="col d-inline-flex align-items-center gap-2">
-                                        <div
-                                            class="bg__grey1 border-radius__50 d-inline-flex align-items-center gap-2 px-3 py-2">
-                                            <i class="far fa-arrow-up-right-and-arrow-down-left-from-center text__white"></i><span
-                                                class="body__text2 fw-normal text__dark"> {{ $filter->translate(app()->getLocale())->name }}</span><span
-                                                class="body__text1 fw-bold text__dark">{{ $filter->pivot->value }}</span></div>
-                                      <!--  <span class="position-relative d-block" data-bs-toggle="tooltip"
-                                              data-bs-placement="top" data-bs-custom-class="tooltip__tag"
-                                              data-bs-title=" $filter->translate(app()->getLocale())->name "><i
-                                                class="far fa-info-circle text__grey5"></i></span> -->
+                                        <div class="bg__grey1 border-radius__50 d-inline-flex align-items-center gap-2 px-3 py-2">
+                                            {!! $filter->icon !!}
+                                            <span class="body__text2 fw-normal text__dark"> {{ $filter->translate(app()->getLocale())->name }}</span>
+                                            <span class="body__text1 fw-bold text__dark">{{ $filter->pivot->value }}</span>
+                                        </div>
                                     </div>
                                     @endforeach
                                 </div>
