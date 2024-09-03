@@ -102,7 +102,6 @@ class SliderController extends Controller
         ];
 
         $request->image ? $main_data['image'] = $article_data['image'] : '';
-        $request->thumbnail ? $main_data['thumbnail'] = $article_data['thumbnail'] : '';
 
         // Update the slider
         $slider->update($main_data);
@@ -129,7 +128,6 @@ class SliderController extends Controller
         $this->authorize('slider.delete');
 
         if(file_exists($slider->image)) deleteDirectory($slider->image);
-        if(file_exists($slider->thumbnail)) deleteDirectory($slider->thumbnail);
 
         $slider->delete();
 
@@ -139,7 +137,7 @@ class SliderController extends Controller
 
     private function translate($request, $id = 0)
     {
-        $slug         = Str::slug($request->input('en_title'), '-');
+        $slug         = Str::slug($request->input('ru_title'), '-');
         $article_data = [
             'type'   => $request->input('type'),
             'active' => $request->input('active'),

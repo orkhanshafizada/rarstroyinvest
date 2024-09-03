@@ -18,12 +18,12 @@ class HomeController extends Controller
     public function index(): View
     {
         return view('front.dashboard.index', [
-                'sliders'      => Slider::active()->get()->sortBy('sort'),
-                'partners'     => Partner::active()->get()->sortBy('sort'),
-                'comments'     => Comment::active()->get()->sortBy('sort'),
-                'aboutus'      => About::where('id', 1)->first(),
-                'houses' => House::catalogue()->active()->orderBy('created_at', 'DESC')->paginate(12),
-            ]);
+            'sliders'  => Slider::active()->get()->sortBy('sort'),
+            'partners' => Partner::active()->get()->sortBy('sort'),
+            'comments' => Comment::active()->get()->sortBy('sort'),
+            'aboutus'  => About::where('id', 1)->first(),
+            'houses'   => House::catalogue()->active()->orderBy('created_at', 'DESC')->paginate(12),
+        ]);
     }
 
     /**
@@ -32,11 +32,11 @@ class HomeController extends Controller
      */
     public function show($slug): View
     {
-        $slider = Slider::with('image')->whereHas('translations', function($query) use ($slug)
-            {
-                $query->where('locale', 'en');
-                $query->where('slug', $slug);
-            })->first();
+        $slider = Slider::whereHas('translations', function ($query) use ($slug)
+        {
+            $query->where('locale', 'ru');
+            $query->where('slug', $slug);
+        })->first();
 
         return view('front.dashboard.sliderDetail', compact('slider'));
     }

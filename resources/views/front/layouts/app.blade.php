@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 <head>
+    <!-- Open Graph Meta Tags -->
+    @yield('meta-tags')
+
     <title>{{ setting('title') }}</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,8 +18,6 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ setting('favicon') }}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ setting('favicon') }}">
 
-    <!-- Open Graph Meta Tags -->
-    @yield('meta-tags')
 
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>

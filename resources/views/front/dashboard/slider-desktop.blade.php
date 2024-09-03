@@ -8,7 +8,7 @@
                 <div class="slide__content--headings text-start justify-content-start border-radius__40 position-relative overflow-hidden">
                     <div class="overlay overlay__blur opacity_1 z-index-1"></div>
                     <h3 class="h3 text-uppercase mb-3 animated" data-animation-in="fadeInLeft">{{ $slider->translate(app()->getLocale())->title }}</h3>
-                    <a class="btn btn-primary border-radius__50 mt-3 animated" data-animation-in="fadeInUp" data-delay-in="0" href="{{ $slider->link ?: '' }}">
+                    <a class="btn btn-primary border-radius__50 mt-3 animated" data-animation-in="fadeInUp" data-delay-in="0" href="{{ $slider->link ?: route("slider.show", $slider->translate(app()->getLocale())->slug) }}">
                         {{ __('Learn More') }}
                     </a>
                 </div>
