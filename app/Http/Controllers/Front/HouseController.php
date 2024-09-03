@@ -59,8 +59,8 @@ class HouseController extends Controller
             'current'     => $current,
             'allPage'     => $allPage,
             'totalHouses' => $totalHouses,
-            'minPrice'    => (int) $minPrice,
-            'maxPrice'    => (int) $maxPrice,
+            'minPrice'    => $minPrice,
+            'maxPrice'    => $maxPrice,
         ]);
     }
 

@@ -36,11 +36,9 @@
                                 <input class="form-control-plaintext text-end max" name="price_max" readonly type="text" value="{{ request('price_max', $maxPrice) }}"/>
                             </div>
                         </div>
-                        <!-- range-->
                         <div class="w-100 mt-4 mb-3" id="priceRangeMain"></div>
                     </div>
                 </div>
-                <!-- nav-->
                 <ul class="nav nav-category" id="categoryCollapseMenu">
                     @foreach($filters as $filter)
                         <li class="nav-item w-100">
@@ -67,12 +65,6 @@
                         </li>
                     @endforeach
                 </ul>
-                <!-- <div class="col mt-4">
-                    <button class="btn btn-primary fw-bold flex-nowrap text-uppercase border-radius__50 w-100 px-3"
-                            type="submit">
-                        <span>Search</span>
-                    </button>
-                </div> -->
                 <div class="col mt-4">
                     <a class="btn body__text2 fw-normal text__grey5 d-inline-flex align-items-center flex-nowrap gap-2"
                     href="{{ route('house.index') }}">

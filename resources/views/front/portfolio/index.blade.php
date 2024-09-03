@@ -43,22 +43,17 @@
                                 <div class="d-flex align-items-center mt-0 mt-lg-0">
                                     <div class="d-none d-md-flex">
                                         <p class="mb-0 me-3">{{ __('Sort by') }}:</p>
-                                        <span class="mb-0 me-3 sort sort-asc" id="sortBtn">
+                                        <span class="mb-0 me-3 sort ascPrice" id="sortBtn">
                                             {{ __('Price') }}
                                             <i class="far fa-arrow-down-short-wide ms-1 iconAsc"></i>
                                             <i class="far fa-arrow-down-wide-short ms-1 iconDesc"></i>
-                                            <input type="hidden" name="sortType" class="sortInput" id="sortInput" value='sort-asc'>
+                                            <input type="hidden" name="sortType" class="sortInput" id="sortInput" value='ascPrice'>
                                         </span>
-                                        <!-- <p class="mb-0 me-3">Price <i class="far fa-arrow-down-short-wide ms-1"></i></p> -->
                                     </div>
                                     <div class="d-block d-md-none">
-                                        <!-- select option-->
-                                        <select class="form-select">
-                                             <option selected="">{{ __('Sort by') }}: {{ __('Featured') }}</option>
-                                        <option value="Low to High">{{ __('Price') }}: {{ __('Low to High') }}</option>
-                                        <option value="High to Low">{{ __('Price') }}: {{ __('High to Low') }}</option>
-                                        <option value="Release Date">{{ __('Release Date') }}</option>
-                                        <option value="Avg. Rating">{{ __('Avg. Rating') }}</option>
+                                        <select class="form-select" name="sortType">
+                                        <option value="ascPrice">{{ __('Price') }}: {{ __('Low to High') }}</option>
+                                        <option value="descPrice">{{ __('Price') }}: {{ __('High to Low') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -108,14 +103,14 @@
             $("#sortBtn").on('click', function () {
                 var sortInput = $("#sortInput");
 
-                if($(this).hasClass('sort-desc')) {
-                    sortInput.val('sort-asc');
-                    $(this).removeClass('sort-desc');
-                    $(this).addClass('sort-asc');
-                } else if($(this).hasClass('sort-asc')) {
-                    sortInput.val('sort-desc');
-                    $(this).removeClass('sort-asc');
-                    $(this).addClass('sort-desc');
+                if($(this).hasClass('descPrice')) {
+                    sortInput.val('ascPrice');
+                    $(this).removeClass('descPrice');
+                    $(this).addClass('ascPrice');
+                } else if($(this).hasClass('ascPrice')) {
+                    sortInput.val('descPrice');
+                    $(this).removeClass('ascPrice');
+                    $(this).addClass('descPrice');
                 }
             });
 
