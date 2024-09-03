@@ -10,6 +10,7 @@ use App\Models\House\Mortgage\Mortgage;
 use App\Models\House\Structure\Structure;
 use App\QueryFilters\Front\FilterFilter;
 use App\QueryFilters\Front\PriceFilter;
+use App\QueryFilters\Front\PriceSortFilter;
 use App\QueryFilters\Front\StructureFilter;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
@@ -40,6 +41,7 @@ class HouseController extends Controller
             StructureFilter::class,
             PriceFilter::class,
             FilterFilter::class,
+            PriceSortFilter::class,
         ])->thenReturn()->paginate($paginate, ['*'], 'page', $current)->withQueryString();
 
         if($houses->hasPages())
@@ -75,6 +77,7 @@ class HouseController extends Controller
             StructureFilter::class,
             PriceFilter::class,
             FilterFilter::class,
+            PriceSortFilter::class,
         ])->thenReturn()->paginate($paginate, ['*'], 'page', $currentPage)->withQueryString();
 
         $housesView     = view('front.house.partials.houses', compact('houses'))->render();
