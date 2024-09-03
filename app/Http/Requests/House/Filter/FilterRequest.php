@@ -25,7 +25,7 @@ class FilterRequest extends FormRequest
             'zh_name'   => 'nullable|string|max:255',
             'en_name'   => 'nullable|string|max:255',
             'ru_name'   => 'required|string|max:255',
-
+            'icon'    => 'nullable|string',
             'active' => 'required|integer',
             'sort'   => 'required|integer',
         ];
@@ -47,6 +47,8 @@ class FilterRequest extends FormRequest
             'active.integer'  => __('Status') . ' ' . __('must be made of number only!'),
             'sort.required'   => __('Sort') . ' ' . __('cannot be empty!'),
             'sort.integer'    => __('Sort') . ' ' . __('must be made of number only!'),
+            'icon.required' => __('Icon').' '.__('cannot be empty!'),
+            'icon.string'   => __('Icon').' '.__('must be made of letters and numbers only!'),
         ];
     }
 }

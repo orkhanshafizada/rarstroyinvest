@@ -101,6 +101,7 @@ class FilterController extends Controller
         $article_data = [
             'active' => $request->input('active'),
             'sort'   => $request->input('sort'),
+            'icon'   => $request->input('icon'),
             'zh'     => [
                 'name'   => $request->input('zh_name'),
             ],

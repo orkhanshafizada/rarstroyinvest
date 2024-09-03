@@ -43,7 +43,7 @@
                                             @method('PATCH')
                                         @endif
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div
                                                     class="form-group form-group-feedback form-group-feedback-left"
                                                     style="margin-top: 15px;">
@@ -61,7 +61,23 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
+                                                <div
+                                                    class="form-group form-group-feedback form-group-feedback-left"
+                                                    style="margin-top: 15px;">
+                                                    <label for="title">{{ __('Icon') }}</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="{{ __('Icon') }}"
+                                                           name="icon"
+                                                           value="{{ @$filter ? @$filter->icon : old('icon') ?? 1 }}">
+                                                    @error('icon')
+                                                    <div
+                                                        class="alert-danger"> {{ $errors->first('icon') }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
                                                 <div
                                                     class="form-group form-group-feedback form-group-feedback-left"
                                                     style="margin-top: 15px;">

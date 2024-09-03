@@ -41,7 +41,7 @@ Route::get('/dom/{slug}', [HouseController::class, 'show'])->name('house.show');
 Route::get('/doma/filtr', [HouseController::class, 'filter'])->name('house.filter');
 
 // Houses
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
-Route::get('/portfolio/stranitsa/{current?}', [PortfolioController::class, 'index'])->name('portfolio.index.page');
+Route::get('/portfolios', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::get('/portfolios/stranitsa/{current?}', [PortfolioController::class, 'index'])->name('portfolio.index.page');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
-Route::get('/portfolio/filtr', [PortfolioController::class, 'filter'])->name('portfolio.filter');
+Route::get('/portfolios/filtr', [PortfolioController::class, 'filter'])->name('portfolio.filter');
