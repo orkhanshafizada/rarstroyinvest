@@ -24,7 +24,7 @@
                     </div>
                     <p class="sub__title2 fw-normal lh-base">
                         {!! $aboutus->translate(app()->getLocale())->short_description !!}
-                    <a class="text-decoration-none btn btn-primary border-radius__50 fw-bold">
+                    <a class="text-decoration-none btn btn-primary border-radius__50 fw-bold" href="{{ route("about.index") }}">
                         {{ __('See more') }}
                         <i class="far fa-arrow-right-long"></i>
                     </a>
