@@ -41,7 +41,7 @@ class HouseController extends Controller
             StructureFilter::class,
             PriceFilter::class,
             FilterFilter::class,
-            PriceSortFilter::class,
+            //PriceSortFilter::class,
         ])->thenReturn()->paginate($paginate, ['*'], 'page', $current)->withQueryString();
 
         if($houses->hasPages())
