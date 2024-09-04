@@ -18,107 +18,124 @@ use Illuminate\View\View;
 
 class HouseController extends Controller
 {
+    private const PAGINATE = 12;
 
-    public function index($current = 1)
+    public function index(int $current = 1): View
     {
-        $structures = Structure::active()->orderBy('sort')->get();
-        $filters    = Filter::with([
-            'houses' => function($query)
-            {
-                $query->select('houses.*', 'houses_filters.value')->distinct('houses_filters.value');
-            }
-        ])->active()->orderBy('sort')->get();
+        \DB::listen(function ($query) {
+            \Log::info($query->sql);
+            \Log::info($query->bindings);
+        });
 
-        $minPrice = HouseStructure::min('price');
-        $maxPrice = HouseStructure::max('price');
-
-        $paginate = 12;
-        $prevPage = $current > 1 ? $current - 1 : '';
-        $nextPage = '';
-
-        $query  = House::catalogue()->active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
-        $houses = app(Pipeline::class)->send($query)->through([
-            StructureFilter::class,
-            PriceFilter::class,
-            FilterFilter::class,
-            //PriceSortFilter::class,
-        ])->thenReturn()->paginate($paginate, ['*'], 'page', $current)->withQueryString();
-
-        if($houses->hasPages())
-        {
-            $nextPage = $houses->hasMorePages() ? $current + 1 : '';
-        }
-
-        $allPage     = $houses->lastPage();
-        $totalHouses = $houses->total();
-
-        return view('front.house.index', [
-            'houses'      => $houses,
-            'structures'  => $structures,
-            'filters'     => $filters,
-            'prevPage'    => $prevPage,
-            'nextPage'    => $nextPage,
-            'current'     => $current,
-            'allPage'     => $allPage,
-            'totalHouses' => $totalHouses,
-            'minPrice'    => $minPrice,
-            'maxPrice'    => $maxPrice,
-        ]);
+        return view('front.house.index', array_merge($this->getCommonData($current), $this->getPriceRange()));
     }
 
-    public function filter(Request $request)
+    public function filter(Request $request): \Illuminate\Http\JsonResponse
     {
-        $paginate    = 12;
-        $currentPage = $request->input('page', 1);
+        $housesData = $this->getHousesWithPagination($request->input('page', 1));
 
-        $query = House::catalogue()->active()->with(['structures', 'filters'])->orderBy('created_at', 'DESC');
-
-        $houses = app(Pipeline::class)->send($query)->through([
-            StructureFilter::class,
-            PriceFilter::class,
-            FilterFilter::class,
-            PriceSortFilter::class,
-        ])->thenReturn()->paginate($paginate, ['*'], 'page', $currentPage)->withQueryString();
-
-        $housesView     = view('front.house.partials.houses', compact('houses'))->render();
-        $paginationView = view('front.house.partials.pagination', compact('houses'))->render();
-        $totalHouses    = $houses->total();
-
-        return response()->json([
-            'houses'      => $housesView,
-            'pagination'  => $paginationView,
-            'totalHouses' => $totalHouses,
-        ]);
+        return response()->json($housesData);
     }
 
     public function show(string $slug): View
     {
-        $house = House::catalogue()->whereHas('translations', function($query) use ($slug)
-        {
-            $query->where('slug', $slug)->where('locale', 'ru');
-        })->with([
-            'structures' => function($query)
-            {
-                $query->orderBy('sort', 'asc');
-            },
-            'filters'    => function($query)
-            {
-                $query->orderBy('sort', 'asc');
-            }
-        ])->firstOrFail();
-
-        $similarHouses = House::catalogue()->where('id', '!=', $house->id)->orderBy('created_at', 'desc')->paginate(12);
-
-        $currentUrl = url()->current();
-        $mortgages  = Mortgage::active()->orderBy('sort', 'asc')->get();
+        $house = House::findBySlug($slug, 'ru');
+        $similarHouses = $this->getSimilarHouses($house->id);
+        $mortgages = Mortgage::active()->orderBy('sort', 'asc')->get();
 
         return view('front.house.detail', [
             'house'      => $house,
-            'currentUrl' => $currentUrl,
+            'currentUrl' => url()->current(),
             'houses'     => $similarHouses,
             'mortgages'  => $mortgages,
         ]);
     }
 
+    private function getHousesWithPagination(int $page): array
+    {
+        $houses = $this->filterHouses($page);
 
+        return [
+            'houses'      => view('front.house.partials.houses', compact('houses'))->render(),
+            'pagination'  => view('front.house.partials.pagination', compact('houses'))->render(),
+            'totalHouses' => $houses->total(),
+        ];
+    }
+
+    private function filterHouses(int $currentPage)
+    {
+        return $this->applyFilters(House::catalogue()->active())->paginate(self::PAGINATE, ['*'], 'page', $currentPage)->withQueryString();
+    }
+
+    private function getCommonData(int $current): array
+    {
+        $houses = $this->filterHouses($current);
+        $structures = Structure::active()->orderBy('sort')->get();
+        $filters    = Filter::with([
+            'houses' => function($query)
+            {
+                $query->select('houses.*', 'houses_filters.value')->where('houses.type', 'catalogue')->distinct('houses_filters.value');
+            }
+        ])->active()->orderBy('sort')->get();
+
+        return [
+            'houses'      => $houses,
+            'structures'  => $structures,
+            'filters'     => $filters,
+            'prevPage'    => $current > 1 ? $current - 1 : '',
+            'nextPage'    => $houses->hasMorePages() ? $current + 1 : '',
+            'current'     => $current,
+            'allPage'     => $houses->lastPage(),
+            'totalHouses' => $houses->total(),
+        ];
+    }
+
+    private function hasNextPage($currentPage)
+    {
+        $houses = $this->filterHouses($currentPage);
+        return $houses->hasMorePages() ? $currentPage + 1 : '';
+    }
+
+    private function getAllPages($currentPage)
+    {
+        $houses = $this->filterHouses($currentPage);
+        return $houses->lastPage();
+    }
+
+    private function getTotalHouses($currentPage)
+    {
+        $houses = $this->filterHouses($currentPage);
+        return $houses->total();
+    }
+
+    private function getPriceRange(): array
+    {
+        return [
+            'minPrice' => HouseStructure::min('price'),
+            'maxPrice' => HouseStructure::max('price'),
+        ];
+    }
+
+    private function getSimilarHouses(int $houseId)
+    {
+        return House::catalogue()->where('id', '!=', $houseId)->orderBy('created_at', 'desc')->paginate(self::PAGINATE);
+    }
+
+    private function applyFilters($query)
+    {
+        return app(Pipeline::class)->send($query->with([
+            'structures',
+            'filters'
+        ])->orderBy('created_at', 'DESC'))->through($this->getFilterPipeline())->thenReturn();
+    }
+
+    private function getFilterPipeline()
+    {
+        return [
+            StructureFilter::class,
+            PriceFilter::class,
+            FilterFilter::class,
+            //PriceSortFilter::class,
+        ];
+    }
 }

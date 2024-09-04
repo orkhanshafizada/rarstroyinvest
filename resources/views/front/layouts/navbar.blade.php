@@ -1,7 +1,7 @@
 <nav class="navmenu mx-md-auto" id="navmenu">
     <ul class="navbar-nav align-items-lg-center ms-0 ms-md-auto mb-0">
         <li class="nav-item {{ request()->routeIs('home.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
-        <li class="nav-item {{ request()->routeIs('abour.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('about.index') }}">{{ __('About') }}</a></li>
+        <li class="nav-item {{ request()->routeIs('about.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('about.index') }}">{{ __('About') }}</a></li>
         <li class="nav-item {{ request()->routeIs('house.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('house.index') }}">{{ __('Catalogue') }}</a></li>
         <li class="nav-item {{ request()->routeIs('portfolio.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('portfolio.index') }}">{{ __('Portfolio') }}</a></li>
         <li class="nav-item {{ request()->routeIs('news.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('news.index') }}">{{ __('Blog') }}</a></li>

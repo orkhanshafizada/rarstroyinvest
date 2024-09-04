@@ -152,15 +152,15 @@
 
             function filter_data(page = 1) {
                 var formData = $('#filterForm').serialize() + '&page=' + page;
-//var sortType = $('#sortInput').val();
-              //  var data = formData + '&sortType=' + sortType + '&page=' + page;
+                var sortType = $('#sortInput').val();
+                var data = formData + '&sortType=' + sortType + '&page=' + page;
 
                 $('#loader').show();
 
                 $.ajax({
                     url: '{{ route('house.filter') }}',
                     type: 'GET',
-                    data: formData,
+                    data: data,
                     success: function (response) {
                         $('#housesContainer').html(response.houses);
                         $('#pagination').html(response.pagination);
