@@ -27,20 +27,20 @@
             <div class="row g-2">
                 <div class="col">
                     <div class="bg__grey5 rounded text-center w-100 h-100 p-2">
-                        <i class="far fa-stairs d-block h4 text-light mb-0 mx-auto"></i>
+                        {!! $floor->icon !!}
                         <span class="body__text2 text-light">{{ $floor->pivot->value ?? "" }} <br/>{{ $floor ? $floor->translate($locale)->name : "" }}</span>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="bg__grey5 rounded text-center w-100 h-100 p-2"><i
-                            class="far fa-key-skeleton d-block h4 text-light mb-0 mx-auto"></i><span
-                            class="body__text2 text-light">{{ $room->pivot->value ?? "" }} <br/>{{ $room ? $room->translate($locale)->name : "" }}</span>
+                    <div class="bg__grey5 rounded text-center w-100 h-100 p-2">
+                        {!! $room->icon !!}
+                        <span class="body__text2 text-light">{{ $room->pivot->value ?? "" }} <br/>{{ $room ? $room->translate($locale)->name : "" }}</span>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="bg__grey5 rounded text-center w-100 h-100 p-2"><i
-                            class="far fa-bath d-block h4 text-light mb-0 mx-auto"></i><span
-                            class="body__text2 text-light">{{ $bathroom->pivot->value ?? "" }} <br/>{{ $bathroom ? $bathroom->translate($locale)->name : "" }}</span>
+                    <div class="bg__grey5 rounded text-center w-100 h-100 p-2">
+                        {!! $bathroom->icon !!}
+                        <span class="body__text2 text-light">{{ $bathroom->pivot->value ?? "" }} <br/>{{ $bathroom ? $bathroom->translate($locale)->name : "" }}</span>
                     </div>
                 </div>
             </div>

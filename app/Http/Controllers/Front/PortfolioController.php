@@ -34,7 +34,15 @@ class PortfolioController extends Controller
 
     public function show(string $slug): View
     {
-        $house = House::findBySlug($slug, 'ru');
+        $house = House::portfolio()->whereHas('translations', function($query) use ($slug)
+        {
+            $query->where('slug', $slug)->where('locale', 'ru');
+        })->with([
+            'filters'    => function($query)
+            {
+                $query->orderBy('sort', 'asc');
+            }
+        ])->firstOrFail();
         $similarHouses = $this->getSimilarHouses($house->id);
         $mortgages = Mortgage::active()->orderBy('sort', 'asc')->get();
 
