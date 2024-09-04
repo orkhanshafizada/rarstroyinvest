@@ -27,19 +27,19 @@
             <div class="row g-2">
                 <div class="col">
                     <div class="bg__grey5 rounded text-center w-100 h-100 p-2">
-                        {!! $floor->icon !!}
+                        {!! $floor->icon ?? "" !!}
                         <span class="body__text2 text-light">{{ $floor->pivot->value ?? "" }} <br/>{{ $floor ? $floor->translate($locale)->name : "" }}</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="bg__grey5 rounded text-center w-100 h-100 p-2">
-                        {!! $room->icon !!}
+                        {!! $room->icon ?? "" !!}
                         <span class="body__text2 text-light">{{ $room->pivot->value ?? "" }} <br/>{{ $room ? $room->translate($locale)->name : "" }}</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="bg__grey5 rounded text-center w-100 h-100 p-2">
-                        {!! $bathroom->icon !!}
+                        {!! $bathroom->icon ?? "" !!}
                         <span class="body__text2 text-light">{{ $bathroom->pivot->value ?? "" }} <br/>{{ $bathroom ? $bathroom->translate($locale)->name : "" }}</span>
                     </div>
                 </div>
