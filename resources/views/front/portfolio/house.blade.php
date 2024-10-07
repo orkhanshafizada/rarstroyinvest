@@ -22,7 +22,7 @@
             </div>
         @endforeach
     </div>
-    <div class="card-footer border-0 pt-0">
+    <!--div class="card-footer border-0 pt-0">
         <div class="border-top border-primary border-1 pt-3">
             <div class="row g-2">
                 <div class="col">
@@ -45,5 +45,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div-->
 </a>
