@@ -40,23 +40,23 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center mt-0 mt-lg-0">
-                                    <div class="d-none d-md-flex">
-                                        <p class="mb-0 me-3">{{ __('Sort by') }}:</p>
-                                        <span class="mb-0 me-3 sort ascPrice" id="sortBtn">
-                                            {{ __('Price') }}
-                                            <i class="far fa-arrow-down-short-wide ms-1 iconAsc"></i>
-                                            <i class="far fa-arrow-down-wide-short ms-1 iconDesc"></i>
-                                            <input type="hidden" name="sortType" class="sortInput" id="sortInput" value='ascPrice'>
-                                        </span>
-                                    </div>
-                                    <div class="d-block d-md-none">
-                                        <select class="form-select" name="sortType">
-                                        <option value="ascPrice">{{ __('Price') }}: {{ __('Low to High') }}</option>
-                                        <option value="descPrice">{{ __('Price') }}: {{ __('High to Low') }}</option>
-                                        </select>
-                                    </div>
-                                </div>
+{{--                                <div class="d-flex align-items-center mt-0 mt-lg-0">--}}
+{{--                                    <div class="d-none d-md-flex">--}}
+{{--                                        <p class="mb-0 me-3">{{ __('Sort by') }}:</p>--}}
+{{--                                        <span class="mb-0 me-3 sort ascPrice" id="sortBtn">--}}
+{{--                                            {{ __('Price') }}--}}
+{{--                                            <i class="far fa-arrow-down-short-wide ms-1 iconAsc"></i>--}}
+{{--                                            <i class="far fa-arrow-down-wide-short ms-1 iconDesc"></i>--}}
+{{--                                            <input type="hidden" name="sortType" class="sortInput" id="sortInput" value='ascPrice'>--}}
+{{--                                        </span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="d-block d-md-none">--}}
+{{--                                        <select class="form-select" name="sortType">--}}
+{{--                                        <option value="ascPrice">{{ __('Price') }}: {{ __('Low to High') }}</option>--}}
+{{--                                        <option value="descPrice">{{ __('Price') }}: {{ __('High to Low') }}</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="mb-3 mb-lg-0 d-none d-md-block">
                                 <p class="mb-0">

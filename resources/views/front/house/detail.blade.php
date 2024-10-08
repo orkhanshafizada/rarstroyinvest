@@ -125,14 +125,16 @@
                                     @endforeach
                                 </div>
                                 <div class="row row-cols-1 row-cols-md-2 g-3 g-md-4">
-                                    <div class="col"><a
-                                            class="btn btn-primary fw-bold flex-nowrap text-uppercase border-radius__30 w-100 px-3"
-                                            href="{{ setting('mobile') }}"> <i class="far fa-phone"></i><span>{{ __('get the qoute now') }}</span></a>
+                                    <div class="col-12 col-md-12">
+                                        <a class="btn btn-primary fw-bold flex-nowrap text-uppercase border-radius__30 w-100 px-3" href="{{ setting('mobile') }}">
+                                            <i class="far fa-phone"></i>
+                                            <span>{{ __('get the qoute now') }}</span>
+                                        </a>
                                     </div>
-                                    <div class="col"><a
-                                            class="btn btn-grey__outline fw-bold text-uppercase border-radius__30 w-100 px-3"
-                                            href="#viewMap"> <i class="far fa-map"></i><span>{{ __('View in map') }}</span></a>
-                                    </div>
+{{--                                    <div class="col"><a--}}
+{{--                                            class="btn btn-grey__outline fw-bold text-uppercase border-radius__30 w-100 px-3"--}}
+{{--                                            href="#viewMap"> <i class="far fa-map"></i><span>{{ __('View in map') }}</span></a>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -226,7 +228,7 @@
                 <div class="row">
                     <div class="col-12 col-md-12">
                         <div class="section__title mb-2">
-                            <h2 class="h2 fw-bold text__primary mb-0">Equipment</h2>
+                            <h2 class="h2 fw-bold text__primary mb-0">{{ __('Equipment') }}</h2>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">
@@ -255,20 +257,21 @@
                                      aria-labelledby="pills-filter{{$structure->id}}-tab" tabindex="0">
                                     <div class="col-12 col-md-8 mx-auto">
                                         <div class="accordion accordion__equipment bg-transparent" id="accordionEquipment">
+                                            @php($s = 1)
                                             @foreach($structure->equipment->where('house_id', $house->id) as $equipment)
                                                 <div class="accordion-item">
                                                     <div class="accordion-header">
-                                                        <button class="accordion-button align-items-baseline px-0 py-2"
+                                                        <button class="accordion-button align-items-baseline px-0 py-2 {{ $s == 1 ? '' : 'collapsed' }}"
                                                                 type="button" data-bs-toggle="collapse"
-                                                                data-bs-target="#collapseOne" aria-expanded="true"
-                                                                aria-controls="collapseOne">
+                                                                data-bs-target="#collapse{{ $equipment->translate(app()->getLocale())->id }}" aria-expanded="{{ $s == 1 ? 'true' : 'false' }}"
+                                                                aria-controls="collapse{{ $equipment->translate(app()->getLocale())->id }}">
                                                             <h4 class="h4 title fw-bold text__dark lh-base mb-0">
                                                                 {{ $equipment->translate(app()->getLocale())->title }}
                                                             </h4>
                                                         </button>
                                                     </div>
-                                                    <div class="accordion-collapse collapse multi-collapse in show"
-                                                         id="collapseOne">
+                                                    <div class="accordion-collapse collapse multi-collapse in {{ $s == 1 ? 'show' : '' }}"
+                                                         id="collapse{{ $equipment->translate(app()->getLocale())->id }}">
                                                         <div class="accordion-body px-0 pb-0">
                                                             <div class="body__text2 fw-normal text__grey5 lh-base mb-0">
                                                                 {!! $equipment->translate(app()->getLocale())->content !!}
@@ -276,6 +279,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @php($s++)
                                             @endforeach
                                         </div>
                                     </div>
@@ -288,29 +292,6 @@
             </div>
         </section>
 
-        <section class="video__map mb-5">
-            <div class="container-fluid p-0">
-                <div class="row" data-bs-spy="scroll" data-bs-target="#goMap" data-bs-smooth-scroll="true"
-                     data-bs-root-margin="100px 0px -100%" tabindex="0">
-                    @php($youtube_id = get_youtube_id($house->translate(app()->getLocale())->video_url))
-                    @if($youtube_id)
-                    <div class="col-12 col-md-6">
-                        <iframe src="https://www.youtube.com/embed/{{ $youtube_id }}"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-                        </iframe>
-                    </div>
-                    @endif
-                    <div class="col-12 col-md-@if($youtube_id) 6 @else 12 @endif">
-                        <iframe id="viewMap"
-                                src="https://maps.google.com/maps?hl=en&amp;q=1%20{{ $house->location }}hl=en&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                                frameborder="0"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
        @include('front.house.similar')
     </main>
 @endsection
