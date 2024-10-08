@@ -7,6 +7,9 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\HouseController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\PortfolioController;
+use App\Models\House\Equipment\Equipment;
+use App\Models\House\Equipment\EquipmentTranslation;
+use App\Models\House\House\House;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +22,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/copyeq', function () {
+    $equipments = Equipment::where('house_id', 20)->get();
+
+    $housesIds = House::where('type', 'catalogue')->where('id', '!=', 20)->pluck('id')->toArray();
+    foreach ($housesIds as $house_id) {
+        foreach ($equipments as $equipment) {
+            $newEquipment = $equipment->replicate();
+            $newEquipment->house_id = $house_id;
+            $newEquipment->save();
+
+            $equipmentTranslations = EquipmentTranslation::where('equipment_id', $equipment->id)->get();
+            foreach ($equipmentTranslations as $translation) {
+                $newEquipmentTranslation = $translation->replicate();
+                $newEquipmentTranslation->equipment_id = $newEquipment->id;
+                $newEquipmentTranslation->save();
+            }
+        }
+    }
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('locale/{locale?}', array('as' => 'set-locale', 'uses' => '\App\Http\Controllers\AppController@setlocale'))->name('locale');
