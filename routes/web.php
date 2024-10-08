@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/copyeq', function () {
-    //die;
+    die;
     $equipments = Equipment::where('house_id', 20)->get();
 
     $housesIds = House::where('type', 'catalogue')->where('id', '!=', 20)->pluck('id')->toArray();
