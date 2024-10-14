@@ -63,7 +63,7 @@ Route::get('/doma/stranitsa/{current?}', [HouseController::class, 'index'])->nam
 Route::get('/dom/{slug}', [HouseController::class, 'show'])->name('house.show');
 Route::get('/doma/filtr', [HouseController::class, 'filter'])->name('house.filter');
 
-// Houses
+// Portfolio
 Route::get('/portfolios', [PortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/portfolios/stranitsa/{current?}', [PortfolioController::class, 'index'])->name('portfolio.index.page');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
