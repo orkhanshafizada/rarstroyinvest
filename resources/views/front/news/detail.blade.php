@@ -42,7 +42,7 @@
                         <div class="section__gallery position-relative overflow-hidden">
                         
                             <div class="row d-inline-flex justify-content-between align-items-center">
-                                <div class="col-12 col-md-12 h-100">
+                                <div class="col-12 col-md-12">
                                     <div class="swiper-container">
                                         <div class="swiper swiper__slider position-relative overflow-hidden h-100" id="blog-slider" data-slides="2" data-xs-slides="1" data-sm-slides="1" data-md-slides="1.5" data-lg-slides="2" data-dotes="1" data-scrollbar="1" data-spaceBetween="0" data-delay="5">
                                             <div class="swiper-wrapper">                                                
