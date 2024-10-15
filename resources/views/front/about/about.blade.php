@@ -2,7 +2,7 @@
 @section('content')
     <!-- Content-->
     <main class="main flex-shrink-0 pb-20 pb-md-10">
-        <section class="section__catalogue-detail">
+        <section class="section__about">
             <div class="container py-0">
                 <div class="row">
                     <div class="col-12 col-md-12">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-8 mx-auto">
+                    <div class="col-12 col-md-8 section__content mx-auto">
                         <h2 class="h2 fw-bold text__primary mb-4">{{ $aboutus->translate(app()->getLocale())->title }}</h2>
                         <p class="sub__title2 text__dark">
                             {!! $aboutus->translate(app()->getLocale())->long_description !!}

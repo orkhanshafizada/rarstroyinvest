@@ -26,13 +26,15 @@
                                 <div class="swiper-slide h-auto">
                                     <div class="card card__testimonials border-0 overflow-hidden h-100">
                                         <div class="row g-3 g-md-5">
-                                            <div class="col-5 col-md-4">
-                                                <div class="d-flex flex-column justify-content-between border-radius__30 position-relative overflow-hidden">
-                                                    <img class="img-fluid" src="{{ asset($comment->image) }}" alt="{{ $comment->translate(app()->getLocale())->full_name }}"/>
+                                            <div class="col-12 col-md-4">
+                                                <div class="d-flex d-md-block flex-column justify-content-center justify-content-md-between">
+                                                    <div class="d-flex flex-column justify-content-center justify-content-md-between border-radius__30 position-relative overflow-hidden mx-auto mx-md-0">
+                                                        <img class="img-fluid" src="{{ asset($comment->image) }}" alt="{{ $comment->translate(app()->getLocale())->full_name }}"/>
+                                                    </div>
+                                                    <p class="body__text2 fw-bold lh-base text__black mx-auto mx-md-0 mb-0 mt-4">{{ $comment->translate(app()->getLocale())->full_name }}</p>
                                                 </div>
-                                                <p class="body__text2 fw-bold lh-base text__black mb-0 mt-4">{{ $comment->translate(app()->getLocale())->full_name }}</p>
                                             </div>
-                                            <div class="col-7 col-md-8">
+                                            <div class="col-12 col-md-8">
                                                 <div class="card-body p-0">
                                                     <p class="body__text2 fw-normal lh-base text__black mb-0">
                                                         {!! $comment->translate(app()->getLocale())->description !!}

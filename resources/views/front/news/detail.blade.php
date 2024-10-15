@@ -39,7 +39,7 @@
                         <div class="section__content">
                             {!! $news->translate(app()->getLocale())->long_content ?? '' !!}
                         </div>
-                        <div class="section__gallery">
+                        <div class="section__gallery position-relative overflow-hidden">
                         
                             <div class="row d-inline-flex justify-content-between align-items-center">
                                 <div class="col-12 col-md-12 h-100">
