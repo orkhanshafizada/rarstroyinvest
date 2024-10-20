@@ -49,6 +49,6 @@
                 </div>
             </li>
         </ul> -->
-        <div class="d-none d-md-grid"><a class="btn btn-md btn-primary border-radius__30 d-none d-lg-inline-flex px-5" href="tel:{{ setting('mobile') }}"><i class="far fa-phone"></i><span class="text-uppercase body__text1 fw-bold">{{ __('Call us') }}</span></a></div>
+        <div class="d-none d-md-grid"><a class="btn btn-md btn-primary border-radius__30 d-none d-lg-inline-flex px-5 px-md-2" href="tel:{{ setting('mobile') }}"><i class="far fa-phone"></i><span class="text-uppercase body__text1 fw-bold">{{ __('Call us') }}</span></a></div>
     </div>
 </header>
