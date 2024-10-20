@@ -2,13 +2,13 @@
 <section class="about__main mb-5 pt-4">
     <div class="container">
         <div class="row align-items-center g-4 g-md-5">
-            <div class="col-12 col-md-6 order-2 order-md-1">
+            <div class="col-12 col-md-6 order-2 order-md-1 h-100">
                 <div class="swiper-container">
                     <div class="swiper swiper__slider about__main-slider position-relative overflow-hidden h-100" id="about-slider" data-slides="1" data-xs-slides="1" data-sm-slides="1" data-md-slides="1" data-lg-slides="1" data-dotes="1" data-scrollbar="1" data-spaceBetween="0" data-delay="5">
                         <div class="swiper-wrapper">
                             @foreach($aboutus->image as $aboutusImage)
                             <div class="swiper-slide h-auto">
-                                <img class="img-fluid object-fit-cover h-100" src="{{ asset($aboutusImage->name) }}" alt="{{ $aboutus->translate(app()->getLocale())->title }}"/>
+                                <img class="img-fluid object-fit-cover" src="{{ asset($aboutusImage->name) }}" alt="{{ $aboutus->translate(app()->getLocale())->title }}"/>
                             </div>
                             @endforeach
                         </div>
